@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid #F98A8C;
+  outline: 1px solid #FDCECF;
+  height: 100px;
+  padding: 20px;
+  font-weight: bold;
+  color: #605c5c;
+
+  &__right-block {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+  }
+}

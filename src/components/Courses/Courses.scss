@@ -1,0 +1,11 @@
+.courses {
+
+  border: 1px solid darkseagreen;
+  padding:  0 20px;
+
+  &__search-bar-panel {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0
+  }
+}

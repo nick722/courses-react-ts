@@ -1,0 +1,28 @@
+.course-card {
+  display: flex;
+  border: 1px solid #549D79;
+  padding: 20px;
+
+  &__left-side {
+    width: 65%;
+
+    & h3 {
+      margin: 0;
+      font-size: 35px;
+    }
+
+    & p {
+      font-size: 18px;
+    }
+  }
+
+  &__right-side {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+
+    & button {
+      align-self: center;
+    }
+  }
+}

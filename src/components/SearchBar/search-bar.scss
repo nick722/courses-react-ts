@@ -1,0 +1,17 @@
+.search-bar {
+  & * {
+    margin-inline-end: 10px;
+  }
+
+  & input {
+    block-size: 25px;
+    inline-size: 400px;
+    padding-inline: 10px;
+    box-sizing: border-box;
+    border: 2px solid #E6CFBA;
+  }
+
+  & button {
+    inline-size: 150px;
+  }
+}
