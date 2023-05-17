@@ -29,7 +29,12 @@ const CourseCard = ({
 				<p>Authors:</p>
 				<p>Duration: {duration}</p>
 				<p>Created: {creationDate}</p>
-				<Button buttonText={BUTTON_TEXT} onClick={()=> {}} />
+				<Button
+					buttonText={BUTTON_TEXT}
+					onClick={() => {
+						/*do nothing*/
+					}}
+				/>
 			</div>
 		</div>
 	);

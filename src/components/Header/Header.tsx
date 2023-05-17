@@ -10,7 +10,12 @@ const Header = () => {
 			<Logo />
 			<div className='header__right-block'>
 				Nik
-				<Button buttonText='Logout' onClick={()=>{}}/>
+				<Button
+					buttonText='Logout'
+					onClick={() => {
+						/*do nothing*/
+					}}
+				/>
 			</div>
 		</header>
 	);

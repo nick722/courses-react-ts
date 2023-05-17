@@ -14,7 +14,12 @@ const Courses = () => {
 		<div className={'courses'}>
 			<div className={'courses__search-bar-panel'}>
 				<SearchBar />
-				<Button buttonText={ADD_NEW_BUTTON_TEXT} onClick={()=>{}}/>
+				<Button
+					buttonText={ADD_NEW_BUTTON_TEXT}
+					onClick={() => {
+						/*do nothing*/
+					}}
+				/>
 			</div>
 			{mockedCoursesList.map((course) => (
 				<CourseCard
