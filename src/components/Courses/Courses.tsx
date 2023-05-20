@@ -9,6 +9,10 @@ import { mockedCoursesList } from '../../constants/mockedCoursesList.js';
 
 const ADD_NEW_BUTTON_TEXT = 'Add new course';
 
+const formatDuration = (duration) => {
+	return duration;
+};
+
 const Courses = () => {
 	return (
 		<div className={'courses'}>
@@ -26,7 +30,7 @@ const Courses = () => {
 					title={course.title}
 					description={course.description}
 					authors={course.authors}
-					duration={course.duration}
+					duration={formatDuration(course.duration)}
 					creationDate={course.creationDate}
 				/>
 			))}
