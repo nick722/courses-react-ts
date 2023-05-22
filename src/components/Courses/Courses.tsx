@@ -4,6 +4,7 @@ import Button from '../common/Button/Button';
 import SearchBar from './components/SearchBar/SearchBar';
 
 import './Courses.scss';
+import CreateCourse from '../CreateCourse/CreateCourse';
 
 interface Course {
 	id: string;
@@ -61,11 +62,14 @@ const Courses = ({ courses, authors }: CoursesProps) => {
 				<Button
 					buttonText={ADD_NEW_BUTTON_TEXT}
 					onClick={() => {
+						console.log('click!!');
 						setShowCreateCourse(!showCreateCourse);
 					}}
 				/>
 			</div>
-			{renderCourses(courses)}
+			{showCreateCourse ? <CreateCourse /> : renderCourses(courses)}
+			{/*<CreateCourse />*/}
+			{/*{renderCourses(courses)}*/}
 		</div>
 	);
 };
