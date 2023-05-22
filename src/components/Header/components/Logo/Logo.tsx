@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../pictures/cambodian-runner-finishing-race.png';
+import logo from '../../../../pictures/cambodian-runner-finishing-race.png';
 
 import './Logo.scss';
 

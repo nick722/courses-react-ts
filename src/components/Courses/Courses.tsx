@@ -1,7 +1,7 @@
 import React from 'react';
-import CourseCard from '../CourseCard/CourseCard';
-import Button from '../Button/Button';
-import SearchBar from '../SearchBar/SearchBar';
+import CourseCard from './components/CourseCard/CourseCard';
+import Button from '../common/Button/Button';
+import SearchBar from './components/SearchBar/SearchBar';
 
 import './Courses.scss';
 

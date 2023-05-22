@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './CourseCard.scss';
-import Button from '../Button/Button';
+import Button from '../../../common/Button/Button';
 
 const BUTTON_TEXT = 'Show course';
 
