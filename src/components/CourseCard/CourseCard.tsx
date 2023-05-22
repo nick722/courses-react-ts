@@ -49,9 +49,15 @@ const CourseCard = ({
 				<p>{description}</p>
 			</div>
 			<div className='course-card__right-side'>
-				<p>Authors:{getAuthors(authors)}</p>
-				<p>Duration: {formatDuration(duration)}</p>
-				<p>Created: {creationDate}</p>
+				<p>
+					<span className='label'>Authors</span>: {getAuthors(authors)}
+				</p>
+				<p>
+					<span className='label'>Duration</span>: {formatDuration(duration)}
+				</p>
+				<p>
+					<span className='label'>Created</span>: {creationDate}
+				</p>
 				<Button
 					buttonText={BUTTON_TEXT}
 					onClick={() => {
