@@ -3,8 +3,6 @@ import React from 'react';
 import './CourseCard.scss';
 import Button from '../Button/Button';
 
-import { mockedAuthorsList } from '../../constants/mockedAuthorsList.js';
-
 const BUTTON_TEXT = 'Show course';
 
 interface CourseCardProps {
@@ -12,19 +10,8 @@ interface CourseCardProps {
 	description: string;
 	duration: number;
 	creationDate: string;
-	authors: string[];
+	authors: string;
 }
-
-const getAuthors = (courseAuthorsIds: string[]): string =>
-	courseAuthorsIds
-		.map((courseAuthorId) =>
-			mockedAuthorsList
-				.filter((author) => {
-					return author.id === courseAuthorId;
-				})
-				.map((authObj) => authObj.name)
-		)
-		.join(', ');
 
 const formatDuration = (durationInMin: number): string => {
 	const hours = Math.floor(durationInMin / 60);
@@ -52,7 +39,7 @@ const CourseCard = ({
 			</div>
 			<div className='course-card__right-side'>
 				<p>
-					<span className='label'>Authors</span>: {getAuthors(authors)}
+					<span className='label'>Authors</span>: {authors}
 				</p>
 				<p>
 					<span className='label'>Duration</span>: {formatDuration(duration)}

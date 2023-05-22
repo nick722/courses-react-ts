@@ -5,7 +5,22 @@ import SearchBar from '../SearchBar/SearchBar';
 
 import './Courses.scss';
 
-import { mockedCoursesList } from '../../constants/mockedCoursesList.js';
+interface Course {
+	id: string;
+	title: string;
+	description: string;
+	creationDate: string;
+	duration: number;
+	authors: string[];
+}
+interface Author {
+	id: string;
+	name: string;
+}
+interface CoursesProps {
+	courses: Course[];
+	authors: Author[];
+}
 
 const ADD_NEW_BUTTON_TEXT = 'Add new course';
 
@@ -13,7 +28,18 @@ const formatDuration = (duration) => {
 	return duration;
 };
 
-const Courses = () => {
+const Courses = ({ courses, authors }: CoursesProps) => {
+	const getAuthors = (courseAuthorsIds: string[]): string =>
+		courseAuthorsIds
+			.map((courseAuthorId) =>
+				authors
+					.filter((author) => {
+						return author.id === courseAuthorId;
+					})
+					.map((authObj) => authObj.name)
+			)
+			.join(', ');
+
 	return (
 		<div className={'courses'}>
 			<div className={'courses__search-bar-panel'}>
@@ -25,11 +51,11 @@ const Courses = () => {
 					}}
 				/>
 			</div>
-			{mockedCoursesList.map((course) => (
+			{courses.map((course) => (
 				<CourseCard
 					title={course.title}
 					description={course.description}
-					authors={course.authors}
+					authors={getAuthors(course.authors)}
 					duration={formatDuration(course.duration)}
 					creationDate={course.creationDate}
 				/>
