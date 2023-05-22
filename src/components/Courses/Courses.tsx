@@ -53,6 +53,7 @@ const Courses = ({ courses, authors }: CoursesProps) => {
 			</div>
 			{courses.map((course) => (
 				<CourseCard
+					key={course.id}
 					title={course.title}
 					description={course.description}
 					authors={getAuthors(course.authors)}
