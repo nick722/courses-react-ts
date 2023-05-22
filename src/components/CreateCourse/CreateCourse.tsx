@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CreateCourse = () => {
-	return <div>CreateCourse components</div>;
+	return <div>CreateCourse component</div>;
 };
 
 export default CreateCourse;
