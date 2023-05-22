@@ -12,11 +12,6 @@ interface CourseCardProps {
 	creationDate: string;
 	authors: string[];
 }
-
-const formatDuration = (minutes) => {
-	return minutes / 60;
-};
-
 const CourseCard = ({
 	title,
 	description,
@@ -31,7 +26,7 @@ const CourseCard = ({
 			</div>
 			<div className='course-card__right-side'>
 				<p>Authors:</p>
-				<p>Duration: {formatDuration(duration)}</p>
+				<p>Duration: {duration}</p>
 				<p>Created: {creationDate}</p>
 				<Button
 					buttonText={BUTTON_TEXT}
