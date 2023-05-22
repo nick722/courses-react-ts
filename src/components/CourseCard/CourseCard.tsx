@@ -35,6 +35,8 @@ const formatDuration = (durationInMin: number): string => {
 
 	return `${formatedHours}:${formatedMinutes} ${formatedHoursStr}`;
 };
+const formatedDate = (dateWithSlashes: string): string =>
+	dateWithSlashes.replace(/\//g, '.');
 const CourseCard = ({
 	authors,
 	title,
@@ -56,7 +58,7 @@ const CourseCard = ({
 					<span className='label'>Duration</span>: {formatDuration(duration)}
 				</p>
 				<p>
-					<span className='label'>Created</span>: {creationDate}
+					<span className='label'>Created</span>: {formatedDate(creationDate)}
 				</p>
 				<Button
 					buttonText={BUTTON_TEXT}
