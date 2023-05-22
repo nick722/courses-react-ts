@@ -15,7 +15,7 @@ interface CourseCardProps {
 	authors: string[];
 }
 
-const getAuthors = (courseAuthorsIds: string[]) =>
+const getAuthors = (courseAuthorsIds: string[]): string =>
 	courseAuthorsIds
 		.map((courseAuthorId) =>
 			mockedAuthorsList
@@ -25,6 +25,16 @@ const getAuthors = (courseAuthorsIds: string[]) =>
 				.map((authObj) => authObj.name)
 		)
 		.join(', ');
+
+const formatDuration = (durationInMin: number): string => {
+	const hours = Math.floor(durationInMin / 60);
+	const minutes = durationInMin % 60;
+	const formatedHours = hours > 10 ? hours : `0${hours}`;
+	const formatedMinutes = minutes > 10 ? minutes : `0${minutes}`;
+	const formatedHoursStr = hours === 1 ? 'hour' : 'hours';
+
+	return `${formatedHours}:${formatedMinutes} ${formatedHoursStr}`;
+};
 const CourseCard = ({
 	authors,
 	title,
@@ -40,7 +50,7 @@ const CourseCard = ({
 			</div>
 			<div className='course-card__right-side'>
 				<p>Authors:{getAuthors(authors)}</p>
-				<p>Duration: {duration}</p>
+				<p>Duration: {formatDuration(duration)}</p>
 				<p>Created: {creationDate}</p>
 				<Button
 					buttonText={BUTTON_TEXT}
