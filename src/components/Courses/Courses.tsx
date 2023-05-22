@@ -68,8 +68,6 @@ const Courses = ({ courses, authors }: CoursesProps) => {
 				/>
 			</div>
 			{showCreateCourse ? <CreateCourse /> : renderCourses(courses)}
-			{/*<CreateCourse />*/}
-			{/*{renderCourses(courses)}*/}
 		</div>
 	);
 };
