@@ -3,6 +3,7 @@ import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
 
 import './CreateCourse.scss';
+import AuthorItem from './components/AuthorItem';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -32,6 +33,7 @@ const CreateCourse = () => {
 				<label for='textarea'>Description</label>
 				<textarea id='textarea' placeholder={DESCRIPTION_PLACEHOLDER} />
 			</div>
+			<AuthorItem authorsName='Piper Wright' />
 			<div>List of authors</div>
 			<div>
 				Course authors - contains a list of authors course and their
