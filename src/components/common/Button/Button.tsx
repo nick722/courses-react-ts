@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 
 import './Button.scss';
 
@@ -7,9 +8,9 @@ interface ButtonProps {
 	onClick(): any;
 }
 
-const Button = ({ buttonText, onClick }: ButtonProps) => {
+const Button = ({ buttonText, onClick, className, ...props }: ButtonProps) => {
 	return (
-		<button onClick={onClick} className='logout-button'>
+		<button onClick={onClick} className={cn('button', className)}>
 			{buttonText}
 		</button>
 	);

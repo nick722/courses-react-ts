@@ -1,0 +1,17 @@
+.create-course {
+  border: 1px solid green;
+
+  &__header {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+
+    &-button {
+      block-size: 30px;
+    }
+  }
+
+
+}
