@@ -1,10 +1,9 @@
-import React, { FC, useState } from 'react';
+import React from 'react';
 import CourseCard from './components/CourseCard/CourseCard';
 import Button from '../common/Button/Button';
 import SearchBar from './components/SearchBar/SearchBar';
 
 import './Courses.scss';
-import CreateCourse from '../CreateCourse/CreateCourse';
 
 interface Course {
 	id: string;
@@ -21,6 +20,7 @@ interface Author {
 interface CoursesProps {
 	courses: Course[];
 	authors: Author[];
+	toggleShowCreateCourse: () => void;
 }
 
 const ADD_NEW_BUTTON_TEXT = 'Add new course';
@@ -29,9 +29,11 @@ const formatDuration = (duration) => {
 	return duration;
 };
 
-const Courses = ({ courses, authors }: CoursesProps) => {
-	const [showCreateCourse, setShowCreateCourse] = useState(false);
-
+const Courses = ({
+	courses,
+	authors,
+	toggleShowCreateCourse,
+}: CoursesProps) => {
 	const getAuthors = (courseAuthorsIds: string[]): string =>
 		courseAuthorsIds
 			.map((courseAuthorId) =>
@@ -61,13 +63,10 @@ const Courses = ({ courses, authors }: CoursesProps) => {
 				<SearchBar />
 				<Button
 					buttonText={ADD_NEW_BUTTON_TEXT}
-					onClick={() => {
-						console.log('click!!');
-						setShowCreateCourse(!showCreateCourse);
-					}}
+					onClick={toggleShowCreateCourse}
 				/>
 			</div>
-			{showCreateCourse ? <CreateCourse /> : renderCourses(courses)}
+			{renderCourses(courses)}
 		</div>
 	);
 };
