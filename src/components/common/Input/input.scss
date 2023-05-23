@@ -1,0 +1,16 @@
+.input {
+  display: flex;
+  flex-direction: column;
+
+  & label {
+    margin-block-end: 5px;
+  }
+
+  & input {
+    box-sizing: border-box;
+    block-size: 30px;
+    inline-size: 260px;
+    border: 1px solid #E0B896;
+    padding-inline: 10px;
+  }
+}

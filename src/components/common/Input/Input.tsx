@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './input.scss';
+
 interface InputProps {
 	labelText: string;
 	placeholderText: string;
@@ -7,9 +9,9 @@ interface InputProps {
 }
 const Input = ({ labelText, placeholderText, onChange }: InputProps) => {
 	return (
-		<div>
-			<input id='input' placeholder={placeholderText} onChange={onChange} />
+		<div className='input'>
 			<label for='input'>{labelText}</label>
+			<input id='input' placeholder={placeholderText} onChange={onChange} />
 		</div>
 	);
 };
