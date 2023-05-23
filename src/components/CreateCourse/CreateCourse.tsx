@@ -1,11 +1,20 @@
 import React from 'react';
 import Input from '../common/Input/Input';
 
+const TITLE = 'Title';
+const PLACEHODER = 'Enter title...';
+
 const CreateCourse = () => {
 	return (
 		<div>
 			<h2>CreateCourse component </h2>
-			Title <Input labelText={} placeholderText={} onChange={} />
+			<Input
+				labelText={TITLE}
+				placeholderText={PLACEHODER}
+				onChange={() => {
+					/**/
+				}}
+			/>
 			<div>Description (textarea)</div>
 			<div>List of authors</div>
 			<div>
