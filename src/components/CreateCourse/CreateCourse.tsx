@@ -4,13 +4,19 @@ import Button from '../common/Button/Button';
 
 import './CreateCourse.scss';
 import AuthorItem from './components/AuthorItem';
+import Authors from './components/Authors/Authors';
+import { Author } from '../../types';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
 const CREATE_COURSE = 'Create course';
 const DESCRIPTION_PLACEHOLDER = 'Enter description';
 
-const CreateCourse = () => {
+interface CreateCourseProps {
+	authors: Author[];
+}
+
+const CreateCourse = ({ authors }: CreateCourseProps) => {
 	return (
 		<div className='create-course'>
 			<div className='create-course__header'>
@@ -33,8 +39,7 @@ const CreateCourse = () => {
 				<label for='textarea'>Description</label>
 				<textarea id='textarea' placeholder={DESCRIPTION_PLACEHOLDER} />
 			</div>
-			<AuthorItem authorsName='Piper Wright' />
-			<div>List of authors</div>
+			<Authors authors={authors} />
 			<div>
 				Course authors - contains a list of authors course and their
 				corresponding Delete author buttons

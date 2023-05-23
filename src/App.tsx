@@ -15,7 +15,7 @@ function App() {
 		<div className='App'>
 			<Header />
 			{showCreateCourse ? (
-				<CreateCourse />
+				<CreateCourse authors={mockedAuthorsList} />
 			) : (
 				<Courses
 					toggleShowCreateCourse={() => {

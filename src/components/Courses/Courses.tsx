@@ -4,6 +4,7 @@ import Button from '../common/Button/Button';
 import SearchBar from './components/SearchBar/SearchBar';
 
 import './Courses.scss';
+import { Author } from '../../types';
 
 interface Course {
 	id: string;
@@ -13,10 +14,7 @@ interface Course {
 	duration: number;
 	authors: string[];
 }
-interface Author {
-	id: string;
-	name: string;
-}
+
 interface CoursesProps {
 	courses: Course[];
 	authors: Author[];
