@@ -7,7 +7,6 @@ const PLACEHODER = 'Enter title...';
 const CreateCourse = () => {
 	return (
 		<div>
-			<h2>CreateCourse component </h2>
 			<Input
 				labelText={TITLE}
 				placeholderText={PLACEHODER}
