@@ -5,8 +5,9 @@ import Button from '../common/Button/Button';
 import './CreateCourse.scss';
 
 const TITLE = 'Title';
-const PLACEHODER = 'Enter title...';
+const TITLE_PLACEHODER = 'Enter title...';
 const CREATE_COURSE = 'Create course';
+const DESCRIPTION_PLACEHOLDER = 'Enter description';
 
 const CreateCourse = () => {
 	return (
@@ -14,7 +15,7 @@ const CreateCourse = () => {
 			<div className='create-course__header'>
 				<Input
 					labelText={TITLE}
-					placeholderText={PLACEHODER}
+					placeholderText={TITLE_PLACEHODER}
 					onChange={() => {
 						/**/
 					}}
@@ -27,7 +28,10 @@ const CreateCourse = () => {
 					}}
 				/>
 			</div>
-			<div>Description (textarea)</div>
+			<div className='create-course__description'>
+				<label for='textarea'>Description</label>
+				<textarea id='textarea' placeholder={DESCRIPTION_PLACEHOLDER} />
+			</div>
 			<div>List of authors</div>
 			<div>
 				Course authors - contains a list of authors course and their
