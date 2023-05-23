@@ -1,8 +1,10 @@
 import React from 'react';
 import Input from '../common/Input/Input';
+import Button from '../common/Button/Button';
 
 const TITLE = 'Title';
 const PLACEHODER = 'Enter title...';
+const CREATE_COURSE = 'Create course';
 
 const CreateCourse = () => {
 	return (
@@ -11,6 +13,12 @@ const CreateCourse = () => {
 				labelText={TITLE}
 				placeholderText={PLACEHODER}
 				onChange={() => {
+					/**/
+				}}
+			/>
+			<Button
+				buttonText={CREATE_COURSE}
+				onClick={() => {
 					/**/
 				}}
 			/>
