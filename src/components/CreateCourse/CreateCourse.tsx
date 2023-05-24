@@ -3,7 +3,6 @@ import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
 
 import AuthorsList from './components/AuthorsList/AuthorsList';
-import CourseAuthors from './components/CourseAuthors/CourseAuthors';
 import AddAuthor from './components/CreateAuthor/CreateAuthor';
 import Duration from './Duration/Duration';
 
@@ -68,7 +67,7 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 				</div>
 				<div className='create-course__right-panel'>
 					<AuthorsList title='Authors' authors={allAuthors} />
-					<AuthorsList title='Course Authors' authors={allAuthors} />
+					<AuthorsList title='Course Authors' authors={courseAuthors} />
 				</div>
 			</div>
 		</form>

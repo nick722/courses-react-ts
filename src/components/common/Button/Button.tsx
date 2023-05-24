@@ -6,11 +6,18 @@ import './Button.scss';
 interface ButtonProps {
 	buttonText: string;
 	onClick(): any;
+	type: any;
 }
 
-const Button = ({ buttonText, onClick, className, ...props }: ButtonProps) => {
+const Button = ({
+	type,
+	buttonText,
+	onClick,
+	className,
+	...props
+}: ButtonProps) => {
 	return (
-		<button onClick={onClick} className={cn('button', className)}>
+		<button type={type} onClick={onClick} className={cn('button', className)}>
 			{buttonText}
 		</button>
 	);

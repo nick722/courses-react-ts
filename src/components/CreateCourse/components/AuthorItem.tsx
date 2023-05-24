@@ -14,6 +14,7 @@ const AuthorItem = ({ authorsName }: AuthorItemProps) => {
 		<div className='author-item'>
 			<span>{authorsName}</span>
 			<Button
+				type='button'
 				buttonText={buttonText}
 				onClick={() => {
 					/*do nothing*/
