@@ -4,7 +4,7 @@ import Button from '../common/Button/Button';
 
 import Authors from './components/Authors/Authors';
 import CourseAuthors from './components/CourseAuthors/CourseAuthors';
-import AddAuthor from './components/AddAuthor/AddAuthor';
+import AddAuthor from './components/CreateAuthor/CreateAuthor';
 
 import { Author } from '../../types';
 
