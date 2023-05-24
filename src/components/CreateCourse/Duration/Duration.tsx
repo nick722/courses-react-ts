@@ -15,6 +15,7 @@ const Duration = () => {
 					/**/
 				}}
 			/>
+			<p>Duration: </p>
 		</div>
 	);
 };

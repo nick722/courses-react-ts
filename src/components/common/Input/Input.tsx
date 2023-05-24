@@ -6,7 +6,8 @@ import './input.scss';
 interface InputProps {
 	labelText: string;
 	placeholderText: string;
-	onChange: () => void;
+	value: string;
+	onChange: (target) => void;
 	className?: string;
 }
 const Input = ({
@@ -14,11 +15,17 @@ const Input = ({
 	placeholderText,
 	onChange,
 	className,
+	value,
 }: InputProps) => {
 	return (
 		<div className={cn('input', className)}>
 			<label for='input'>{labelText}</label>
-			<input id='input' placeholder={placeholderText} onChange={onChange} />
+			<input
+				value={value}
+				id='input'
+				placeholder={placeholderText}
+				onChange={onChange}
+			/>
 		</div>
 	);
 };

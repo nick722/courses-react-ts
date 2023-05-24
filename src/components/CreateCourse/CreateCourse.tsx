@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
 
@@ -21,16 +21,18 @@ interface CreateCourseProps {
 }
 
 const CreateCourse = ({ authors }: CreateCourseProps) => {
+	const [title, setTitle] = useState('');
+	const [description, setDescription] = useState('');
+
 	return (
-		<div className='create-course'>
+		<form className='create-course'>
 			<div className='create-course__header'>
 				<Input
+					value={title}
 					className='create-course__input'
 					labelText={TITLE}
 					placeholderText={TITLE_PLACEHODER}
-					onChange={() => {
-						/**/
-					}}
+					onChange={({ target }) => setTitle(target.value)}
 				/>
 				<Button
 					className='create-course__header-button'
@@ -42,7 +44,12 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 			</div>
 			<div className='create-course__description'>
 				<label for='textarea'>Description</label>
-				<textarea id='textarea' placeholder={DESCRIPTION_PLACEHOLDER} />
+				<textarea
+					value={description}
+					onChange={({ target }) => setDescription(target.value)}
+					id='textarea'
+					placeholder={DESCRIPTION_PLACEHOLDER}
+				/>
 			</div>
 			<div className='create-course__main'>
 				<div className='create-course__left-panel'>
@@ -54,7 +61,7 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 					<CourseAuthors />
 				</div>
 			</div>
-		</div>
+		</form>
 	);
 };
 
