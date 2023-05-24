@@ -27,4 +27,12 @@
     padding: 10px;
     }
   }
+
+  &__main {
+    display: flex;
+  }
+
+  &__left-panel, &__right-panel {
+    inline-size: 50%;
+  }
 }
