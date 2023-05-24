@@ -21,7 +21,7 @@ const renderAuthorsList = (
 				onClick={onClick}
 				key={author.id}
 				buttonText={buttonText}
-				authorsName={author.name}
+				author={author}
 			/>
 		))}
 	</ul>

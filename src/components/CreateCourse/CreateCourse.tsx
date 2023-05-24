@@ -30,8 +30,10 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 	const [allAuthors, setAllAuthors] = useState(authors);
 	const [courseAuthors, setCourseAuthors] = useState([]);
 
-	const addAuthor = (author) => setCourseAuthors([...allAuthors, author]);
-	const deleteAuthor = (author) => setAllAuthors([...courseAuthors, author]);
+	console.log('courseAuthors', courseAuthors);
+
+	const addAuthor = (author) => setCourseAuthors([...courseAuthors, author]);
+	const deleteAuthor = (author) => setAllAuthors([...allAuthors, author]);
 
 	const handleTitleChange = (value: string) => {
 		if (!forbiddenSymbols.test(value)) {

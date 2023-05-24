@@ -3,17 +3,23 @@ import Button from '../../common/Button/Button';
 
 import './AuthorItem.scss';
 
+import { Author } from '../../../types';
+
 interface AuthorItemProps {
-	authorsName: string;
+	author: Author;
 	buttonText: string;
-	onClick: () => any;
+	onClick: (author: Author) => any;
 }
 
-const AuthorItem = ({ authorsName, buttonText, onClick }: AuthorItemProps) => {
+const AuthorItem = ({ author, buttonText, onClick }: AuthorItemProps) => {
 	return (
 		<div className='author-item'>
-			<span>{authorsName}</span>
-			<Button type='button' buttonText={buttonText} onClick={onClick} />
+			<span>{author.name}</span>
+			<Button
+				type='button'
+				buttonText={buttonText}
+				onClick={() => onClick(author)}
+			/>
 		</div>
 	);
 };
