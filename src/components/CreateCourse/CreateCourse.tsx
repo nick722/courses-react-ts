@@ -5,11 +5,11 @@ import Button from '../common/Button/Button';
 import Authors from './components/Authors/Authors';
 import CourseAuthors from './components/CourseAuthors/CourseAuthors';
 import AddAuthor from './components/CreateAuthor/CreateAuthor';
+import Duration from './Duration/Duration';
 
 import { Author } from '../../types';
 
 import './CreateCourse.scss';
-import Duration from './Duration/Duration';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -25,6 +25,7 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 		<div className='create-course'>
 			<div className='create-course__header'>
 				<Input
+					className='create-course__input'
 					labelText={TITLE}
 					placeholderText={TITLE_PLACEHODER}
 					onChange={() => {
