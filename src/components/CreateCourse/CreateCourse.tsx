@@ -16,6 +16,8 @@ const TITLE_PLACEHODER = 'Enter title...';
 const CREATE_COURSE = 'Create course';
 const DESCRIPTION_PLACEHOLDER = 'Enter description';
 
+const forbiddenSymbols = /[@#$%^&]/;
+
 interface CreateCourseProps {
 	authors: Author[];
 }
@@ -23,6 +25,12 @@ interface CreateCourseProps {
 const CreateCourse = ({ authors }: CreateCourseProps) => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
+
+	const handleTitleChange = (value: string) => {
+		if (!forbiddenSymbols.test(value)) {
+			setTitle(value);
+		}
+	};
 
 	return (
 		<form className='create-course'>
@@ -32,7 +40,7 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 					className='create-course__input'
 					labelText={TITLE}
 					placeholderText={TITLE_PLACEHODER}
-					onChange={({ target }) => setTitle(target.value)}
+					onChange={({ target }) => handleTitleChange(target.value)}
 				/>
 				<Button
 					className='create-course__header-button'
