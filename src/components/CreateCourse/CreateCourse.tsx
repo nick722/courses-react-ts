@@ -32,7 +32,12 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 
 	console.log('courseAuthors', courseAuthors);
 
-	const addAuthor = (author) => setCourseAuthors([...courseAuthors, author]);
+	const addAuthor = (addedAuthor) => {
+		setAllAuthors([
+			...allAuthors.filter((author) => author.id !== addedAuthor.id),
+		]);
+		setCourseAuthors([...courseAuthors, addedAuthor]);
+	};
 	const deleteAuthor = (author) => setAllAuthors([...allAuthors, author]);
 
 	const handleTitleChange = (value: string) => {
