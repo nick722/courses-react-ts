@@ -9,6 +9,7 @@ import Duration from './Duration/Duration';
 import { Author } from '../../types';
 
 import './CreateCourse.scss';
+import { set } from 'husky';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -28,6 +29,9 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 	const [description, setDescription] = useState('');
 	const [allAuthors, setAllAuthors] = useState(authors);
 	const [courseAuthors, setCourseAuthors] = useState([]);
+
+	const addAuthor = (author) => setCourseAuthors([...allAuthors, author]);
+	const deleteAuthor = (author) => setAllAuthors([...courseAuthors, author]);
 
 	const handleTitleChange = (value: string) => {
 		if (!forbiddenSymbols.test(value)) {
@@ -69,14 +73,16 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 				</div>
 				<div className='create-course__right-panel'>
 					<AuthorsList
-						buttonText={ADD_AUTHOR_TEXT}
 						title='Authors'
 						authors={allAuthors}
+						buttonText={ADD_AUTHOR_TEXT}
+						onClick={addAuthor}
 					/>
 					<AuthorsList
-						buttonText={DELETE_AUTHOR_TEXT}
 						title='Course Authors'
-						authors={allAuthors}
+						authors={courseAuthors}
+						buttonText={DELETE_AUTHOR_TEXT}
+						onClick={deleteAuthor}
 					/>
 				</div>
 			</div>

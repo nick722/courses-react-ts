@@ -7,12 +7,18 @@ import './AuthorsList.scss';
 interface AuthorsProps {
 	authors: Author[];
 	title: string;
+	onClick: () => any;
 }
 
-const renderAuthorsList = (authors: Author[], buttonText: string) => (
+const renderAuthorsList = (
+	authors: Author[],
+	buttonText: string,
+	onClick: () => any
+) => (
 	<ul>
 		{authors.map((author) => (
 			<AuthorItem
+				onClick={onClick}
 				key={author.id}
 				buttonText={buttonText}
 				authorsName={author.name}
@@ -23,12 +29,12 @@ const renderAuthorsList = (authors: Author[], buttonText: string) => (
 
 const renderNoAuthorsMessage = () => <p>Authors list is empty</p>;
 
-const AuthorsList = ({ authors, title, buttonText }: AuthorsProps) => {
+const AuthorsList = ({ authors, title, buttonText, onClick }: AuthorsProps) => {
 	return (
 		<div className='authors-list'>
 			<h3 className='authors-list__title'>{title}</h3>
 			{authors.length
-				? renderAuthorsList(authors, buttonText)
+				? renderAuthorsList(authors, buttonText, onClick)
 				: renderNoAuthorsMessage()}
 		</div>
 	);

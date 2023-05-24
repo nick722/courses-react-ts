@@ -6,19 +6,14 @@ import './AuthorItem.scss';
 interface AuthorItemProps {
 	authorsName: string;
 	buttonText: string;
+	onClick: () => any;
 }
 
-const AuthorItem = ({ authorsName, buttonText }: AuthorItemProps) => {
+const AuthorItem = ({ authorsName, buttonText, onClick }: AuthorItemProps) => {
 	return (
 		<div className='author-item'>
 			<span>{authorsName}</span>
-			<Button
-				type='button'
-				buttonText={buttonText}
-				onClick={() => {
-					/*do nothing*/
-				}}
-			/>
+			<Button type='button' buttonText={buttonText} onClick={onClick} />
 		</div>
 	);
 };
