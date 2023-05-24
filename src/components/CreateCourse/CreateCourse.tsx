@@ -9,6 +9,7 @@ import AddAuthor from './components/CreateAuthor/CreateAuthor';
 import { Author } from '../../types';
 
 import './CreateCourse.scss';
+import Duration from './Duration/Duration';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -45,6 +46,7 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 			<div className='create-course__main'>
 				<div className='create-course__left-panel'>
 					<AddAuthor />
+					<Duration />
 				</div>
 				<div className='create-course__right-panel'>
 					<Authors authors={authors} />
