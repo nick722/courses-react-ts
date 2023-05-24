@@ -6,6 +6,7 @@ import './CreateCourse.scss';
 import AuthorItem from './components/AuthorItem';
 import Authors from './components/Authors/Authors';
 import { Author } from '../../types';
+import CourseAuthors from './components/CourseAuthors/CourseAuthors';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -40,10 +41,7 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 				<textarea id='textarea' placeholder={DESCRIPTION_PLACEHOLDER} />
 			</div>
 			<Authors authors={authors} />
-			<div>
-				Course authors - contains a list of authors course and their
-				corresponding Delete author buttons
-			</div>
+			<CourseAuthors />
 			<div>Create author </div>
 		</div>
 	);
