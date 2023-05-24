@@ -4,16 +4,8 @@ import Button from '../common/Button/Button';
 import SearchBar from './components/SearchBar/SearchBar';
 
 import './Courses.scss';
-import { Author } from '../../types';
 
-interface Course {
-	id: string;
-	title: string;
-	description: string;
-	creationDate: string;
-	duration: number;
-	authors: string[];
-}
+import { Author, Course } from '../../types';
 
 interface CoursesProps {
 	courses: Course[];
