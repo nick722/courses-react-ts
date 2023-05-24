@@ -10,7 +10,7 @@ const BUTTON_TEXT = 'Create author';
 
 const CreateAuthor = () => {
 	return (
-		<div className='add-author'>
+		<div className='create-author'>
 			<h3>Create author</h3>
 			<Input
 				labelText={INPUT_TEXT}
