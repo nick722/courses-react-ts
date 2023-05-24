@@ -2,7 +2,13 @@ import React from 'react';
 
 import './CourseAuthors.scss';
 
-const CourseAuthors = () => {
+import { Author } from '../../../../types';
+
+interface CourseAuthorsProps {
+	authors: Author[];
+}
+
+const CourseAuthors = ({ authors }: CourseAuthorsProps) => {
 	return (
 		<div className='course-authors'>
 			<h3>Course Authors</h3>

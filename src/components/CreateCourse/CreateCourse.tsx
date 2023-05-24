@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
 
-import Authors from './components/Authors/Authors';
+import AuthorsList from './components/AuthorsList/AuthorsList';
 import CourseAuthors from './components/CourseAuthors/CourseAuthors';
 import AddAuthor from './components/CreateAuthor/CreateAuthor';
 import Duration from './Duration/Duration';
@@ -25,6 +25,8 @@ interface CreateCourseProps {
 const CreateCourse = ({ authors }: CreateCourseProps) => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
+	const [allAuthors, setAllAuthors] = useState(authors);
+	const [courseAuthors, setCourseAuthors] = useState([]);
 
 	const handleTitleChange = (value: string) => {
 		if (!forbiddenSymbols.test(value)) {
@@ -65,8 +67,8 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 					<Duration />
 				</div>
 				<div className='create-course__right-panel'>
-					<Authors authors={authors} />
-					<CourseAuthors />
+					<AuthorsList title='Authors' authors={allAuthors} />
+					<AuthorsList title='Course Authors' authors={allAuthors} />
 				</div>
 			</div>
 		</form>
