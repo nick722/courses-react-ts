@@ -38,7 +38,12 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 		]);
 		setCourseAuthors([...courseAuthors, addedAuthor]);
 	};
-	const deleteAuthor = (author) => setAllAuthors([...allAuthors, author]);
+	const deleteAuthor = (deletedAuthor) => {
+		setCourseAuthors([
+			...courseAuthors.filter((author) => author.id !== deletedAuthor.id),
+		]);
+		setAllAuthors([...allAuthors, deletedAuthor]);
+	};
 
 	const handleTitleChange = (value: string) => {
 		if (!forbiddenSymbols.test(value)) {
