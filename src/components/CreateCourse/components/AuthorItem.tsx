@@ -5,11 +5,10 @@ import './AuthorItem.scss';
 
 interface AuthorItemProps {
 	authorsName: string;
+	buttonText: string;
 }
 
-const buttonText = 'Add author';
-
-const AuthorItem = ({ authorsName }: AuthorItemProps) => {
+const AuthorItem = ({ authorsName, buttonText }: AuthorItemProps) => {
 	return (
 		<div className='author-item'>
 			<span>{authorsName}</span>

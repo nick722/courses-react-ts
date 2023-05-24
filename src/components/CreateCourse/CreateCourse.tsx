@@ -14,6 +14,8 @@ const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
 const CREATE_COURSE = 'Create course';
 const DESCRIPTION_PLACEHOLDER = 'Enter description';
+const ADD_AUTHOR_TEXT = 'Add author';
+const DELETE_AUTHOR_TEXT = 'Delete author';
 
 const forbiddenSymbols = /[@#$%^&]/;
 
@@ -66,8 +68,16 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 					<Duration />
 				</div>
 				<div className='create-course__right-panel'>
-					<AuthorsList title='Authors' authors={allAuthors} />
-					<AuthorsList title='Course Authors' authors={courseAuthors} />
+					<AuthorsList
+						buttonText={ADD_AUTHOR_TEXT}
+						title='Authors'
+						authors={allAuthors}
+					/>
+					<AuthorsList
+						buttonText={DELETE_AUTHOR_TEXT}
+						title='Course Authors'
+						authors={allAuthors}
+					/>
 				</div>
 			</div>
 		</form>
