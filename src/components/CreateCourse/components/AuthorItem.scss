@@ -1,5 +1,6 @@
 .author-item {
-  & * {
-    padding-inline: 30px;
-  }
+  display: flex;
+  justify-content: space-between;
+  margin-block: 5px;
+  margin-inline: 30px;
 }
