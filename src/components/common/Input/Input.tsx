@@ -24,7 +24,7 @@ const Input = ({
 				value={value}
 				id='input'
 				placeholder={placeholderText}
-				onChange={onChange}
+				onChange={({ target }) => onChange(target.value)}
 			/>
 		</div>
 	);

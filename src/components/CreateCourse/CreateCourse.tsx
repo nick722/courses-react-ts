@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { v4 as uuid } from 'uuid';
+
 import Input from '../common/Input/Input';
 import Button from '../common/Button/Button';
 
 import AuthorsList from './components/AuthorsList/AuthorsList';
-import AddAuthor from './components/CreateAuthor/CreateAuthor';
+import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Duration from './Duration/Duration';
 
 import { Author } from '../../types';
 
 import './CreateCourse.scss';
-import { set } from 'husky';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -30,14 +31,18 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 	const [allAuthors, setAllAuthors] = useState(authors);
 	const [courseAuthors, setCourseAuthors] = useState([]);
 
-	console.log('courseAuthors', courseAuthors);
-
 	const addAuthor = (addedAuthor) => {
 		setAllAuthors([
 			...allAuthors.filter((author) => author.id !== addedAuthor.id),
 		]);
 		setCourseAuthors([...courseAuthors, addedAuthor]);
 	};
+
+	const createAuthor = (authorsName) => {
+		const author = { id: uuid(), name: authorsName };
+		setAllAuthors([...allAuthors, author]);
+	};
+
 	const deleteAuthor = (deletedAuthor) => {
 		setCourseAuthors([
 			...courseAuthors.filter((author) => author.id !== deletedAuthor.id),
@@ -59,7 +64,7 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 					className='create-course__input'
 					labelText={TITLE}
 					placeholderText={TITLE_PLACEHODER}
-					onChange={({ target }) => handleTitleChange(target.value)}
+					onChange={handleTitleChange}
 				/>
 				<Button
 					className='create-course__header-button'
@@ -80,7 +85,7 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 			</div>
 			<div className='create-course__main'>
 				<div className='create-course__left-panel'>
-					<AddAuthor />
+					<CreateAuthor createAuthor={createAuthor} />
 					<Duration />
 				</div>
 				<div className='create-course__right-panel'>
