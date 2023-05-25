@@ -1,7 +1,10 @@
 import React from 'react';
 
-import './CourseCard.scss';
 import Button from '../../../common/Button/Button';
+import getCourseDuration from '../../../../helpers/getCourseDuration';
+import formatCreationDate from '../../../../helpers/formatCreationDate';
+
+import './CourseCard.scss';
 
 const BUTTON_TEXT = 'Show course';
 
@@ -13,17 +16,6 @@ interface CourseCardProps {
 	authors: string;
 }
 
-const formatDuration = (durationInMin: number): string => {
-	const hours = Math.floor(durationInMin / 60);
-	const minutes = durationInMin % 60;
-	const formatedHours = hours > 10 ? hours : `0${hours}`;
-	const formatedMinutes = minutes > 10 ? minutes : `0${minutes}`;
-	const formatedHoursStr = hours === 1 ? 'hour' : 'hours';
-
-	return `${formatedHours}:${formatedMinutes} ${formatedHoursStr}`;
-};
-const formatedDate = (dateWithSlashes: string): string =>
-	dateWithSlashes.replace(/\//g, '.');
 const CourseCard = ({
 	authors,
 	title,
@@ -42,10 +34,11 @@ const CourseCard = ({
 					<span className='label'>Authors</span>: {authors}
 				</p>
 				<p>
-					<span className='label'>Duration</span>: {formatDuration(duration)}
+					<span className='label'>Duration</span>: {getCourseDuration(duration)}
 				</p>
 				<p>
-					<span className='label'>Created</span>: {formatedDate(creationDate)}
+					<span className='label'>Created</span>:{' '}
+					{formatCreationDate(creationDate)}
 				</p>
 				<Button
 					buttonText={BUTTON_TEXT}
