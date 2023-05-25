@@ -30,6 +30,7 @@ const CreateAuthor = ({ createAuthor }: CreateAuthorProps) => {
 				type='button'
 				buttonText={BUTTON_TEXT}
 				onClick={() => {
+					setAuthorsName('');
 					createAuthor(authorsName);
 				}}
 			/>
