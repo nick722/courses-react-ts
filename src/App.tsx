@@ -28,7 +28,6 @@ function App() {
 						element={
 							<Courses
 								toggleShowCreateCourse={() => {
-									console.log('toggleShowCreateCourse!!');
 									setShowCreateCourse(!showCreateCourse);
 								}}
 								courses={courses}
