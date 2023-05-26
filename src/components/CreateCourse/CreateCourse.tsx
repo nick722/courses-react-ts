@@ -36,29 +36,29 @@ const CreateCourse = ({
 }: CreateCourseProps) => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
-	const [idleAuthors, setIdleAuthors] = useState<string[]>(allAuthors);
-	const [courseAuthors, setCourseAuthors] = useState<string[]>([]);
+	const [idleAuthors, setIdleAuthors] = useState<Author[]>(allAuthors);
+	const [courseAuthors, setCourseAuthors] = useState<Author[]>([]);
 
 	const navigate = useNavigate();
 
-	const addAuthor = (addedAuthorId) => {
+	const addAuthor = (addedAuthor) => {
 		setIdleAuthors([
-			...idleAuthors.filter((authorId) => authorId !== addedAuthorId),
+			...idleAuthors.filter((author) => author.id !== addedAuthor.id),
 		]);
-		setCourseAuthors([...courseAuthors, addedAuthorId]);
+		setCourseAuthors([...courseAuthors, addedAuthor]);
 	};
 
 	const createAuthor = (authorsName) => {
 		const author = { id: uuid(), name: authorsName };
-		setIdleAuthors([...idleAuthors, author.id]);
+		setIdleAuthors([...idleAuthors, author]);
 		addNewAuthor(author);
 	};
 
-	const deleteAuthor = (deletedAuthorId) => {
+	const deleteAuthor = (deletedAuthor) => {
 		setCourseAuthors([
-			...courseAuthors.filter((authorId) => authorId !== deletedAuthorId),
+			...courseAuthors.filter((author) => author.id !== deletedAuthor.id),
 		]);
-		setIdleAuthors([...idleAuthors, deletedAuthorId]);
+		setIdleAuthors([...idleAuthors, deletedAuthor]);
 	};
 
 	const handleTitleChange = (value: string) => {
@@ -77,10 +77,8 @@ const CreateCourse = ({
 			description: event.target.description?.value,
 			creationDate: formatCreationDate(new Date().toLocaleDateString()),
 			duration: Number(event.target.duration?.value),
-			authors: courseAuthors,
+			authors: courseAuthors.map((author) => author.id),
 		};
-
-		console.log('newCourse', newCourse);
 
 		navigate('/courses');
 		return newCourse;
