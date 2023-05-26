@@ -56,8 +56,8 @@ function App() {
 							/>
 						}
 					/>
+					<Route path='/' element={<Navigate to='/courses' replace />} />
 				</Route>
-				<Route path='*' element={<Navigate to='/registration' />} />
 			</Routes>
 		</div>
 	);
