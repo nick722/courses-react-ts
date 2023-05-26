@@ -12,6 +12,7 @@ import { Author, Course } from '../../types';
 
 import './CreateCourse.scss';
 import formatCreationDate from '../../helpers/formatCreationDate';
+import { useNavigate } from 'react-router-dom';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -32,6 +33,8 @@ const CreateCourse = ({ authors, setCourses }: CreateCourseProps) => {
 	const [description, setDescription] = useState('');
 	const [allAuthors, setAllAuthors] = useState(authors);
 	const [courseAuthors, setCourseAuthors] = useState([]);
+
+	const navigate = useNavigate();
 
 	const addAuthor = (addedAuthor) => {
 		setAllAuthors([
@@ -72,6 +75,8 @@ const CreateCourse = ({ authors, setCourses }: CreateCourseProps) => {
 		};
 
 		console.log('newCourse', newCourse);
+
+		navigate('/courses');
 		return newCourse;
 	};
 

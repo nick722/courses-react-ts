@@ -2,6 +2,7 @@ import React from 'react';
 import CourseCard from './components/CourseCard/CourseCard';
 import Button from '../common/Button/Button';
 import SearchBar from './components/SearchBar/SearchBar';
+import { useNavigate } from 'react-router-dom';
 
 import './Courses.scss';
 
@@ -20,6 +21,12 @@ const Courses = ({
 	authors,
 	toggleShowCreateCourse,
 }: CoursesProps) => {
+	const navigate = useNavigate();
+
+	const navigateToCreateCourses = () => {
+		navigate('/courses/add');
+	};
+
 	const getAuthors = (courseAuthorsIds: string[]): string =>
 		courseAuthorsIds
 			.map((courseAuthorId) =>
@@ -49,7 +56,7 @@ const Courses = ({
 				<SearchBar />
 				<Button
 					buttonText={ADD_NEW_BUTTON_TEXT}
-					onClick={toggleShowCreateCourse}
+					onClick={navigateToCreateCourses}
 				/>
 			</div>
 			{renderCourses(courses)}
