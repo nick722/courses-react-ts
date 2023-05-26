@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Button from '../../../common/Button/Button';
 import getCourseDuration from '../../../../helpers/getCourseDuration';
@@ -7,7 +8,7 @@ import formatCreationDate from '../../../../helpers/formatCreationDate';
 import './CourseCard.scss';
 import { Author } from '../../../../types';
 
-const BUTTON_TEXT = 'Show course';
+const SHOW_COURSE_BUTTON_TEXT = 'Show course';
 
 interface CourseCardProps {
 	title: string;
@@ -15,6 +16,7 @@ interface CourseCardProps {
 	duration: number;
 	creationDate: string;
 	authors: Author[];
+	id: string;
 }
 
 const CourseCard = ({
@@ -23,6 +25,7 @@ const CourseCard = ({
 	description,
 	duration,
 	creationDate,
+	id,
 }: CourseCardProps) => {
 	return (
 		<div className='course-card'>
@@ -41,12 +44,9 @@ const CourseCard = ({
 					<span className='label'>Created</span>:{' '}
 					{formatCreationDate(creationDate)}
 				</p>
-				<Button
-					buttonText={BUTTON_TEXT}
-					onClick={() => {
-						/*do nothing*/
-					}}
-				/>
+				<Link to={`/courses/${id}`}>
+					<Button buttonText={SHOW_COURSE_BUTTON_TEXT} />
+				</Link>
 			</div>
 		</div>
 	);

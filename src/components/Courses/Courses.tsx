@@ -22,10 +22,7 @@ const Courses = ({
 	allAuthors,
 	toggleShowCreateCourse,
 }: CoursesProps) => {
-	console.log('allAuthors in Courses', allAuthors);
-
 	const navigate = useNavigate();
-
 	const navigateToCreateCourses = () => {
 		navigate('/courses/add');
 	};
@@ -33,6 +30,7 @@ const Courses = ({
 	const renderCourses = (courses: Course[]) =>
 		courses.map((course) => (
 			<CourseCard
+				id={course.id}
 				key={course.id}
 				title={course.title}
 				description={course.description}
