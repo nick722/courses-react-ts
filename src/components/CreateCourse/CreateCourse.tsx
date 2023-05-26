@@ -60,7 +60,7 @@ const CreateCourse = ({ authors, setCourses }: CreateCourseProps) => {
 
 	const handleSubmit = (event): Course => {
 		event.preventDefault();
-		// console.log('event.target.title.value', event.target.title.value);
+		console.log('event.target.courseAuthors', event.target.courseAuthors);
 
 		const newCourse = {
 			id: uuid(),
@@ -68,7 +68,7 @@ const CreateCourse = ({ authors, setCourses }: CreateCourseProps) => {
 			description: event.target.description?.value,
 			creationDate: formatCreationDate(new Date().toLocaleDateString()),
 			duration: Number(event.target.duration?.value),
-			authors: event.target.courseAuthors?.value,
+			authors: courseAuthors,
 		};
 
 		console.log('newCourse', newCourse);
@@ -116,7 +116,6 @@ const CreateCourse = ({ authors, setCourses }: CreateCourseProps) => {
 					/>
 					<AuthorsList
 						title='Course Authors'
-						name='courseAuthors'
 						authors={courseAuthors}
 						buttonText={DELETE_AUTHOR_TEXT}
 						onClick={deleteAuthor}
