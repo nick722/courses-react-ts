@@ -15,11 +15,6 @@ interface CoursesProps {
 
 const ADD_NEW_BUTTON_TEXT = 'Add new course';
 
-const formatDuration = (duration) => {
-	console.log('formatDuration!!');
-	return duration;
-};
-
 const Courses = ({
 	courses,
 	authors,

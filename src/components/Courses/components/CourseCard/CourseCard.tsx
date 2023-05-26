@@ -5,6 +5,7 @@ import getCourseDuration from '../../../../helpers/getCourseDuration';
 import formatCreationDate from '../../../../helpers/formatCreationDate';
 
 import './CourseCard.scss';
+import { Author } from '../../../../types';
 
 const BUTTON_TEXT = 'Show course';
 
@@ -13,7 +14,7 @@ interface CourseCardProps {
 	description: string;
 	duration: number;
 	creationDate: string;
-	authors: string;
+	authors: Author[];
 }
 
 const CourseCard = ({

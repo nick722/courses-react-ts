@@ -8,9 +8,10 @@ import AuthorsList from './components/AuthorsList/AuthorsList';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Duration from './Duration/Duration';
 
-import { Author } from '../../types';
+import { Author, Course } from '../../types';
 
 import './CreateCourse.scss';
+import formatCreationDate from '../../helpers/formatCreationDate';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -23,9 +24,10 @@ const forbiddenSymbols = /[@#$%^&]/;
 
 interface CreateCourseProps {
 	authors: Author[];
+	setCourses(): (value: any) => void;
 }
 
-const CreateCourse = ({ authors }: CreateCourseProps) => {
+const CreateCourse = ({ authors, setCourses }: CreateCourseProps) => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [allAuthors, setAllAuthors] = useState(authors);
@@ -56,10 +58,28 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 		}
 	};
 
+	const handleSubmit = (event): Course => {
+		event.preventDefault();
+		// console.log('event.target.title.value', event.target.title.value);
+
+		const newCourse = {
+			id: uuid(),
+			title: event.target.title?.value,
+			description: event.target.description?.value,
+			creationDate: formatCreationDate(new Date().toLocaleDateString()),
+			duration: Number(event.target.duration?.value),
+			authors: event.target.courseAuthors?.value,
+		};
+
+		console.log('newCourse', newCourse);
+		return newCourse;
+	};
+
 	return (
-		<form className='create-course'>
+		<form onSubmit={handleSubmit} className='create-course'>
 			<div className='create-course__header'>
 				<Input
+					name='title'
 					value={title}
 					className='create-course__input'
 					labelText={TITLE}
@@ -69,14 +89,13 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 				<Button
 					className='create-course__header-button'
 					buttonText={CREATE_COURSE}
-					onClick={() => {
-						/**/
-					}}
+					type='submit'
 				/>
 			</div>
 			<div className='create-course__description'>
 				<label for='textarea'>Description</label>
 				<textarea
+					name='description'
 					value={description}
 					onChange={({ target }) => setDescription(target.value)}
 					id='textarea'
@@ -97,6 +116,7 @@ const CreateCourse = ({ authors }: CreateCourseProps) => {
 					/>
 					<AuthorsList
 						title='Course Authors'
+						name='courseAuthors'
 						authors={courseAuthors}
 						buttonText={DELETE_AUTHOR_TEXT}
 						onClick={deleteAuthor}

@@ -10,19 +10,20 @@ import { mockedAuthorsList } from './constants/mockedAuthorsList.js';
 
 function App() {
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
+	const [courses, setCourses] = useState(mockedCoursesList);
 
 	return (
 		<div className='App'>
 			<Header />
 			{showCreateCourse ? (
-				<CreateCourse authors={mockedAuthorsList} />
+				<CreateCourse setCourses={setCourses} authors={mockedAuthorsList} />
 			) : (
 				<Courses
 					toggleShowCreateCourse={() => {
 						console.log('toggleShowCreateCourse!!');
 						setShowCreateCourse(!showCreateCourse);
 					}}
-					courses={mockedCoursesList}
+					courses={courses}
 					authors={mockedAuthorsList}
 				/>
 			)}

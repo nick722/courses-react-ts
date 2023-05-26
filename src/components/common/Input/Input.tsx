@@ -9,8 +9,10 @@ interface InputProps {
 	value: string;
 	onChange: (target) => void;
 	className?: string;
+	name: string;
 }
 const Input = ({
+	name,
 	labelText,
 	placeholderText,
 	onChange,
@@ -21,6 +23,7 @@ const Input = ({
 		<div className={cn('input', className)}>
 			<label for='input'>{labelText}</label>
 			<input
+				name={name}
 				value={value}
 				id='input'
 				placeholder={placeholderText}

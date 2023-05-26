@@ -27,6 +27,7 @@ const Duration = () => {
 		<div className='duration'>
 			<h3>Duration</h3>
 			<Input
+				name='duration'
 				labelText={LABEL_TEXT}
 				placeholderText={PLACEHOLDER_TEXT}
 				onChange={handleChange}
