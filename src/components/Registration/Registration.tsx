@@ -3,6 +3,7 @@ import Input from '../common/Input/Input';
 
 import './Registration.scss';
 import Button from '../common/Button/Button';
+import { Link } from 'react-router-dom';
 
 const NAME_INPUT_LABEL = 'Name';
 const NAME_INPUT_PLACEHOLDER = 'Enter name';
@@ -12,6 +13,28 @@ const PASSWORD_INPUT_LABEL = 'Password';
 const PASSWORD_INPUT_PlACEHOLDER = 'Enter passowrd';
 const REGISTRATION_BUTTON_TEXT = 'Registration';
 
+const register = async (event) => {
+	event.preventDefault();
+
+	const newUser = {
+		name: event.target.name.value,
+		password: event.target.password.value,
+		email: event.target.email.value,
+	};
+
+	console.log('newUser', newUser);
+
+	const response = await fetch('http://localhost:4000/register', {
+		method: 'POST',
+		body: JSON.stringify(newUser),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	const result = await response.json();
+};
+
 const Registration = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -19,7 +42,7 @@ const Registration = () => {
 
 	return (
 		<div className='registration'>
-			<form className='registration__form'>
+			<form onSubmit={(e) => register(e)} className='registration__form'>
 				<h1>Registration</h1>
 				<Input
 					labelText={NAME_INPUT_LABEL}
@@ -42,16 +65,9 @@ const Registration = () => {
 					onChange={setPassword}
 					name='password'
 				/>
-				{/*<button>Registration</button>*/}
-				<Button
-					buttonText={REGISTRATION_BUTTON_TEXT}
-					onClick={() => {
-						/**/
-					}}
-					type='submit'
-				/>
+				<Button buttonText={REGISTRATION_BUTTON_TEXT} />
 				<p>
-					If you have an account you can <a href='#'>Login</a>
+					If you have an account you can <Link to='/login'>Login</Link>
 				</p>
 			</form>
 		</div>
