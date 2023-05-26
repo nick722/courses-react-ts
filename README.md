@@ -1,1 +1,1 @@
-Courses creation App
+courses-react-ts
