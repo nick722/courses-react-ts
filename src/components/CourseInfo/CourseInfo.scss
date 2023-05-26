@@ -1,0 +1,15 @@
+.course-info {
+  border: 1px solid aqua;
+  margin-block: 20px;
+  padding: 20px;
+
+  & h1 {
+  text-align: center;
+  }
+
+  &__main {
+  display: flex;
+    justify-content: space-around;
+
+  }
+}
