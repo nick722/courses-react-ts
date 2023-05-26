@@ -25,10 +25,10 @@ const forbiddenSymbols = /[@#$%^&]/;
 
 interface CreateCourseProps {
 	authors: Author[];
-	setCourses(): (value: any) => void;
+	addNewCourse(course: Course): (value: any) => void;
 }
 
-const CreateCourse = ({ authors, setCourses }: CreateCourseProps) => {
+const CreateCourse = ({ authors, addNewCourse }: CreateCourseProps) => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [allAuthors, setAllAuthors] = useState(authors);
@@ -61,7 +61,7 @@ const CreateCourse = ({ authors, setCourses }: CreateCourseProps) => {
 		}
 	};
 
-	const handleSubmit = (event): Course => {
+	const createNewCourse = (event): Course => {
 		event.preventDefault();
 		console.log('event.target.courseAuthors', event.target.courseAuthors);
 
@@ -81,7 +81,10 @@ const CreateCourse = ({ authors, setCourses }: CreateCourseProps) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className='create-course'>
+		<form
+			onSubmit={(event) => addNewCourse(createNewCourse(event))}
+			className='create-course'
+		>
 			<div className='create-course__header'>
 				<Input
 					name='title'

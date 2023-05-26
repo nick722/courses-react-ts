@@ -16,6 +16,10 @@ function App() {
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
 	const [courses, setCourses] = useState(mockedCoursesList);
 
+	const addNewCourse = (newCourse) => {
+		setCourses([...courses, newCourse]);
+	};
+
 	return (
 		<div className='App'>
 			<Routes>
@@ -39,7 +43,7 @@ function App() {
 						path='/courses/add'
 						element={
 							<CreateCourse
-								setCourses={setCourses}
+								addNewCourse={addNewCourse}
 								authors={mockedAuthorsList}
 							/>
 						}
