@@ -30,10 +30,10 @@ function App() {
 	return (
 		<div className='App'>
 			<Routes>
-				<Route path='/registration' element={<Registration />} />
-				<Route path='/login' element={<Login />} />
-				<Route path='/courses/:courseId' element={<CourseInfo />} />
-				<Route path='/courses' element={<Header />}>
+				<Route path='/' element={<Header />}>
+					<Route path='/registration' element={<Registration />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/courses/:courseId' element={<CourseInfo />} />
 					<Route
 						path='/courses'
 						element={
@@ -57,7 +57,7 @@ function App() {
 						}
 					/>
 				</Route>
-				<Route path='*' element={<Navigate to='./courses' />} />
+				<Route path='*' element={<Navigate to='./registration' />} />
 			</Routes>
 		</div>
 	);
