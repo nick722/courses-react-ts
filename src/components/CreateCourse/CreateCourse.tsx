@@ -24,35 +24,41 @@ const DELETE_AUTHOR_TEXT = 'Delete author';
 const forbiddenSymbols = /[@#$%^&]/;
 
 interface CreateCourseProps {
-	authors: Author[];
+	allAuthors: Author[];
 	addNewCourse(course: Course): (value: any) => void;
+	addNewAuthor(author: Author): (value: any) => void;
 }
 
-const CreateCourse = ({ authors, addNewCourse }: CreateCourseProps) => {
+const CreateCourse = ({
+	allAuthors,
+	addNewAuthor,
+	addNewCourse,
+}: CreateCourseProps) => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
-	const [allAuthors, setAllAuthors] = useState(authors);
-	const [courseAuthors, setCourseAuthors] = useState([]);
+	const [idleAuthors, setIdleAuthors] = useState<string[]>(allAuthors);
+	const [courseAuthors, setCourseAuthors] = useState<string[]>([]);
 
 	const navigate = useNavigate();
 
-	const addAuthor = (addedAuthor) => {
-		setAllAuthors([
-			...allAuthors.filter((author) => author.id !== addedAuthor.id),
+	const addAuthor = (addedAuthorId) => {
+		setIdleAuthors([
+			...idleAuthors.filter((authorId) => authorId !== addedAuthorId),
 		]);
-		setCourseAuthors([...courseAuthors, addedAuthor]);
+		setCourseAuthors([...courseAuthors, addedAuthorId]);
 	};
 
 	const createAuthor = (authorsName) => {
 		const author = { id: uuid(), name: authorsName };
-		setAllAuthors([...allAuthors, author]);
+		setIdleAuthors([...idleAuthors, author.id]);
+		addNewAuthor(author);
 	};
 
-	const deleteAuthor = (deletedAuthor) => {
+	const deleteAuthor = (deletedAuthorId) => {
 		setCourseAuthors([
-			...courseAuthors.filter((author) => author.id !== deletedAuthor.id),
+			...courseAuthors.filter((authorId) => authorId !== deletedAuthorId),
 		]);
-		setAllAuthors([...allAuthors, deletedAuthor]);
+		setIdleAuthors([...idleAuthors, deletedAuthorId]);
 	};
 
 	const handleTitleChange = (value: string) => {
@@ -118,7 +124,7 @@ const CreateCourse = ({ authors, addNewCourse }: CreateCourseProps) => {
 				<div className='create-course__right-panel'>
 					<AuthorsList
 						title='Authors'
-						authors={allAuthors}
+						authors={idleAuthors}
 						buttonText={ADD_AUTHOR_TEXT}
 						onClick={addAuthor}
 					/>

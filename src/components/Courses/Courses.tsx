@@ -7,10 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import './Courses.scss';
 
 import { Author, Course } from '../../types';
+import getAuthorsById from '../../helpers/getAuthorsById';
 
 interface CoursesProps {
 	courses: Course[];
-	authors: Author[];
+	allAuthors: Author[];
 	toggleShowCreateCourse: () => void;
 }
 
@@ -18,25 +19,16 @@ const ADD_NEW_BUTTON_TEXT = 'Add new course';
 
 const Courses = ({
 	courses,
-	authors,
+	allAuthors,
 	toggleShowCreateCourse,
 }: CoursesProps) => {
+	console.log('allAuthors in Courses', allAuthors);
+
 	const navigate = useNavigate();
 
 	const navigateToCreateCourses = () => {
 		navigate('/courses/add');
 	};
-
-	const getAuthors = (courseAuthorsIds: string[]): string =>
-		courseAuthorsIds
-			.map((courseAuthorId) =>
-				authors
-					.filter((author) => {
-						return author.id === courseAuthorId;
-					})
-					.map((authObj) => authObj.name)
-			)
-			.join(', ');
 
 	const renderCourses = (courses: Course[]) =>
 		courses.map((course) => (
@@ -44,7 +36,7 @@ const Courses = ({
 				key={course.id}
 				title={course.title}
 				description={course.description}
-				authors={getAuthors(course.authors)}
+				authors={getAuthorsById(course.authors, allAuthors)}
 				duration={course.duration}
 				creationDate={course.creationDate}
 			/>

@@ -15,6 +15,13 @@ import CourseInfo from './components/CourseInfo/CourseInfo';
 function App() {
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
 	const [courses, setCourses] = useState(mockedCoursesList);
+	const [allAuthors, setAllAuthors] = useState(mockedAuthorsList);
+
+	console.log('allAuthors in App', allAuthors);
+
+	const addNewAuthor = (newAuthor) => {
+		setAllAuthors([...allAuthors, newAuthor]);
+	};
 
 	const addNewCourse = (newCourse) => {
 		setCourses([...courses, newCourse]);
@@ -35,7 +42,7 @@ function App() {
 									setShowCreateCourse(!showCreateCourse);
 								}}
 								courses={courses}
-								authors={mockedAuthorsList}
+								allAuthors={allAuthors}
 							/>
 						}
 					/>
@@ -43,20 +50,15 @@ function App() {
 						path='/courses/add'
 						element={
 							<CreateCourse
+								addNewAuthor={addNewAuthor}
 								addNewCourse={addNewCourse}
-								authors={mockedAuthorsList}
+								allAuthors={allAuthors}
 							/>
 						}
 					/>
 				</Route>
 				<Route path='*' element={<Navigate to='./courses' />} />
 			</Routes>
-
-			{/*{showCreateCourse ? (*/}
-
-			{/*) : (*/}
-
-			{/*)}*/}
 		</div>
 	);
 }
