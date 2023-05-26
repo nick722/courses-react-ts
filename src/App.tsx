@@ -22,28 +22,33 @@ function App() {
 				<Route path='/registration' element={<Registration />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/courses/:courseId' element={<CourseInfo />} />
-				<Route
-					path='/courses'
-					element={
-						<Courses
-							toggleShowCreateCourse={() => {
-								console.log('toggleShowCreateCourse!!');
-								setShowCreateCourse(!showCreateCourse);
-							}}
-							courses={courses}
-							authors={mockedAuthorsList}
-						/>
-					}
-				/>
-				<Route
-					path='/courses/add'
-					element={
-						<CreateCourse setCourses={setCourses} authors={mockedAuthorsList} />
-					}
-				/>
+				<Route path='/courses' element={<Header />}>
+					<Route
+						path='/courses'
+						element={
+							<Courses
+								toggleShowCreateCourse={() => {
+									console.log('toggleShowCreateCourse!!');
+									setShowCreateCourse(!showCreateCourse);
+								}}
+								courses={courses}
+								authors={mockedAuthorsList}
+							/>
+						}
+					/>
+					<Route
+						path='/courses/add'
+						element={
+							<CreateCourse
+								setCourses={setCourses}
+								authors={mockedAuthorsList}
+							/>
+						}
+					/>
+				</Route>
 				<Route path='*' element={<Navigate to='./courses' />} />
 			</Routes>
-			{/*<Header />*/}
+
 			{/*{showCreateCourse ? (*/}
 
 			{/*) : (*/}
