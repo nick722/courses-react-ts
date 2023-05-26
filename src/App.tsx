@@ -57,7 +57,7 @@ function App() {
 						}
 					/>
 				</Route>
-				<Route path='*' element={<Navigate to='./registration' />} />
+				<Route path='*' element={<Navigate to='/registration' />} />
 			</Routes>
 		</div>
 	);
