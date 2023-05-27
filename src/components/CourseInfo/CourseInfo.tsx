@@ -1,21 +1,48 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+import { Author, Course } from '../../types';
+import getAuthorsById from '../../helpers/getAuthorsById';
 
 import './CourseInfo.scss';
+import formatCourseDuration from '../../helpers/formatCourseDuration';
 
-const CourseInfo = () => {
+interface CourseInfoProps {
+	courses: Course[];
+	allAuthors: Author[];
+}
+
+const CourseInfo = ({ courses, allAuthors }: CourseInfoProps) => {
+	const { courseId } = useParams();
+
+	const course = courses.find((course) => course.id === courseId);
+
+	console.log('courseId', courseId);
+	console.log('course', course);
+
 	return (
 		<div className='course-info'>
 			<p> &lt; Back to courses</p>
-			<h1>Title</h1>
+			<h1>{course.title}</h1>
 			<div className='course-info__main'>
 				<div className='course-info__left-side'>
-					<p>Description</p>
+					<p>{course.description}</p>
 				</div>
 				<div className='course-info__right-side'>
-					<p>ID: </p>
-					<p>Duration: </p>
-					<p>Created: </p>
-					<p>Authors:</p>
+					<p>
+						<span className='course-info__label'>ID: </span> {course.id}
+					</p>
+					<p>
+						<span className='course-info__label'>Duration: </span>
+						{formatCourseDuration(course.duration)}
+					</p>
+					<p>
+						<span className='course-info__label'>Created: </span>
+						{course.creationDate}
+					</p>
+					<p>
+						<span className='course-info__label'>Authors: </span>
+						{getAuthorsById(course.authors, allAuthors)}
+					</p>
 				</div>
 			</div>
 		</div>

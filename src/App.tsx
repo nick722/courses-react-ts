@@ -17,8 +17,6 @@ function App() {
 	const [courses, setCourses] = useState(mockedCoursesList);
 	const [allAuthors, setAllAuthors] = useState(mockedAuthorsList);
 
-	console.log('allAuthors in App', allAuthors);
-
 	const addNewAuthor = (newAuthor) => {
 		setAllAuthors([...allAuthors, newAuthor]);
 	};
@@ -33,7 +31,10 @@ function App() {
 				<Route path='/' element={<Header />}>
 					<Route path='/registration' element={<Registration />} />
 					<Route path='/login' element={<Login />} />
-					<Route path='/courses/:courseId' element={<CourseInfo />} />
+					<Route
+						path='/courses/:courseId'
+						element={<CourseInfo courses={courses} allAuthors={allAuthors} />}
+					/>
 					<Route
 						path='/courses'
 						element={

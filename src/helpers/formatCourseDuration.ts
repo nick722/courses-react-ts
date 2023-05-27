@@ -1,4 +1,4 @@
-const getCourseDuration = (durationInMin: number): string => {
+const formatCourseDuration = (durationInMin: number): string => {
 	const hours = Math.floor(durationInMin / 60);
 	const minutes = durationInMin % 60;
 	const formatedHours = hours > 10 ? hours : `0${hours}`;
@@ -8,4 +8,4 @@ const getCourseDuration = (durationInMin: number): string => {
 	return `${formatedHours}:${formatedMinutes} ${formatedHoursStr}`;
 };
 
-export default getCourseDuration;
+export default formatCourseDuration;

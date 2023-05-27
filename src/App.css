@@ -1,6 +1,8 @@
 .App {
   padding: 30px 30px 0;
   block-size: 100%;
+  inline-size: 760px;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
 }

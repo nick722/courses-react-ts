@@ -22,8 +22,6 @@ const register = async (event) => {
 		email: event.target.email.value,
 	};
 
-	console.log('newUser', newUser);
-
 	const response = await fetch('http://localhost:4000/register', {
 		method: 'POST',
 		body: JSON.stringify(newUser),

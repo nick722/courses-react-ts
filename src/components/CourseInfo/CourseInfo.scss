@@ -2,6 +2,7 @@
   border: 1px solid aqua;
   margin-block: 20px;
   padding: 20px;
+  block-size: 100%;
 
   & h1 {
   text-align: center;
@@ -10,6 +11,13 @@
   &__main {
   display: flex;
     justify-content: space-around;
+  }
 
+  &__left-side, &__right-side {
+    margin: 10px;
+  }
+
+  &__label {
+    font-weight: bold;
   }
 }

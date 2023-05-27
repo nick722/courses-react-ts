@@ -69,7 +69,6 @@ const CreateCourse = ({
 
 	const createNewCourse = (event): Course => {
 		event.preventDefault();
-		console.log('event.target.courseAuthors', event.target.courseAuthors);
 
 		const newCourse = {
 			id: uuid(),

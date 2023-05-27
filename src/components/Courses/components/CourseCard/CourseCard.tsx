@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '../../../common/Button/Button';
-import getCourseDuration from '../../../../helpers/getCourseDuration';
+import formatCourseDuration from '../../../../helpers/formatCourseDuration';
 import formatCreationDate from '../../../../helpers/formatCreationDate';
 
 import './CourseCard.scss';
@@ -35,13 +35,14 @@ const CourseCard = ({
 			</div>
 			<div className='course-card__right-side'>
 				<p>
-					<span className='label'>Authors</span>: {authors}
+					<span className='course-info__label'>Authors</span>: {authors}
 				</p>
 				<p>
-					<span className='label'>Duration</span>: {getCourseDuration(duration)}
+					<span className='course-info__label'>Duration</span>:{' '}
+					{formatCourseDuration(duration)}
 				</p>
 				<p>
-					<span className='label'>Created</span>:{' '}
+					<span className='course-info__label'>Created</span>:{' '}
 					{formatCreationDate(creationDate)}
 				</p>
 				<Link to={`/courses/${id}`}>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../../common/Input/Input';
-import getCourseDuration from '../../../helpers/getCourseDuration';
+import formatCourseDuration from '../../../helpers/formatCourseDuration';
 
 import './duration.scss';
 
@@ -21,8 +21,6 @@ const Duration = () => {
 		}
 	};
 
-	console.log('duration', duration);
-
 	return (
 		<div className='duration'>
 			<h3>Duration</h3>
@@ -33,7 +31,7 @@ const Duration = () => {
 				onChange={handleChange}
 				value={duration}
 			/>
-			<p>Duration: {getCourseDuration(+duration)}</p>
+			<p>Duration: {formatCourseDuration(+duration)}</p>
 			{errorMessage && <p className='duration__error'>{errorMessage}</p>}
 		</div>
 	);
