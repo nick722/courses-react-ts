@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Author, Course } from '../../types';
 import getAuthorsById from '../../helpers/getAuthorsById';
 
@@ -13,15 +13,13 @@ interface CourseInfoProps {
 
 const CourseInfo = ({ courses, allAuthors }: CourseInfoProps) => {
 	const { courseId } = useParams();
-
 	const course = courses.find((course) => course.id === courseId);
-
-	console.log('courseId', courseId);
-	console.log('course', course);
 
 	return (
 		<div className='course-info'>
-			<p> &lt; Back to courses</p>
+			<Link className='course-info__back-to-courses-link' to='/courses'>
+				&lt; Back to courses
+			</Link>
 			<h1>{course.title}</h1>
 			<div className='course-info__main'>
 				<div className='course-info__left-side'>

@@ -19,7 +19,11 @@
   }
 
   &__left-side, &__right-side {
-    margin: 10px;
+    margin-inline: 20px;
+  }
+
+  &__left-side {
+    flex: 60%;
   }
 
   &__label {
