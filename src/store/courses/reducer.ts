@@ -5,10 +5,10 @@ import {
 	CourseType,
 } from './types';
 
-export const initialCoursesState = [] as CourseType[];
+export const coursesInitialState = [] as CourseType[];
 
 export const coursesReducer = (
-	state = initialCoursesState,
+	state = coursesInitialState,
 	action: CourseAction
 ) => {
 	switch (action.type) {
