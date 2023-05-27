@@ -1,12 +1,20 @@
-import { ADD_COURSE, SAVE_COURSES } from './types';
+import {
+	ADD_COURSE,
+	CourseAction,
+	CoursesActionTypes,
+	CourseType,
+} from './types';
 
-export const initialCoursesState = [];
+export const initialCoursesState = [] as CourseType[];
 
-export const coursesReducer = (state = initialCoursesState, action) => {
+export const coursesReducer = (
+	state = initialCoursesState,
+	action: CourseAction
+) => {
 	switch (action.type) {
-		case SAVE_COURSES:
+		case CoursesActionTypes.SAVE_COURSES:
 			return action.payload;
-		case ADD_COURSE:
+		case CoursesActionTypes.ADD_COURSE:
 			return [...state, action.payload];
 		default:
 			return state;
