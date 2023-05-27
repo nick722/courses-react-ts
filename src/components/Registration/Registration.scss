@@ -22,7 +22,9 @@
 
   & button {
     margin-block-start: 10px;
-    //display: block;
-    //margin-inline: auto;
+  }
+
+  &__error {
+    color: red
   }
 }

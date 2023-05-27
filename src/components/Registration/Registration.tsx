@@ -13,30 +13,38 @@ const PASSWORD_INPUT_LABEL = 'Password';
 const PASSWORD_INPUT_PlACEHOLDER = 'Enter passowrd';
 const REGISTRATION_BUTTON_TEXT = 'Registration';
 
-const register = async (event) => {
-	event.preventDefault();
-
-	const newUser = {
-		name: event.target.name.value,
-		password: event.target.password.value,
-		email: event.target.email.value,
-	};
-
-	const response = await fetch('http://localhost:4000/register', {
-		method: 'POST',
-		body: JSON.stringify(newUser),
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	});
-
-	const result = await response.json();
-};
-
 const Registration = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [error, setError] = useState('');
+
+	const register = async (event) => {
+		event.preventDefault();
+
+		const newUser = {
+			name: event.target.name.value,
+			password: event.target.password.value,
+			email: event.target.email.value,
+		};
+
+		try {
+			const response = await fetch('http://localhost:4000/register', {
+				method: 'POST',
+				body: JSON.stringify(newUser),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+
+			if (!response?.ok) {
+				setError(`${response.status} ${response.statusText}`);
+			}
+			const result = await response.json();
+		} catch (error) {
+			setError(`Registration failed: ${error}`);
+		}
+	};
 
 	return (
 		<div className='registration'>
@@ -64,6 +72,7 @@ const Registration = () => {
 					name='password'
 				/>
 				<Button buttonText={REGISTRATION_BUTTON_TEXT} />
+				<p className='registration__error'>{error}</p>
 				<p>
 					If you have an account you can <Link to='/login'>Login</Link>
 				</p>
