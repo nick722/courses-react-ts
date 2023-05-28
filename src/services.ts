@@ -17,3 +17,14 @@ export const getCourses = async () => {
 		console.log(error);
 	}
 };
+
+export const getAuthors = async () => {
+	const url = `${BASE_URL}/authors/all`;
+
+	try {
+		const response = await axios.get(url);
+		return response.data.result;
+	} catch (error) {
+		console.log(error);
+	}
+};

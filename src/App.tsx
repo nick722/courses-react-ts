@@ -11,16 +11,27 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import CourseInfo from './components/CourseInfo/CourseInfo';
-import { getCourses } from './services';
+import { getAuthors, getCourses } from './services';
+import { useDispatch } from 'react-redux';
+import { saveCoursesAction } from './store/courses/actions';
+import { saveAuthorsAction } from './store/authors/actions';
 
 function App() {
+	const dispatch = useDispatch();
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
 	const [courses, setCourses] = useState(mockedCoursesList);
 	const [allAuthors, setAllAuthors] = useState(mockedAuthorsList);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			setCourses(await getCourses());
+			const courses = await getCourses();
+			const authors = await getAuthors();
+
+			setCourses(courses);
+			setAllAuthors(authors);
+
+			dispatch(saveCoursesAction(courses));
+			dispatch(saveAuthorsAction(authors));
 		};
 
 		fetchData();
