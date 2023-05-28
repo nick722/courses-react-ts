@@ -1,9 +1,4 @@
-import {
-	ADD_COURSE,
-	CourseAction,
-	CoursesActionTypes,
-	CourseType,
-} from './types';
+import { CourseAction, CoursesActionTypes, CourseType } from './types';
 
 export const coursesInitialState = [] as CourseType[];
 
