@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 import CreateCourse from './components/CreateCourse/CreateCourse';
 import Courses from './components/Courses/Courses';
@@ -11,11 +11,20 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import CourseInfo from './components/CourseInfo/CourseInfo';
+import { getCourses } from './services';
 
 function App() {
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
 	const [courses, setCourses] = useState(mockedCoursesList);
 	const [allAuthors, setAllAuthors] = useState(mockedAuthorsList);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			setCourses(await getCourses());
+		};
+
+		fetchData();
+	}, []);
 
 	const addNewAuthor = (newAuthor) => {
 		setAllAuthors([...allAuthors, newAuthor]);
