@@ -12,14 +12,18 @@ import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import CourseInfo from './components/CourseInfo/CourseInfo';
 import { getAuthors, getCourses } from './services';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { saveCoursesAction } from './store/courses/actions';
 import { saveAuthorsAction } from './store/authors/actions';
+import { selectAuthors, selectCourses } from './store/selectors';
 
 function App() {
 	const dispatch = useDispatch();
+	const courses = useSelector(selectCourses);
+	const authors = useSelector(selectAuthors);
+
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
-	const [courses, setCourses] = useState(mockedCoursesList);
+	const [courses1, setCourses] = useState(mockedCoursesList);
 	const [allAuthors, setAllAuthors] = useState(mockedAuthorsList);
 
 	useEffect(() => {
@@ -27,8 +31,9 @@ function App() {
 			const courses = await getCourses();
 			const authors = await getAuthors();
 
-			setCourses(courses);
-			setAllAuthors(authors);
+			// setCourses(courses);
+
+			// setAllAuthors(authors);
 
 			dispatch(saveCoursesAction(courses));
 			dispatch(saveAuthorsAction(authors));
@@ -53,7 +58,7 @@ function App() {
 					<Route path='/login' element={<Login />} />
 					<Route
 						path='/courses/:courseId'
-						element={<CourseInfo courses={courses} allAuthors={allAuthors} />}
+						element={<CourseInfo courses={courses} allAuthors={authors} />}
 					/>
 					<Route
 						path='/courses'
@@ -63,7 +68,7 @@ function App() {
 									setShowCreateCourse(!showCreateCourse);
 								}}
 								courses={courses}
-								allAuthors={allAuthors}
+								allAuthors={authors}
 							/>
 						}
 					/>
@@ -73,7 +78,7 @@ function App() {
 							<CreateCourse
 								addNewAuthor={addNewAuthor}
 								addNewCourse={addNewCourse}
-								allAuthors={allAuthors}
+								allAuthors={authors}
 							/>
 						}
 					/>

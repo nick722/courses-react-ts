@@ -27,6 +27,8 @@ const Courses = ({
 		navigate('/courses/add');
 	};
 
+	console.log('courses in Courses', courses);
+
 	const renderCourses = (courses: Course[]) =>
 		courses.map((course) => (
 			<CourseCard
