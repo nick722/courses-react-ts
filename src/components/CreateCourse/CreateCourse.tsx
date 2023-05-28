@@ -15,6 +15,7 @@ import formatCreationDate from '../../helpers/formatCreationDate';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addAuthorAction } from '../../store/authors/actions';
+import { addCourseAction } from '../../store/courses/actions';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -27,10 +28,10 @@ const forbiddenSymbols = /[@#$%^&]/;
 
 interface CreateCourseProps {
 	allAuthors: Author[];
-	addNewCourse(course: Course): (value: any) => void;
+	// addNewCourse(course: Course): (value: any) => void;
 }
 
-const CreateCourse = ({ allAuthors, addNewCourse }: CreateCourseProps) => {
+const CreateCourse = ({ allAuthors }: CreateCourseProps) => {
 	const dispatch = useDispatch();
 
 	const [title, setTitle] = useState('');
@@ -80,6 +81,10 @@ const CreateCourse = ({ allAuthors, addNewCourse }: CreateCourseProps) => {
 
 		navigate('/courses');
 		return newCourse;
+	};
+
+	const addNewCourse = (course) => {
+		dispatch(addCourseAction(course));
 	};
 
 	return (

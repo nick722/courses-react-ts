@@ -5,8 +5,6 @@ import Courses from './components/Courses/Courses';
 
 import './App.css';
 
-import { mockedCoursesList } from './constants/mockedCoursesList.js';
-import { mockedAuthorsList } from './constants/mockedAuthorsList.js';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
@@ -23,7 +21,6 @@ function App() {
 	const authors = useSelector(selectAuthors);
 
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
-	const [courses1, setCourses] = useState(mockedCoursesList);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -33,10 +30,6 @@ function App() {
 
 		fetchData();
 	}, []);
-
-	const addNewCourse = (newCourse) => {
-		setCourses([...courses, newCourse]);
-	};
 
 	return (
 		<div className='App'>
@@ -62,9 +55,7 @@ function App() {
 					/>
 					<Route
 						path='/courses/add'
-						element={
-							<CreateCourse addNewCourse={addNewCourse} allAuthors={authors} />
-						}
+						element={<CreateCourse allAuthors={authors} />}
 					/>
 					<Route path='/' element={<Navigate to='/courses' replace />} />
 				</Route>
