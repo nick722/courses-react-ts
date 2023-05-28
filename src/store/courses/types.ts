@@ -11,6 +11,12 @@ export enum CoursesActionTypes {
 	SAVE_COURSES = 'SAVE_COURSES',
 	DELETE_COURSE = 'DELETE_COURSE',
 	ADD_COURSE = 'ADD_COURSE',
+	UPDATE_COURSE = 'UPDATE_COURSE',
+}
+
+export interface UpdateCourse {
+	type: CoursesActionTypes.UPDATE_COURSE;
+	payload: CourseType;
 }
 
 export interface SaveCourses {

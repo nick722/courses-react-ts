@@ -1,4 +1,9 @@
-import { AddCourse, CoursesActionTypes, CourseType } from './types';
+import {
+	AddCourse,
+	CoursesActionTypes,
+	CourseType,
+	UpdateCourse,
+} from './types';
 
 export const addCourseAction = (courseData: CourseType): AddCourse => ({
 	type: CoursesActionTypes.ADD_COURSE,
@@ -12,4 +17,9 @@ export const deleteCourseAction = (payload) => ({
 export const saveCoursesAction = (payload) => ({
 	type: CoursesActionTypes.SAVE_COURSES,
 	payload,
+});
+
+export const updateCourseAction = (courseData: CourseType): UpdateCourse => ({
+	type: CoursesActionTypes.UPDATE_COURSE,
+	payload: courseData,
 });
