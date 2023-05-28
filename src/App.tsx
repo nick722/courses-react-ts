@@ -9,11 +9,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import CourseInfo from './components/CourseInfo/CourseInfo';
-import { getAuthors, getCourses } from './services';
 import { useDispatch, useSelector } from 'react-redux';
-import { saveCoursesAction } from './store/courses/actions';
-import { saveAuthorsAction } from './store/authors/actions';
 import { selectAuthors, selectCourses } from './store/selectors';
+import getAuthors from './store/authors/thunk';
+import getCourses from './store/courses/thunk';
 
 function App() {
 	const dispatch = useDispatch();
@@ -23,12 +22,8 @@ function App() {
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			dispatch(saveCoursesAction(await getCourses()));
-			dispatch(saveAuthorsAction(await getAuthors()));
-		};
-
-		fetchData();
+		dispatch(getAuthors());
+		dispatch(getCourses());
 	}, []);
 
 	return (
