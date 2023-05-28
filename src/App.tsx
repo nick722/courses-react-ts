@@ -24,27 +24,15 @@ function App() {
 
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
 	const [courses1, setCourses] = useState(mockedCoursesList);
-	const [allAuthors, setAllAuthors] = useState(mockedAuthorsList);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const courses = await getCourses();
-			const authors = await getAuthors();
-
-			// setCourses(courses);
-
-			// setAllAuthors(authors);
-
-			dispatch(saveCoursesAction(courses));
-			dispatch(saveAuthorsAction(authors));
+			dispatch(saveCoursesAction(await getCourses()));
+			dispatch(saveAuthorsAction(await getAuthors()));
 		};
 
 		fetchData();
 	}, []);
-
-	const addNewAuthor = (newAuthor) => {
-		setAllAuthors([...allAuthors, newAuthor]);
-	};
 
 	const addNewCourse = (newCourse) => {
 		setCourses([...courses, newCourse]);
@@ -75,11 +63,7 @@ function App() {
 					<Route
 						path='/courses/add'
 						element={
-							<CreateCourse
-								addNewAuthor={addNewAuthor}
-								addNewCourse={addNewCourse}
-								allAuthors={authors}
-							/>
+							<CreateCourse addNewCourse={addNewCourse} allAuthors={authors} />
 						}
 					/>
 					<Route path='/' element={<Navigate to='/courses' replace />} />

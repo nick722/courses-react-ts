@@ -13,6 +13,8 @@ import { Author, Course } from '../../types';
 import './CreateCourse.scss';
 import formatCreationDate from '../../helpers/formatCreationDate';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addAuthorAction } from '../../store/authors/actions';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -26,14 +28,11 @@ const forbiddenSymbols = /[@#$%^&]/;
 interface CreateCourseProps {
 	allAuthors: Author[];
 	addNewCourse(course: Course): (value: any) => void;
-	addNewAuthor(author: Author): (value: any) => void;
 }
 
-const CreateCourse = ({
-	allAuthors,
-	addNewAuthor,
-	addNewCourse,
-}: CreateCourseProps) => {
+const CreateCourse = ({ allAuthors, addNewCourse }: CreateCourseProps) => {
+	const dispatch = useDispatch();
+
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [idleAuthors, setIdleAuthors] = useState<Author[]>(allAuthors);
@@ -41,7 +40,7 @@ const CreateCourse = ({
 
 	const navigate = useNavigate();
 
-	const addAuthor = (addedAuthor) => {
+	const addAuthorToCourse = (addedAuthor) => {
 		setIdleAuthors([
 			...idleAuthors.filter((author) => author.id !== addedAuthor.id),
 		]);
@@ -49,12 +48,12 @@ const CreateCourse = ({
 	};
 
 	const createAuthor = (authorsName) => {
-		const author = { id: uuid(), name: authorsName };
+		const author = { name: authorsName, id: uuid() };
 		setIdleAuthors([...idleAuthors, author]);
-		addNewAuthor(author);
+		dispatch(addAuthorAction(author));
 	};
 
-	const deleteAuthor = (deletedAuthor) => {
+	const deleteAuthorFromCourse = (deletedAuthor) => {
 		setCourseAuthors([
 			...courseAuthors.filter((author) => author.id !== deletedAuthor.id),
 		]);
@@ -123,13 +122,13 @@ const CreateCourse = ({
 						title='Authors'
 						authors={idleAuthors}
 						buttonText={ADD_AUTHOR_TEXT}
-						onClick={addAuthor}
+						onClick={addAuthorToCourse}
 					/>
 					<AuthorsList
 						title='Course Authors'
 						authors={courseAuthors}
 						buttonText={DELETE_AUTHOR_TEXT}
-						onClick={deleteAuthor}
+						onClick={deleteAuthorFromCourse}
 					/>
 				</div>
 			</div>
