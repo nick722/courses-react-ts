@@ -13,16 +13,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthors, selectCourses } from '../../store/selectors';
 import getAuthors from '../../store/authors/thunk';
 import getCourses from '../../store/courses/thunk';
+// import { fetchAuthors } from '../../store/authors/authorsSlice';
 
 function App() {
 	const dispatch = useDispatch();
 	const courses = useSelector(selectCourses);
 	const authors = useSelector(selectAuthors);
+	console.log('courses in app', courses);
+	console.log('authors in app', authors);
+	// eslint-disable-next-line no-debugger
+	// debugger;
 
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
 
 	useEffect(() => {
-		dispatch(getAuthors());
+		// dispatch(getAuthors());
+		// dispatch(fetchAuthors());
 		dispatch(getCourses());
 	}, []);
 

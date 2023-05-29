@@ -29,8 +29,9 @@ const Courses = ({
 
 	console.log('courses in Courses', courses);
 
-	const renderCourses = (courses: Course[]) =>
-		courses.map((course) => (
+	const renderCourses = (courses: Course[]) => {
+		console.log('courses', courses);
+		return courses.map((course) => (
 			<CourseCard
 				id={course.id}
 				key={course.id}
@@ -41,6 +42,7 @@ const Courses = ({
 				creationDate={course.creationDate}
 			/>
 		));
+	};
 
 	return (
 		<div className={'courses'}>
