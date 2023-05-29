@@ -17,31 +17,28 @@ interface CoursesProps {
 
 const ADD_NEW_BUTTON_TEXT = 'Add new course';
 
-const Courses = ({
-	courses,
-	allAuthors,
-	toggleShowCreateCourse,
-}: CoursesProps) => {
+const Courses = ({ courses, allAuthors }: CoursesProps) => {
 	const navigate = useNavigate();
 	const navigateToCreateCourses = () => {
 		navigate('/courses/add');
 	};
 
-	console.log('courses in Courses', courses);
-
 	const renderCourses = (courses: Course[]) => {
-		console.log('courses', courses);
-		return courses.map((course) => (
-			<CourseCard
-				id={course.id}
-				key={course.id}
-				title={course.title}
-				description={course.description}
-				authors={getAuthorsById(course.authors, allAuthors)}
-				duration={course.duration}
-				creationDate={course.creationDate}
-			/>
-		));
+		return courses.map((course) => {
+			const authorsById = getAuthorsById(course.authors, allAuthors);
+
+			return (
+				<CourseCard
+					id={course.id}
+					key={course.id}
+					title={course.title}
+					description={course.description}
+					authors={getAuthorsById(course.authors, allAuthors)}
+					duration={course.duration}
+					creationDate={course.creationDate}
+				/>
+			);
+		});
 	};
 
 	return (

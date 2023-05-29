@@ -39,6 +39,7 @@ const CourseInfo = ({ courses, allAuthors }: CourseInfoProps) => {
 					</p>
 					<p>
 						<span className='course-info__label'>Authors: </span>
+
 						{getAuthorsById(course.authors, allAuthors)}
 					</p>
 				</div>
