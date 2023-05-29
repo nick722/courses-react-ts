@@ -26,9 +26,10 @@ const authorsSlice = createSlice({
 	initialState: [...mockedAuthorsList] as AuthorsType[],
 	reducers: {
 		save: (state, action) => {
-			const { payload } = action;
+			// const { payload } = action;
 			// state.authors = [...state.authors, payload];
 		},
+		addAuthor: (state, action) => [...state, action.payload],
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchAuthors.fulfilled, (state, action) => action.payload);
@@ -36,5 +37,5 @@ const authorsSlice = createSlice({
 });
 
 const { actions, reducer } = authorsSlice;
-export const { saveAuthors } = actions;
+export const { addAuthor } = actions;
 export default reducer;

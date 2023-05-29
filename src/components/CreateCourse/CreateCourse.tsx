@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addAuthorAction } from '../../store/authors/actions';
 import { addCourseAction } from '../../store/courses/actions';
+import { addAuthor } from '../../store/authors/authorsSlice';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -51,7 +52,8 @@ const CreateCourse = ({ allAuthors }: CreateCourseProps) => {
 	const createAuthor = (authorsName) => {
 		const author = { name: authorsName, id: uuid() };
 		setIdleAuthors([...idleAuthors, author]);
-		dispatch(addAuthorAction(author));
+		// dispatch(addAuthorAction(author));
+		dispatch(addAuthor(author));
 	};
 
 	const deleteAuthorFromCourse = (deletedAuthor) => {
