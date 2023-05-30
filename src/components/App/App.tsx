@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthors, selectCourses } from '../../store/selectors';
 import getCourses from '../../store/courses/thunk';
 import { fetchAuthors } from '../../store/authors/authorsSlice';
+import { AppRoutes } from '../../constants/routes';
 
 function App() {
 	const dispatch = useDispatch();
@@ -30,15 +31,15 @@ function App() {
 	return (
 		<div className='App'>
 			<Routes>
-				<Route path='/' element={<Header />}>
-					<Route path='/registration' element={<Registration />} />
-					<Route path='/login' element={<Login />} />
+				<Route path={AppRoutes.HOME} element={<Header />}>
+					<Route path={AppRoutes.REGISTRATION} element={<Registration />} />
+					<Route path={AppRoutes.LOGIN} element={<Login />} />
 					<Route
-						path='/courses/:courseId'
+						path={AppRoutes.COURSE_INFO}
 						element={<CourseInfo courses={courses} allAuthors={authors} />}
 					/>
 					<Route
-						path='/courses'
+						path={AppRoutes.COURSES}
 						element={
 							<Courses
 								toggleShowCreateCourse={() => {
@@ -50,10 +51,13 @@ function App() {
 						}
 					/>
 					<Route
-						path='/courses/add'
+						path={AppRoutes.CREATE_COURSE}
 						element={<CreateCourse allAuthors={authors} />}
 					/>
-					<Route path='/' element={<Navigate to='/courses' replace />} />
+					<Route
+						path='/'
+						element={<Navigate to={AppRoutes.COURSES} replace />}
+					/>
 				</Route>
 			</Routes>
 		</div>
