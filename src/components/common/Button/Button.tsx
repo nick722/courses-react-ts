@@ -5,8 +5,9 @@ import './Button.scss';
 
 interface ButtonProps {
 	buttonText: string;
-	onClick(): any;
-	type: any;
+	onClick?: () => any;
+	type?: any;
+	className?: string;
 }
 
 const Button = ({
