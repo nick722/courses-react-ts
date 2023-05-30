@@ -1,11 +1,8 @@
-.registration {
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1 1 auto;
-  border: 1px solid aqua;
-  margin-block: 20px;
 
   &__form {
     display: flex;
@@ -19,7 +16,7 @@
   }
 
   & button {
-    margin-block-start: 10px;
+    margin-block-start: 20px;
   }
 
   &__error {
