@@ -19,6 +19,7 @@ const Registration = () => {
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
 
+	const ERROR_MESSAGE = `Registration failed: ${error}`;
 	const register = async (event) => {
 		event.preventDefault();
 
@@ -72,7 +73,7 @@ const Registration = () => {
 					name='password'
 				/>
 				<Button buttonText={REGISTRATION_BUTTON_TEXT} />
-				<p className='registration__error'>{error}</p>
+				<p className='registration__error'>{ERROR_MESSAGE}</p>
 				<p>
 					If you have an account you can <Link to='/login'>Login</Link>
 				</p>
