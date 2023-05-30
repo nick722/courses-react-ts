@@ -17,7 +17,7 @@ const LOGIN_BUTTON_TEXT = 'Login';
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [loginError, setLoginError] = useState('');
+	const [loginError, setLoginError] = useState(null);
 
 	const loginErrorMessage = `Login failed: ${loginError}`;
 
@@ -27,15 +27,17 @@ const Login = () => {
 		const url = `${BASE_URL}/login`;
 
 		const userCreds = {
-			email: event.target.email?.value,
-			password: event.target.password?.value,
+			email: 'f@g.com', //event.target.email?.value,
+			password: '123456', //event.target.password?.value,
 		};
 
 		try {
 			const response = await axios.post(url, userCreds);
-			setLoginError('');
+			setLoginError(null);
+			const token = response.data.result;
+			localStorage.setItem('token', token);
 		} catch (error) {
-			console.log('Axios error', error);
+			console.error('Axios error', error);
 			setLoginError(error.message);
 		}
 	};
