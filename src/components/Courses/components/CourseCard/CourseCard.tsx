@@ -15,12 +15,12 @@ interface CourseCardProps {
 	description: string;
 	duration: number;
 	creationDate: string;
-	authors: Author[];
+	authorsNames: string;
 	id: string;
 }
 
 const CourseCard = ({
-	authors,
+	authorsNames,
 	title,
 	description,
 	duration,
@@ -35,7 +35,7 @@ const CourseCard = ({
 			</div>
 			<div className='course-card__right-side'>
 				<p>
-					<span className='course-info__label'>Authors</span>: {authors}
+					<span className='course-info__label'>Authors</span>: {authorsNames}
 				</p>
 				<p>
 					<span className='course-info__label'>Duration</span>:{' '}

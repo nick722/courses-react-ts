@@ -33,7 +33,7 @@ const Courses = ({ courses, allAuthors }: CoursesProps) => {
 					key={course.id}
 					title={course.title}
 					description={course.description}
-					authors={getAuthorsById(course.authors, allAuthors)}
+					authorsNames={getAuthorsById(course.authors, allAuthors)}
 					duration={course.duration}
 					creationDate={course.creationDate}
 				/>
