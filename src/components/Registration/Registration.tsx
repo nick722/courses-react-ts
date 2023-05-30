@@ -3,7 +3,8 @@ import Input from '../common/Input/Input';
 
 import './Registration.scss';
 import Button from '../common/Button/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../constants/routes';
 
 const NAME_INPUT_LABEL = 'Name';
 const NAME_INPUT_PLACEHOLDER = 'Enter name';
@@ -14,6 +15,7 @@ const PASSWORD_INPUT_PlACEHOLDER = 'Enter passowrd';
 const REGISTRATION_BUTTON_TEXT = 'Registration';
 
 const Registration = () => {
+	const navigate = useNavigate();
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -39,9 +41,10 @@ const Registration = () => {
 			});
 
 			if (!response?.ok) {
-				setError(`${response.status} ${response.statusText}`);
+				return setError(`${response.status} ${response.statusText}`);
 			}
 			const result = await response.json();
+			navigate(AppRoutes.LOGIN);
 		} catch (error) {
 			setError(`Registration failed: ${error}`);
 		}
