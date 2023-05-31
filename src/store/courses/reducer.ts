@@ -1,7 +1,7 @@
 import { CourseAction, CoursesActionTypes, CourseType } from './types';
 import { mockedCoursesList } from '../../constants/mockedCoursesList.js';
 
-export const coursesInitialState = [...mockedCoursesList] as CourseType[];
+export const coursesInitialState = [] as CourseType[];
 
 export const coursesReducer = (
 	state = coursesInitialState,
