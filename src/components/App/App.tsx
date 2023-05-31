@@ -54,10 +54,7 @@ function App() {
 						path={AppRoutes.CREATE_COURSE}
 						element={<CreateCourse allAuthors={authors} />}
 					/>
-					<Route
-						path='/'
-						element={<Navigate to={AppRoutes.COURSES} replace />}
-					/>
+					<Route path='/' element={<Navigate to={AppRoutes.LOGIN} replace />} />
 				</Route>
 			</Routes>
 		</div>
