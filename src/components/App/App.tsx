@@ -14,6 +14,7 @@ import { selectAuthors, selectCourses } from '../../store/selectors';
 import getCourses from '../../store/courses/thunk';
 import { getAuthors } from '../../store/authors/authorsSlice';
 import { AppRoutes } from '../../constants/routes';
+import { getUser } from '../../store/user/userSlice';
 
 function App() {
 	const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
 
 	useEffect(() => {
+		dispatch(getUser());
 		dispatch(getAuthors());
 		dispatch(getCourses());
 	}, []);

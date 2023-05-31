@@ -7,6 +7,8 @@ import Button from '../common/Button/Button';
 import axios from 'axios';
 import { BASE_URL } from '../../services';
 import { AppRoutes } from '../../constants/routes';
+import { useDispatch } from 'react-redux';
+import { getUser, login } from '../../store/user/userSlice';
 
 const baseClass = 'login';
 const EMAIL_LABEL = 'Email';
@@ -16,6 +18,7 @@ const PASSWORD_PLACEHOLDER = 'Enter password';
 const LOGIN_BUTTON_TEXT = 'Login';
 
 const Login = () => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -28,33 +31,19 @@ const Login = () => {
 
 	const loginErrorMessage = `Login failed: ${loginError}`;
 
-	const login = async (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		const url = `${BASE_URL}/login`;
-
-		const userCreds = {
-			email: 'f@g.com', //event.target.email?.value,
-			password: '123456', //event.target.password?.value,
-		};
-
-		try {
-			const response = await axios.post(url, userCreds);
-			console.log('response', response);
-			setLoginError(null);
-			const token = response.data.result;
-			localStorage.setItem('token', token);
-			setIsLoggedIn(!!localStorage.getItem('token'));
-		} catch (error) {
-			console.error('Axios error', error);
-			setLoginError(error.message);
-		}
+		dispatch(login(event));
 	};
 
 	return (
 		<div className={`${baseClass}`}>
 			<h1>Login</h1>
-			<form onSubmit={(event) => login(event)} className={`${baseClass}__form`}>
+			<form
+				onSubmit={(event) => handleSubmit(event)}
+				className={`${baseClass}__form`}
+			>
 				<Input
 					labelText={EMAIL_LABEL}
 					placeholderText={EMAIL_PLACEHOLDER}
