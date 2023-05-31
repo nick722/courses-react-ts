@@ -6,20 +6,17 @@ import axios from 'axios';
 import { BASE_URL } from '../../services';
 import { mockedAuthorsList } from '../../constants/mockedAuthorsList.js';
 
-export const fetchAuthors = createAsyncThunk(
-	'authors/fetchAuthors',
-	async () => {
-		const url = `${BASE_URL}/authors/all`;
+export const getAuthors = createAsyncThunk('authors/getAuthors', async () => {
+	const url = `${BASE_URL}/authors/all`;
 
-		try {
-			const response = await axios.get(url);
-			const authors = response.data.result;
-			return authors;
-		} catch (error) {
-			return error;
-		}
+	try {
+		const response = await axios.get(url);
+		const authors = response.data.result;
+		return authors;
+	} catch (error) {
+		return error;
 	}
-);
+});
 
 const authorsSlice = createSlice({
 	name: 'authors',
@@ -32,7 +29,7 @@ const authorsSlice = createSlice({
 		addAuthor: (state, action) => [...state, action.payload],
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchAuthors.fulfilled, (state, action) => action.payload);
+		builder.addCase(getAuthors.fulfilled, (state, action) => action.payload);
 	},
 });
 

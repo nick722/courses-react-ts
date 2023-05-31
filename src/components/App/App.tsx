@@ -12,7 +12,7 @@ import CourseInfo from '../CourseInfo/CourseInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthors, selectCourses } from '../../store/selectors';
 import getCourses from '../../store/courses/thunk';
-import { fetchAuthors } from '../../store/authors/authorsSlice';
+import { getAuthors } from '../../store/authors/authorsSlice';
 import { AppRoutes } from '../../constants/routes';
 
 function App() {
@@ -23,8 +23,7 @@ function App() {
 	const [showCreateCourse, setShowCreateCourse] = useState(false);
 
 	useEffect(() => {
-		// dispatch(getAuthors());
-		dispatch(fetchAuthors());
+		dispatch(getAuthors());
 		dispatch(getCourses());
 	}, []);
 
