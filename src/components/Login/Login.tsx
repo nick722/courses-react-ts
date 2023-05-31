@@ -25,11 +25,10 @@ const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loginError, setLoginError] = useState(null);
-	// const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
-	// if (isAuth) {
-	// 	return navigate(AppRoutes.COURSES);
-	// }
+	if (isAuth) {
+		return navigate(AppRoutes.COURSES);
+	}
 
 	const loginErrorMessage = `Login failed: ${loginError}`;
 
