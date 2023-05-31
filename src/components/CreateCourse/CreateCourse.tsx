@@ -14,7 +14,6 @@ import './CreateCourse.scss';
 import formatCreationDate from '../../helpers/formatCreationDate';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addAuthorAction } from '../../store/authors/actions';
 import { addCourseAction } from '../../store/courses/actions';
 import { addAuthor } from '../../store/authors/authorsSlice';
 

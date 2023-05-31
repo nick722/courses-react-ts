@@ -40,6 +40,7 @@ const Login = () => {
 
 		try {
 			const response = await axios.post(url, userCreds);
+			console.log('response', response);
 			setLoginError(null);
 			const token = response.data.result;
 			localStorage.setItem('token', token);
