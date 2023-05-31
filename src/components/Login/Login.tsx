@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import Input from '../common/Input/Input';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './Login.scss';
 import Button from '../common/Button/Button';
 import axios from 'axios';
 import { BASE_URL } from '../../services';
+import { AppRoutes } from '../../constants/routes';
 
 const baseClass = 'login';
 const EMAIL_LABEL = 'Email';
@@ -15,9 +16,15 @@ const PASSWORD_PLACEHOLDER = 'Enter password';
 const LOGIN_BUTTON_TEXT = 'Login';
 
 const Login = () => {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loginError, setLoginError] = useState(null);
+	const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+
+	if (isLoggedIn) {
+		return navigate(AppRoutes.COURSES);
+	}
 
 	const loginErrorMessage = `Login failed: ${loginError}`;
 
@@ -36,6 +43,7 @@ const Login = () => {
 			setLoginError(null);
 			const token = response.data.result;
 			localStorage.setItem('token', token);
+			setIsLoggedIn(!!localStorage.getItem('token'));
 		} catch (error) {
 			console.error('Axios error', error);
 			setLoginError(error.message);
