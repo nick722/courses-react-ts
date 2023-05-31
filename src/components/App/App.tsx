@@ -10,13 +10,19 @@ import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
 import CourseInfo from '../CourseInfo/CourseInfo';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthors, selectCourses } from '../../store/selectors';
+import {
+	selectAuthors,
+	selectCourses,
+	selectIsAuth,
+} from '../../store/selectors';
 import getCourses from '../../store/courses/thunk';
 import { getAuthors } from '../../store/authors/authorsSlice';
 import { AppRoutes } from '../../constants/routes';
 import { getUser } from '../../store/user/userSlice';
 
 function App() {
+	const isAuth = useSelector(selectIsAuth);
+	console.log('isAuth', isAuth);
 	const dispatch = useDispatch();
 	const courses = useSelector(selectCourses);
 	const authors = useSelector(selectAuthors);
@@ -55,7 +61,16 @@ function App() {
 						path={AppRoutes.CREATE_COURSE}
 						element={<CreateCourse allAuthors={authors} />}
 					/>
-					<Route path='/' element={<Navigate to={AppRoutes.LOGIN} replace />} />
+					<Route
+						path='/'
+						element={
+							isAuth ? (
+								<Navigate to={AppRoutes.COURSES} replace />
+							) : (
+								<Navigate to={AppRoutes.LOGIN} replace />
+							)
+						}
+					/>
 				</Route>
 			</Routes>
 		</div>

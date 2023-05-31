@@ -7,8 +7,9 @@ import Button from '../common/Button/Button';
 import axios from 'axios';
 import { BASE_URL } from '../../services';
 import { AppRoutes } from '../../constants/routes';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUser, login } from '../../store/user/userSlice';
+import { selectIsAuth } from '../../store/selectors';
 
 const baseClass = 'login';
 const EMAIL_LABEL = 'Email';
@@ -18,16 +19,17 @@ const PASSWORD_PLACEHOLDER = 'Enter password';
 const LOGIN_BUTTON_TEXT = 'Login';
 
 const Login = () => {
+	const isAuth = useSelector(selectIsAuth);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loginError, setLoginError] = useState(null);
-	const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+	// const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
-	if (isLoggedIn) {
-		return navigate(AppRoutes.COURSES);
-	}
+	// if (isAuth) {
+	// 	return navigate(AppRoutes.COURSES);
+	// }
 
 	const loginErrorMessage = `Login failed: ${loginError}`;
 
