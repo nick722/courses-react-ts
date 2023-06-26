@@ -11,7 +11,7 @@ const Header = () => {
 			<header className='header'>
 				<Logo />
 				<div className='header__right-block'>
-					Nik
+					User
 					<Button
 						buttonText='Logout'
 						onClick={() => {
