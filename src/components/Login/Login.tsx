@@ -10,6 +10,7 @@ import { AppRoutes } from '../../constants/routes';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, login } from '../../store/user/userSlice';
 import { selectIsAuth } from '../../store/selectors';
+import { AppDispatch } from '../../store';
 
 const baseClass = 'login';
 const EMAIL_LABEL = 'Email';
@@ -20,7 +21,7 @@ const LOGIN_BUTTON_TEXT = 'Login';
 
 const Login = () => {
 	const isAuth = useSelector(selectIsAuth);
-	const dispatch = useDispatch();
+	const dispatch: AppDispatch = useDispatch();
 	const navigate = useNavigate();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');

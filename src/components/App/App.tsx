@@ -15,11 +15,12 @@ import getCourses from '../../store/courses/thunk';
 import { getAuthors, selectAuthors } from '../../store/authors/authorsSlice';
 import { AppRoutes } from '../../constants/routes';
 import { getUser } from '../../store/user/userSlice';
+import { AppDispatch } from '../../store';
 
 function App() {
 	const isAuth = useSelector(selectIsAuth);
 	console.log('isAuth', isAuth);
-	const dispatch = useDispatch();
+	const dispatch: AppDispatch = useDispatch();
 	const courses = useSelector(selectCourses);
 	const authors = useSelector(selectAuthors);
 
