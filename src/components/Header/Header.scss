@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  border: 1px solid #F98A8C;
-  outline: 1px solid #FDCECF;
+  border: 1px solid #f98a8c;
+  outline: 1px solid #fdcecf;
   height: 100px;
   padding: 20px;
   font-weight: bold;
@@ -13,6 +13,9 @@
   &__right-block {
     display: flex;
     justify-content: space-between;
-    width: 150px;
+  }
+
+  &__user-name {
+    margin-right: 10px;
   }
 }

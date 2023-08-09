@@ -4,14 +4,18 @@ import Button from '../common/Button/Button';
 import { Outlet } from 'react-router-dom';
 
 import './Header.scss';
+import { useSelector } from 'react-redux';
+import { selectUserName } from '../../store/user/userSlice';
 
 const Header = () => {
+	const userName = useSelector(selectUserName);
+
 	return (
 		<>
 			<header className='header'>
 				<Logo />
 				<div className='header__right-block'>
-					User
+					<span className='header__user-name'>{userName}</span>
 					<Button
 						buttonText='Logout'
 						onClick={() => {
