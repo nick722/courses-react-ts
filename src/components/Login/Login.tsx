@@ -33,9 +33,9 @@ const Login = () => {
 	const [password, setPassword] = useState('');
 	// const [loginError, setLoginError] = useState(null);
 
-	if (isAuth) {
-		return navigate(AppRoutes.COURSES);
-	}
+	// if (isAuth) {
+	// 	navigate(AppRoutes.COURSES);
+	// }
 
 	const loginErrorMessage = `Login failed: ${loginError}`;
 

@@ -12,6 +12,7 @@ interface UserData {
 	email: string;
 	token: string;
 }
+
 interface UserState {
 	data: UserData;
 	loading: boolean;
@@ -42,10 +43,11 @@ export const getUser = createAsyncThunk('user/getUser', async () => {
 
 export const login = createAsyncThunk(
 	'user/login',
-	async (event: FormEvent<HTMLFormElement>) => {
+	async (event: React.ChangeEvent<HTMLFormElement>) => {
 		const url = `${BASE_URL}/login`;
 
 		console.log('event.target', event.target);
+		console.log('event.email', event.target.email);
 
 		const userCreds = {
 			// email: 'error@g.com',
