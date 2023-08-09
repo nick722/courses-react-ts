@@ -22,7 +22,7 @@ interface UserState {
 const bearerToken = localStorage.getItem('token');
 
 const initialState: UserState = {
-	data: { isAuth: false, name: '', email: '', token: bearerToken || '' },
+	data: { isAuth: false, name: '', email: '', token: '' },
 	loading: false,
 	error: null,
 };
@@ -50,7 +50,7 @@ export const login = createAsyncThunk(
 		console.log('event.email', event.target.email);
 
 		const userCreds = {
-			// email: 'error@g.com',
+			// email: 'f@g.com',
 			// password: '123456',
 			email: event.target.email?.value,
 			password: event.target.password?.value,
@@ -58,12 +58,14 @@ export const login = createAsyncThunk(
 
 		try {
 			const response = await axios.post(url, userCreds);
+			console.log('response.data', response.data);
+			console.log('response.error', response.error);
 			const token = response.data.result;
 			localStorage.setItem('token', token);
 			return response.data;
 		} catch (error) {
-			console.error('Axios error', error);
-			return error;
+			console.error('error.message', error.message);
+			return error.message;
 		}
 	}
 );
@@ -93,7 +95,7 @@ const userSlice = createSlice({
 				error: null,
 				loading: false,
 				data: {
-					isAuth: true,
+					isAuth: !!bearerToken,
 					name: action.payload?.user?.name,
 					email: action.payload?.user?.email,
 					token: action.payload.result,
