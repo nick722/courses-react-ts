@@ -43,7 +43,7 @@ export const getUser = createAsyncThunk('user/getUser', async () => {
 
 export const login = createAsyncThunk(
 	'user/login',
-	async (event: React.ChangeEvent<HTMLFormElement>) => {
+	async (event: React.ChangeEvent<HTMLFormElement>, { rejectWithValue }) => {
 		const url = `${BASE_URL}/login`;
 
 		console.log('event.target', event.target);
@@ -65,7 +65,7 @@ export const login = createAsyncThunk(
 			return response.data;
 		} catch (error) {
 			console.error('error.message', error.message);
-			return error.message;
+			return rejectWithValue(error.message);
 		}
 	}
 );
