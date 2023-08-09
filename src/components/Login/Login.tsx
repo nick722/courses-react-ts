@@ -67,7 +67,6 @@ const Login = () => {
 					name='password'
 				/>
 				<Button buttonText={LOGIN_BUTTON_TEXT} />
-				{loginError && <p>Error: {loginError}</p>}
 			</form>
 			<p className={`${baseClass}__error`}>{loginError && loginErrorMessage}</p>
 			<p>
