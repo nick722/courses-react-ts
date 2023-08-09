@@ -58,13 +58,10 @@ export const login = createAsyncThunk(
 
 		try {
 			const response = await axios.post(url, userCreds);
-			console.log('response.data', response.data);
-			console.log('response.error', response.error);
 			const token = response.data.result;
 			localStorage.setItem('token', token);
 			return response.data;
 		} catch (error) {
-			console.error('error.message', error.message);
 			return rejectWithValue(error.message);
 		}
 	}
@@ -122,5 +119,5 @@ export const { logout } = actions;
 export default reducer;
 
 // SELECTORS
-export const selectIsAuth = (state) => state.user.data.isAuth;
+export const selectIsAuth = (state) => !!state.user.data.token;
 export const selectLoginError = (state) => state.user.error;
