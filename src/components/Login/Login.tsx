@@ -8,8 +8,12 @@ import axios from 'axios';
 import { BASE_URL } from '../../services';
 import { AppRoutes } from '../../constants/routes';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, login } from '../../store/user/userSlice';
-import { selectIsAuth } from '../../store/selectors';
+import {
+	getUser,
+	login,
+	selectIsAuth,
+	selectLoginError,
+} from '../../store/user/userSlice';
 import { AppDispatch } from '../../store';
 
 const baseClass = 'login';
@@ -21,11 +25,13 @@ const LOGIN_BUTTON_TEXT = 'Login';
 
 const Login = () => {
 	const isAuth = useSelector(selectIsAuth);
+	const loginError = useSelector(selectLoginError);
+
 	const dispatch: AppDispatch = useDispatch();
 	const navigate = useNavigate();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [loginError, setLoginError] = useState(null);
+	// const [loginError, setLoginError] = useState(null);
 
 	if (isAuth) {
 		return navigate(AppRoutes.COURSES);
@@ -61,6 +67,7 @@ const Login = () => {
 					name='password'
 				/>
 				<Button buttonText={LOGIN_BUTTON_TEXT} />
+				{loginError && <p>Error: {loginError}</p>}
 			</form>
 			<p className={`${baseClass}__error`}>{loginError && loginErrorMessage}</p>
 			<p>

@@ -10,11 +10,11 @@ import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
 import CourseInfo from '../CourseInfo/CourseInfo';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCourses, selectIsAuth } from '../../store/selectors';
+import { selectCourses } from '../../store/selectors';
 import getCourses from '../../store/courses/thunk';
 import { getAuthors, selectAuthors } from '../../store/authors/authorsSlice';
 import { AppRoutes } from '../../constants/routes';
-import { getUser } from '../../store/user/userSlice';
+import { getUser, selectIsAuth } from '../../store/user/userSlice';
 import { AppDispatch } from '../../store';
 
 function App() {

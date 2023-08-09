@@ -2,6 +2,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../services';
 import axios, { AxiosError } from 'axios';
 import { FormEvent } from 'react';
+import { AsyncThunkRejectedActionCreator } from '@reduxjs/toolkit/dist/createAsyncThunk';
+import { types } from 'sass';
+import Error = types.Error;
 
 interface UserData {
 	isAuth: boolean;
@@ -12,7 +15,7 @@ interface UserData {
 interface UserState {
 	data: UserData;
 	loading: boolean;
-	error: null | AxiosError;
+	error: null | Error;
 }
 
 const bearerToken = localStorage.getItem('token');
@@ -37,36 +40,36 @@ export const getUser = createAsyncThunk('user/getUser', async () => {
 	}
 });
 
-export const login = createAsyncThunk('user/login', async () => {
-	const url = `${BASE_URL}/login`;
+export const login = createAsyncThunk(
+	'user/login',
+	async (event: FormEvent<HTMLFormElement>) => {
+		const url = `${BASE_URL}/login`;
 
-	const userCreds = {
-		email: 'f@g.com',
-		password: '123456',
-		// email: event.target.email?.value,
-		// password: event.target.password?.value,
-	};
+		console.log('event.target', event.target);
 
-	try {
-		const response = await axios.post(url, userCreds);
-		const token = response.data.result;
-		localStorage.setItem('token', token);
-		return response.data;
-	} catch (error) {
-		console.error('Axios error', error);
-		// setLoginError(error.message);
+		const userCreds = {
+			// email: 'error@g.com',
+			// password: '123456',
+			email: event.target.email?.value,
+			password: event.target.password?.value,
+		};
+
+		try {
+			const response = await axios.post(url, userCreds);
+			const token = response.data.result;
+			localStorage.setItem('token', token);
+			return response.data;
+		} catch (error) {
+			console.error('Axios error', error);
+			return error;
+		}
 	}
-});
+);
 
 const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		// login: (state, action) => {
-		// 	// eslint-disable-next-line no-debugger
-		// 	// debugger;
-		// 	return action.payload;
-		// },
 		logout: (state) => initialState,
 	},
 	extraReducers: (builder) => {
@@ -84,8 +87,6 @@ const userSlice = createSlice({
 			};
 		});
 		builder.addCase(login.fulfilled, (state, action) => {
-			console.log('action.payload', action.payload);
-
 			return {
 				error: null,
 				loading: false,
@@ -97,9 +98,25 @@ const userSlice = createSlice({
 				},
 			};
 		});
+		builder.addCase(login.rejected, (state, action) => {
+			return {
+				error: action.payload,
+				loading: false,
+				data: {
+					isAuth: false,
+					name: '',
+					email: '',
+					token: '',
+				},
+			};
+		});
 	},
 });
 
 const { actions, reducer } = userSlice;
 export const { logout } = actions;
 export default reducer;
+
+// SELECTORS
+export const selectIsAuth = (state) => state.user.data.isAuth;
+export const selectLoginError = (state) => state.user.error;
