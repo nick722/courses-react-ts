@@ -4,11 +4,18 @@ import Button from '../common/Button/Button';
 import { Outlet } from 'react-router-dom';
 
 import './Header.scss';
-import { useSelector } from 'react-redux';
-import { selectUserName } from '../../store/user/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+	logout,
+	selectBearerToken,
+	selectUserName,
+} from '../../store/user/userSlice';
+import { AppDispatch } from '../../store';
 
 const Header = () => {
 	const userName = useSelector(selectUserName);
+	const bearerToken = useSelector(selectBearerToken);
+	const dispatch: AppDispatch = useDispatch();
 
 	return (
 		<>
@@ -19,7 +26,7 @@ const Header = () => {
 					<Button
 						buttonText='Logout'
 						onClick={() => {
-							/*do nothing*/
+							dispatch(logout(bearerToken));
 						}}
 					/>
 				</div>

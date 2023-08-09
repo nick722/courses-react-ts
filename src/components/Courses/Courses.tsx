@@ -8,6 +8,9 @@ import './Courses.scss';
 
 import { Author, Course } from '../../types';
 import getAuthorsById from '../../helpers/getAuthorsById';
+import { useSelector } from 'react-redux';
+import { selectIsAuth } from '../../store/user/userSlice';
+import { AppRoutes } from '../../constants/routes';
 
 interface CoursesProps {
 	courses: Course[];
@@ -18,10 +21,16 @@ interface CoursesProps {
 const ADD_NEW_BUTTON_TEXT = 'Add new course';
 
 const Courses = ({ courses, allAuthors }: CoursesProps) => {
+	const isAuth = useSelector(selectIsAuth);
 	const navigate = useNavigate();
+
 	const navigateToCreateCourses = () => {
 		navigate('/courses/add');
 	};
+
+	if (!isAuth) {
+		navigate(AppRoutes.LOGIN);
+	}
 
 	const renderCourses = (courses: Course[]) => {
 		return courses.map((course) => {

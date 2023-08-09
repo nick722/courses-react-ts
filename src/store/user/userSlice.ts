@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../services';
-import axios, { AxiosError } from 'axios';
-import { FormEvent } from 'react';
-import { AsyncThunkRejectedActionCreator } from '@reduxjs/toolkit/dist/createAsyncThunk';
+import axios from 'axios';
 import { types } from 'sass';
 import Error = types.Error;
 
@@ -44,10 +42,7 @@ export const getUser = createAsyncThunk('user/getUser', async () => {
 export const login = createAsyncThunk(
 	'user/login',
 	async (event: React.ChangeEvent<HTMLFormElement>, { rejectWithValue }) => {
-		const url = `${BASE_URL}/login`;
-
-		console.log('event.target', event.target);
-		console.log('event.email', event.target.email);
+		const loginUrl = `${BASE_URL}/login`;
 
 		const userCreds = {
 			// email: 'f@g.com',
@@ -57,9 +52,28 @@ export const login = createAsyncThunk(
 		};
 
 		try {
-			const response = await axios.post(url, userCreds);
+			const response = await axios.post(loginUrl, userCreds);
 			const token = response.data.result;
 			localStorage.setItem('token', token);
+			return response.data;
+		} catch (error) {
+			return rejectWithValue(error.message);
+		}
+	}
+);
+
+export const logout = createAsyncThunk(
+	'user/logout',
+	async (bearerToken: string, { rejectWithValue }) => {
+		const logoutUrl = `${BASE_URL}/logout`;
+		const config = {
+			headers: {
+				Authorization: bearerToken,
+			},
+		};
+
+		try {
+			const response = await axios.delete(logoutUrl, config);
 			return response.data;
 		} catch (error) {
 			return rejectWithValue(error.message);
@@ -70,12 +84,9 @@ export const login = createAsyncThunk(
 const userSlice = createSlice({
 	name: 'user',
 	initialState,
-	reducers: {
-		logout: (state) => initialState,
-	},
+	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(getUser.fulfilled, (state, action) => {
-			console.log('user action.payload', action.payload);
 			return {
 				error: null,
 				loading: false,
@@ -111,14 +122,39 @@ const userSlice = createSlice({
 				},
 			};
 		});
+		builder.addCase(logout.fulfilled, (state, action) => {
+			return {
+				error: null,
+				loading: false,
+				data: {
+					isAuth: false,
+					name: '',
+					email: '',
+					token: '',
+				},
+			};
+		});
+		builder.addCase(logout.rejected, (state, action) => {
+			return {
+				error: action.payload,
+				loading: false,
+				data: {
+					isAuth: !!bearerToken,
+					name: state.data.name,
+					email: state.data.email,
+					token: state.data.token,
+				},
+			};
+		});
 	},
 });
 
 const { actions, reducer } = userSlice;
-export const { logout } = actions;
+// export const { logout } = actions;
 export default reducer;
 
 // SELECTORS
 export const selectIsAuth = (state) => !!state.user.data.token;
+export const selectBearerToken = (state) => state.user.data.token;
 export const selectLoginError = (state) => state.user.error;
 export const selectUserName = (state) => state.user.data.name;
