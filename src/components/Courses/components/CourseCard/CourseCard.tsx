@@ -9,6 +9,7 @@ import './CourseCard.scss';
 import { Author } from '../../../../types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ShowCourseButton from './ShowCourseButton/ShowCourseButton';
+import DeleteCourseButton from './DeleteCourseButton/DeleteCourseButton';
 
 interface CourseCardProps {
 	title: string;
@@ -49,9 +50,7 @@ const CourseCard = ({
 					<Link to={`/courses/${id}`}>
 						<ShowCourseButton />
 					</Link>
-					<Button>
-						<FontAwesomeIcon icon='chevron-up' title='Up' />
-					</Button>
+					<DeleteCourseButton />
 				</div>
 			</div>
 		</div>
