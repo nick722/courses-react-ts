@@ -1,7 +1,7 @@
 .course-card {
   display: flex;
   margin-block-end: 20px;
-  border: 1px solid #549D79;
+  border: 1px solid #549d79;
 
   &__left-side {
     width: 65%;
@@ -22,13 +22,20 @@
     flex-direction: column;
     width: 35%;
     padding: 20px;
+  }
 
+  &__buttons {
     & button {
       align-self: center;
+      margin-left: 10px;
+    }
+
+    & .show-course-button {
+      padding-inline: 20px;
     }
   }
 
-  &course-info__label {
+  &__label {
     font-weight: bold;
   }
 }

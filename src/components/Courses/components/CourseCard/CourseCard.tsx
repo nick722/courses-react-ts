@@ -35,19 +35,25 @@ const CourseCard = ({
 			</div>
 			<div className='course-card__right-side'>
 				<p>
-					<span className='course-info__label'>Authors</span>: {authorsNames}
+					<span className='course-card__label'>Authors</span>: {authorsNames}
 				</p>
 				<p>
-					<span className='course-info__label'>Duration</span>:{' '}
+					<span className='course-card__label'>Duration</span>:{' '}
 					{formatCourseDuration(duration)}
 				</p>
 				<p>
-					<span className='course-info__label'>Created</span>:{' '}
+					<span className='course-card__label'>Created</span>:{' '}
 					{formatCreationDate(creationDate)}
 				</p>
-				<Link to={`/courses/${id}`}>
-					<Button buttonText={SHOW_COURSE_BUTTON_TEXT} />
-				</Link>
+				<div className='course-card__buttons'>
+					<Link to={`/courses/${id}`}>
+						<Button
+							className='show-course-button'
+							buttonText={SHOW_COURSE_BUTTON_TEXT}
+						/>
+					</Link>
+					<Button buttonText='X' />
+				</div>
 			</div>
 		</div>
 	);
