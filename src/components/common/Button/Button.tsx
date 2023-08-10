@@ -3,20 +3,18 @@ import cn from 'classnames';
 
 import './Button.scss';
 
-interface ButtonProps extends ComponentProps<'button'> {
-	buttonText: string;
-}
+type ButtonProps = ComponentProps<'button'>;
 
 const Button = ({
 	type,
-	buttonText,
 	onClick,
 	className,
+	children,
 	...props
 }: ButtonProps) => {
 	return (
 		<button type={type} onClick={onClick} className={cn('button', className)}>
-			{buttonText}
+			{children}
 		</button>
 	);
 };

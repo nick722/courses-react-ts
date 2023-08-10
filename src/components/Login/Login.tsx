@@ -66,7 +66,7 @@ const Login = () => {
 					onChange={setPassword}
 					name='password'
 				/>
-				<Button buttonText={LOGIN_BUTTON_TEXT} />
+				<Button>{LOGIN_BUTTON_TEXT}</Button>
 			</form>
 			<p className={`${baseClass}__error`}>{loginError && loginErrorMessage}</p>
 			<p>

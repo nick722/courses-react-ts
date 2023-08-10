@@ -17,6 +17,8 @@ const Header = () => {
 	const bearerToken = useSelector(selectBearerToken);
 	const dispatch: AppDispatch = useDispatch();
 
+	const LOGOUT_BUTTON_TEXT = 'Logout';
+
 	return (
 		<>
 			<header className='header'>
@@ -24,11 +26,12 @@ const Header = () => {
 				<div className='header__right-block'>
 					<span className='header__user-name'>{userName}</span>
 					<Button
-						buttonText='Logout'
 						onClick={() => {
 							dispatch(logout(bearerToken));
 						}}
-					/>
+					>
+						{LOGOUT_BUTTON_TEXT}
+					</Button>
 				</div>
 			</header>
 			<Outlet />

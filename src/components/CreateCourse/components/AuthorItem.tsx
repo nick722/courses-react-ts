@@ -15,11 +15,9 @@ const AuthorItem = ({ author, buttonText, onClick }: AuthorItemProps) => {
 	return (
 		<div className='author-item'>
 			<span>{author.name}</span>
-			<Button
-				type='button'
-				buttonText={buttonText}
-				onClick={() => onClick(author)}
-			/>
+			<Button type='button' onClick={() => onClick(author)}>
+				{buttonText}
+			</Button>
 		</div>
 	);
 };

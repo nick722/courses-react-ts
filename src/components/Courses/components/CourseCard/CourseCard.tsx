@@ -7,8 +7,8 @@ import formatCreationDate from '../../../../helpers/formatCreationDate';
 
 import './CourseCard.scss';
 import { Author } from '../../../../types';
-
-const SHOW_COURSE_BUTTON_TEXT = 'Show course';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ShowCourseButton from './ShowCourseButton/ShowCourseButton';
 
 interface CourseCardProps {
 	title: string;
@@ -47,12 +47,11 @@ const CourseCard = ({
 				</p>
 				<div className='course-card__buttons'>
 					<Link to={`/courses/${id}`}>
-						<Button
-							className='show-course-button'
-							buttonText={SHOW_COURSE_BUTTON_TEXT}
-						/>
+						<ShowCourseButton />
 					</Link>
-					<Button buttonText='X' />
+					<Button>
+						<FontAwesomeIcon icon='chevron-up' title='Up' />
+					</Button>
 				</div>
 			</div>
 		</div>

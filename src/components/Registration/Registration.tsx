@@ -75,7 +75,7 @@ const Registration = () => {
 					onChange={setPassword}
 					name='password'
 				/>
-				<Button buttonText={REGISTRATION_BUTTON_TEXT} />
+				<Button>{REGISTRATION_BUTTON_TEXT}</Button>
 				<p className='registration__error'>{ERROR_MESSAGE}</p>
 				<p>
 					If you have an account you can <Link to='/login'>Login</Link>

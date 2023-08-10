@@ -102,11 +102,9 @@ const CreateCourse = ({ allAuthors }: CreateCourseProps) => {
 					placeholderText={TITLE_PLACEHODER}
 					onChange={handleTitleChange}
 				/>
-				<Button
-					className='create-course__header-button'
-					buttonText={CREATE_COURSE}
-					type='submit'
-				/>
+				<Button className='create-course__header-button' type='submit'>
+					{CREATE_COURSE}
+				</Button>
 			</div>
 			<div className='create-course__description'>
 				<label for='textarea'>Description</label>
