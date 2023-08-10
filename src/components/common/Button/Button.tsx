@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import cn from 'classnames';
 
 import './Button.scss';
 
-interface ButtonProps {
+interface ButtonProps extends ComponentProps<'button'> {
 	buttonText: string;
-	onClick?: () => any;
-	type?: any;
-	className?: string;
 }
 
 const Button = ({
