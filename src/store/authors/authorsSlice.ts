@@ -39,7 +39,7 @@ const authorsSlice = createSlice({
 		},
 		addAuthor: (state, action) => ({
 			...state,
-			data: action.payload,
+			data: [...state.data, action.payload],
 		}),
 	},
 	extraReducers: (builder) => {
