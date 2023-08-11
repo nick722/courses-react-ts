@@ -26,6 +26,7 @@ const Header = () => {
 				<div className='header__right-block'>
 					<span className='header__user-name'>{userName}</span>
 					<Button
+						withText
 						onClick={() => {
 							dispatch(logout(bearerToken));
 						}}

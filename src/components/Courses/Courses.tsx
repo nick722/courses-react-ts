@@ -54,7 +54,9 @@ const Courses = ({ courses, allAuthors }: CoursesProps) => {
 		<div className={'courses'}>
 			<div className={'courses__search-bar-panel'}>
 				<SearchBar />
-				<Button onClick={navigateToCreateCourses}>{ADD_NEW_BUTTON_TEXT}</Button>
+				<Button withText onClick={navigateToCreateCourses}>
+					{ADD_NEW_BUTTON_TEXT}
+				</Button>
 			</div>
 			{renderCourses(courses)}
 		</div>

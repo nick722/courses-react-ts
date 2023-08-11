@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import formatCourseDuration from '../../../../helpers/formatCourseDuration';
 import formatCreationDate from '../../../../helpers/formatCreationDate';
-import './CourseCard.scss';
 import ShowCourseButton from './ShowCourseButton/ShowCourseButton';
 import DeleteCourseButton from './DeleteCourseButton/DeleteCourseButton';
 import UpdateCourseButton from './UpdateCourseButton/UpdateCourseButton';
+import './CourseCard.scss';
 
 interface CourseCardProps {
 	title: string;

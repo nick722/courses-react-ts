@@ -3,6 +3,14 @@
   background-color: white;
   padding: 5px 0;
 
+  &--with-text {
+    padding-inline: 20px;
+  }
+
+  &--with-icon {
+    width: 31px;
+  }
+
   &:hover {
     background: lightblue;
     cursor: pointer;

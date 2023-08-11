@@ -3,17 +3,28 @@ import cn from 'classnames';
 
 import './Button.scss';
 
-type ButtonProps = ComponentProps<'button'>;
+interface ButtonProps extends ComponentProps<'button'> {
+	withText?: boolean;
+	withIcon?: boolean;
+}
 
 const Button = ({
+	withText,
+	withIcon,
 	type,
 	onClick,
 	className,
 	children,
-	...props
 }: ButtonProps) => {
 	return (
-		<button type={type} onClick={onClick} className={cn('button', className)}>
+		<button
+			type={type}
+			onClick={onClick}
+			className={cn('button', className, {
+				'button--with-text': withText,
+				'button--with-icon': withIcon,
+			})}
+		>
 			{children}
 		</button>
 	);

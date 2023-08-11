@@ -5,7 +5,7 @@ import Button from '../../../../common/Button/Button';
 
 const UpdateCourseButton = () => {
 	return (
-		<Button className='update-course-button'>
+		<Button withIcon className='update-course-button'>
 			<FontAwesomeIcon icon={faPen} />
 		</Button>
 	);
