@@ -1,15 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import Button from '../../../common/Button/Button';
 import formatCourseDuration from '../../../../helpers/formatCourseDuration';
 import formatCreationDate from '../../../../helpers/formatCreationDate';
-
 import './CourseCard.scss';
-import { Author } from '../../../../types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ShowCourseButton from './ShowCourseButton/ShowCourseButton';
 import DeleteCourseButton from './DeleteCourseButton/DeleteCourseButton';
+import UpdateCourseButton from './UpdateCourseButton/UpdateCourseButton';
 
 interface CourseCardProps {
 	title: string;
@@ -51,6 +47,7 @@ const CourseCard = ({
 						<ShowCourseButton />
 					</Link>
 					<DeleteCourseButton />
+					<UpdateCourseButton />
 				</div>
 			</div>
 		</div>
