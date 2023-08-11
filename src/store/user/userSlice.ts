@@ -3,6 +3,7 @@ import { BASE_URL } from '../../services';
 import axios from 'axios';
 import { types } from 'sass';
 import Error = types.Error;
+import { toast } from 'react-toastify';
 
 interface UserData {
 	isAuth: boolean;
@@ -135,6 +136,8 @@ const userSlice = createSlice({
 			};
 		});
 		builder.addCase(logout.rejected, (state, action) => {
+			toast('logout.rejected!!');
+
 			return {
 				error: action.payload,
 				loading: false,
