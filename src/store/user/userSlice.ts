@@ -136,7 +136,7 @@ const userSlice = createSlice({
 			};
 		});
 		builder.addCase(logout.rejected, (state, action) => {
-			toast('logout.rejected!!');
+			// toast('logout.rejected!!');
 
 			return {
 				error: action.payload,

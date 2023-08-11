@@ -1,6 +1,6 @@
 export { default, login, logout, getUser } from './userSlice';
 export {
-	selectLoginError,
+	selectUserError,
 	selectBearerToken,
 	selectUserName,
 	selectIsAuth,

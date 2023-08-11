@@ -6,7 +6,7 @@ import './Login.scss';
 import Button from '../common/Button/Button';
 import { AppRoutes } from '../../constants/routes';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, selectIsAuth, selectLoginError } from '../../store/user';
+import { login, selectIsAuth, selectUserError } from '../../store/user';
 import { AppDispatch } from '../../store';
 
 const baseClass = 'login';
@@ -18,7 +18,7 @@ const LOGIN_BUTTON_TEXT = 'Login';
 
 const Login = () => {
 	const isAuth = useSelector(selectIsAuth);
-	const loginError = useSelector(selectLoginError);
+	const loginError = useSelector(selectUserError);
 
 	const dispatch: AppDispatch = useDispatch();
 	const navigate = useNavigate();
