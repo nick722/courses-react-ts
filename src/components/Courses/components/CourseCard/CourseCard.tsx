@@ -46,7 +46,7 @@ const CourseCard = ({
 					<Link to={`/courses/${id}`}>
 						<ShowCourseButton />
 					</Link>
-					<DeleteCourseButton />
+					<DeleteCourseButton courseId={id} />
 					<UpdateCourseButton />
 				</div>
 			</div>
