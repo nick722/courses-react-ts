@@ -1,6 +1,6 @@
 import { CourseAction, CoursesActionTypes, CourseType } from './types';
 
-export const coursesInitialState = [] as CourseType[];
+export const coursesInitialState = { data: [] as CourseType[] };
 
 export const coursesReducer = (
 	state = coursesInitialState,
@@ -8,9 +8,12 @@ export const coursesReducer = (
 ) => {
 	switch (action.type) {
 		case CoursesActionTypes.SAVE_COURSES:
-			return action.payload;
+			return { ...state, data: action.payload };
 		case CoursesActionTypes.ADD_COURSE:
-			return [...state, action.payload];
+			return {
+				...state,
+				data: [...state.data, action.payload],
+			};
 		case CoursesActionTypes.DELETE_COURSE:
 			return state; //todo
 		default:

@@ -10,7 +10,7 @@ import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
 import CourseInfo from '../CourseInfo/CourseInfo';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCourses } from '../../store/selectors';
+import { selectCourses } from '../../store/courses/selectors';
 import getCourses from '../../store/courses/thunk';
 import { getAuthors, selectAuthors } from '../../store/authors/authorsSlice';
 import { AppRoutes } from '../../constants/routes';
