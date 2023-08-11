@@ -9,7 +9,7 @@ import './Courses.scss';
 import { Author, Course } from '../../types';
 import getAuthorsById from '../../helpers/getAuthorsById';
 import { useSelector } from 'react-redux';
-import { selectIsAuth } from '../../store/user/userSlice';
+import { selectIsAuth } from '../../store/user';
 import { AppRoutes } from '../../constants/routes';
 
 interface CoursesProps {

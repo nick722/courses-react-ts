@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from './components/Logo/Logo';
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectUserName } from '../../store/user/userSlice';
+import { selectUserName } from '../../store/user';
 import LogoutButton from './components/LogoutButton/LogoutButton';
 import './Header.scss';
 

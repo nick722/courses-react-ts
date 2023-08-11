@@ -1,5 +1,5 @@
 import React from 'react';
-import { logout, selectBearerToken } from '../../../../store/user/userSlice';
+import { logout, selectBearerToken } from '../../../../store/user';
 import Button from '../../../common/Button/Button';
 import { AppDispatch } from '../../../../store';
 import { useDispatch, useSelector } from 'react-redux';

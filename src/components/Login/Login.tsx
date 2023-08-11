@@ -1,19 +1,12 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../common/Input/Input';
 import { Link, useNavigate } from 'react-router-dom';
 
 import './Login.scss';
 import Button from '../common/Button/Button';
-import axios from 'axios';
-import { BASE_URL } from '../../services';
 import { AppRoutes } from '../../constants/routes';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	getUser,
-	login,
-	selectIsAuth,
-	selectLoginError,
-} from '../../store/user/userSlice';
+import { login, selectIsAuth, selectLoginError } from '../../store/user';
 import { AppDispatch } from '../../store';
 
 const baseClass = 'login';

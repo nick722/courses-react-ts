@@ -14,7 +14,7 @@ import { selectCourses } from '../../store/courses/selectors';
 import getCourses from '../../store/courses/thunk';
 import { getAuthors, selectAuthors } from '../../store/authors/authorsSlice';
 import { AppRoutes } from '../../constants/routes';
-import { getUser, selectIsAuth } from '../../store/user/userSlice';
+import { getUser, selectIsAuth } from '../../store/user';
 import { AppDispatch } from '../../store';
 
 function App() {
