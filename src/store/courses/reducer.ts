@@ -1,5 +1,4 @@
 import { CourseAction, CoursesActionTypes, CourseType } from './types';
-import { mockedCoursesList } from '../../constants/mockedCoursesList.js';
 
 export const coursesInitialState = [] as CourseType[];
 
@@ -12,6 +11,8 @@ export const coursesReducer = (
 			return action.payload;
 		case CoursesActionTypes.ADD_COURSE:
 			return [...state, action.payload];
+		case CoursesActionTypes.DELETE_COURSE:
+			return state; //todo
 		default:
 			return state;
 	}
