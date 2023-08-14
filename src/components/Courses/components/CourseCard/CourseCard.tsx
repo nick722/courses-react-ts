@@ -6,6 +6,9 @@ import ShowCourseButton from './ShowCourseButton/ShowCourseButton';
 import DeleteCourseButton from './DeleteCourseButton/DeleteCourseButton';
 import UpdateCourseButton from './UpdateCourseButton/UpdateCourseButton';
 import './CourseCard.scss';
+import { checkIFAdmin } from '../../../../helpers/checkIFAdmin';
+import { useSelector } from 'react-redux';
+import { selectUserEmail } from '../../../../store/user/selectors';
 
 interface CourseCardProps {
 	title: string;
@@ -24,6 +27,9 @@ const CourseCard = ({
 	creationDate,
 	id,
 }: CourseCardProps) => {
+	const userEmail = useSelector(selectUserEmail);
+	const isRoleAdmin = checkIFAdmin(userEmail);
+
 	return (
 		<div className='course-card'>
 			<div className='course-card__left-side'>
@@ -46,8 +52,12 @@ const CourseCard = ({
 					<Link to={`/courses/${id}`}>
 						<ShowCourseButton />
 					</Link>
-					<DeleteCourseButton courseId={id} />
-					<UpdateCourseButton />
+					{isRoleAdmin && (
+						<>
+							<DeleteCourseButton courseId={id} />
+							<UpdateCourseButton />
+						</>
+					)}
 				</div>
 			</div>
 		</div>

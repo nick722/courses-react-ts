@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
-import {
-	logout,
-	selectBearerToken,
-	selectUserError,
-} from '../../../../store/user';
+import { logout, selectIsAuth, selectUserError } from '../../../../store/user';
 import Button from '../../../common/Button/Button';
 import { AppDispatch } from '../../../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getBearerToken } from '../../../../helpers/getBearerToken';
+import { useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../../../constants/routes';
 
 const LOGOUT_BUTTON_TEXT = 'Logout';
 const LogoutButton = () => {
 	const userError = useSelector(selectUserError);
+	const isAuth = useSelector(selectIsAuth);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (userError) toast.error(userError);
@@ -22,15 +22,21 @@ const LogoutButton = () => {
 	// const bearerToken = useSelector(selectBearerToken);
 	const bearerToken = getBearerToken();
 	const dispatch: AppDispatch = useDispatch();
+
+	const handleClick = () => {
+		dispatch(logout(bearerToken));
+		if (userError) return toast.error(userError);
+
+		localStorage.removeItem('token');
+		if (!isAuth) {
+			console.log('logged out');
+			navigate(AppRoutes.LOGIN);
+		}
+	};
+
 	return (
 		<>
-			<Button
-				withText
-				onClick={() => {
-					dispatch(logout(bearerToken));
-					if (userError) toast.error(userError);
-				}}
-			>
+			<Button withText onClick={handleClick}>
 				{LOGOUT_BUTTON_TEXT}
 			</Button>
 			<ToastContainer
