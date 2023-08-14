@@ -9,8 +9,9 @@ interface InputProps {
 	value: string;
 	onChange: (target) => void;
 	className?: string;
-	name: string;
+	name?: string;
 }
+
 const Input = ({
 	name,
 	labelText,
@@ -21,7 +22,7 @@ const Input = ({
 }: InputProps) => {
 	return (
 		<div className={cn('input', className)}>
-			<label for='input'>{labelText}</label>
+			<label htmlFor='input'>{labelText}</label>
 			<input
 				name={name}
 				value={value}

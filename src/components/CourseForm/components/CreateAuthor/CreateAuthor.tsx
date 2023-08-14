@@ -11,7 +11,7 @@ const INPUT_PLACEHOLDER = 'Enter author name...';
 const BUTTON_TEXT = 'Create author';
 
 interface CreateAuthorProps {
-	author: Author;
+	createAuthor: (string) => Author;
 }
 
 const CreateAuthor = ({ createAuthor }: CreateAuthorProps) => {
@@ -27,13 +27,15 @@ const CreateAuthor = ({ createAuthor }: CreateAuthorProps) => {
 				onChange={setAuthorsName}
 			/>
 			<Button
+				withText
 				type='button'
-				buttonText={BUTTON_TEXT}
 				onClick={() => {
 					setAuthorsName('');
 					createAuthor(authorsName);
 				}}
-			/>
+			>
+				{BUTTON_TEXT}
+			</Button>
 		</div>
 	);
 };

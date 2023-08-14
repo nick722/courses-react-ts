@@ -107,7 +107,7 @@ const CourseForm = ({ allAuthors }: CreateCourseProps) => {
 				</Button>
 			</div>
 			<div className='create-course__description'>
-				<label for='textarea'>Description</label>
+				<label htmlFor='textarea'>Description</label>
 				<textarea
 					name='description'
 					value={description}
