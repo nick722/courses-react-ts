@@ -3,7 +3,5 @@ courses-react-ts
 PROGRESS
 Module 4. Async Redux
 TODO:
-[2 points] - Create new component PrivateRoute.
-Use PrivateRoute for routes:
-/courses/add;
-/courses/update/:courseId
+[2 points] - Modify Logout functionality.
+Call endpoint for loggout on a back-end. (See /logout in the SWAGGER)
