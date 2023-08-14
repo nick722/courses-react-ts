@@ -2,7 +2,7 @@ import { BASE_URL } from '../../services';
 import axios from 'axios';
 import { saveCoursesAction } from './actions';
 
-const getCourses = () => async (dispatch) => {
+export const getCourses = () => async (dispatch) => {
 	const url = `${BASE_URL}/courses/all`;
 
 	try {
@@ -13,5 +13,3 @@ const getCourses = () => async (dispatch) => {
 		console.log(error);
 	}
 };
-
-export default getCourses;
