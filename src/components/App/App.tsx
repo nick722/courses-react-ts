@@ -16,6 +16,7 @@ import { getAuthorsAll, selectAuthors } from '../../store/authors';
 import { AppRoutes } from '../../constants/routes';
 import { getUser, selectIsAuth } from '../../store/user';
 import { AppDispatch } from '../../store';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 function App() {
 	const isAuth = useSelector(selectIsAuth);
@@ -40,7 +41,11 @@ function App() {
 					<Route path={AppRoutes.LOGIN} element={<Login />} />
 					<Route
 						path={AppRoutes.COURSE_INFO}
-						element={<CourseInfo courses={courses} allAuthors={authors} />}
+						element={
+							<PrivateRoute>
+								<CourseInfo courses={courses} allAuthors={authors} />
+							</PrivateRoute>
+						}
 					/>
 					<Route
 						path={AppRoutes.COURSES}
@@ -56,7 +61,11 @@ function App() {
 					/>
 					<Route
 						path={AppRoutes.CREATE_COURSE}
-						element={<CourseForm allAuthors={authors} />}
+						element={
+							<PrivateRoute>
+								<CourseForm allAuthors={authors} />
+							</PrivateRoute>
+						}
 					/>
 					<Route path='/' element={<Navigate to={AppRoutes.LOGIN} replace />} />
 				</Route>

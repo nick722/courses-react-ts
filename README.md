@@ -1,6 +1,9 @@
 courses-react-ts
 
 PROGRESS
-Module 3. State Management
+Module 4. Async Redux
 TODO:
-[1 point] - After clicking on the Delete course button a selected course should be deleted from the store.
+[2 points] - Create new component PrivateRoute.
+Use PrivateRoute for routes:
+/courses/add;
+/courses/update/:courseId
