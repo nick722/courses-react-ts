@@ -1,9 +1,6 @@
-// noinspection TypeScriptValidateTypes
-
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { AuthorsType } from './types';
-import axios from 'axios';
-import { BASE_URL } from '../../services';
+import { getAuthors } from './thunks';
 
 interface AuthorsState {
 	data: AuthorsType[] | null;
@@ -16,18 +13,6 @@ const initialState: AuthorsState = {
 	loading: false,
 	error: '',
 };
-
-export const getAuthors = createAsyncThunk('authors/getAuthors', async () => {
-	const url = `${BASE_URL}/authors/all`;
-
-	try {
-		const response = await axios.get(url);
-		const authors = response.data.result;
-		return authors;
-	} catch (error) {
-		return error;
-	}
-});
 
 const authorsSlice = createSlice({
 	name: 'authors',
@@ -53,6 +38,3 @@ const authorsSlice = createSlice({
 const { actions, reducer } = authorsSlice;
 export const { addAuthor } = actions;
 export default reducer;
-
-//Selectors
-export const selectAuthors = (state) => state.authors.data;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
-import CreateCourse from '../CreateCourse/CreateCourse';
+import CourseForm from '../CourseForm/CourseForm';
 import Courses from '../Courses/Courses';
 
 import './App.css';
@@ -12,7 +12,7 @@ import CourseInfo from '../CourseInfo/CourseInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCourses } from '../../store/courses/selectors';
 import getCourses from '../../store/courses/thunk';
-import { getAuthors, selectAuthors } from '../../store/authors/authorsSlice';
+import { getAuthors, selectAuthors } from '../../store/authors';
 import { AppRoutes } from '../../constants/routes';
 import { getUser, selectIsAuth } from '../../store/user';
 import { AppDispatch } from '../../store';
@@ -56,7 +56,7 @@ function App() {
 					/>
 					<Route
 						path={AppRoutes.CREATE_COURSE}
-						element={<CreateCourse allAuthors={authors} />}
+						element={<CourseForm allAuthors={authors} />}
 					/>
 					<Route path='/' element={<Navigate to={AppRoutes.LOGIN} replace />} />
 				</Route>

@@ -1,4 +1,5 @@
-export { default, login, logout, getUser } from './userSlice';
+export { default } from './userSlice';
+export { login, logout, getUser } from './thunks';
 export {
 	selectUserError,
 	selectBearerToken,
