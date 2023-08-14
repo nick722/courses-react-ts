@@ -1,5 +1,5 @@
 import { ADMIN } from '../admin-credentials';
 
-export const checkIFAdmin = (userEmail) => {
+export const checkIfAdmin = (userEmail) => {
 	return userEmail === ADMIN.EMAIL;
 };

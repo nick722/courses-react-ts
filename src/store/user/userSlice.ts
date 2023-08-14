@@ -35,7 +35,7 @@ const userSlice = createSlice({
 				error: null,
 				loading: false,
 				data: {
-					isAuth: !!bearerToken,
+					isAuth: true,
 					name: action.payload?.name || '',
 					email: action.payload?.email || '',
 					token: bearerToken,
@@ -49,7 +49,7 @@ const userSlice = createSlice({
 				error: null,
 				loading: false,
 				data: {
-					isAuth: !!bearerToken,
+					isAuth: !!action.payload.result,
 					name: action.payload?.user?.name,
 					email: action.payload?.user?.email,
 					token: action.payload.result,
@@ -86,12 +86,7 @@ const userSlice = createSlice({
 			return {
 				error: action.payload,
 				loading: false,
-				data: {
-					isAuth: !!bearerToken,
-					name: state.data.name,
-					email: state.data.email,
-					token: state.data.token,
-				},
+				data: state.data,
 			};
 		});
 	},

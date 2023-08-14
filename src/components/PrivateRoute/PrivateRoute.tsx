@@ -2,11 +2,11 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUserEmail } from '../../store/user/selectors';
-import { checkIFAdmin } from '../../helpers/checkIFAdmin';
+import { checkIfAdmin } from '../../helpers/checkIfAdmin';
 
 const PrivateRoute = ({ children }) => {
 	const userEmail = useSelector(selectUserEmail);
-	const isAdmin = checkIFAdmin(userEmail);
+	const isAdmin = checkIfAdmin(userEmail);
 
 	return isAdmin ? children : <Navigate to={'/login'} />;
 };
