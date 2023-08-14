@@ -2,7 +2,7 @@ import { BASE_URL } from '../../services';
 import axios from 'axios';
 import { saveCoursesAction } from './actions';
 
-export const getCourses = () => async (dispatch) => {
+export const getCoursesAll = () => async (dispatch) => {
 	const url = `${BASE_URL}/courses/all`;
 
 	try {

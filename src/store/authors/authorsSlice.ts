@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AuthorsType } from './types';
-import { getAuthors } from './thunks';
+import { getAuthorsAll } from './thunks';
 
 interface AuthorsState {
 	data: AuthorsType[] | null;
@@ -28,7 +28,7 @@ const authorsSlice = createSlice({
 		}),
 	},
 	extraReducers: (builder) => {
-		builder.addCase(getAuthors.fulfilled, (state, action) => ({
+		builder.addCase(getAuthorsAll.fulfilled, (state, action) => ({
 			...state,
 			data: action.payload,
 		}));

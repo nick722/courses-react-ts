@@ -1,2 +1,2 @@
-export { getCourses } from './thunks';
+export { getCoursesAll } from './thunks';
 export { coursesReducer } from './reducer';

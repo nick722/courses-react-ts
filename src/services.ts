@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const BASE_URL = 'http://localhost:4000';
 
-// export const getCourses = async () => {
+// export const getCoursesAll = async () => {
 // 	const url = `${BASE_URL}/courses/all`;
 //
 // 	try {
@@ -13,7 +13,7 @@ export const BASE_URL = 'http://localhost:4000';
 // 	}
 // };
 
-// export const getAuthors = async () => {
+// export const getAuthorsAll = async () => {
 // 	const url = `${BASE_URL}/authors/all`;
 //
 // 	try {

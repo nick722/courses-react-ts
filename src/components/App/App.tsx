@@ -11,8 +11,8 @@ import Login from '../Login/Login';
 import CourseInfo from '../CourseInfo/CourseInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCourses } from '../../store/courses/selectors';
-import { getCourses } from '../../store/courses/thunks';
-import { getAuthors, selectAuthors } from '../../store/authors';
+import { getCoursesAll } from '../../store/courses/thunks';
+import { getAuthorsAll, selectAuthors } from '../../store/authors';
 import { AppRoutes } from '../../constants/routes';
 import { getUser, selectIsAuth } from '../../store/user';
 import { AppDispatch } from '../../store';
@@ -28,8 +28,8 @@ function App() {
 
 	useEffect(() => {
 		dispatch(getUser());
-		dispatch(getAuthors());
-		dispatch(getCourses());
+		dispatch(getAuthorsAll());
+		dispatch(getCoursesAll());
 	}, []);
 
 	return (

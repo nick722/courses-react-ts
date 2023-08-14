@@ -5,6 +5,7 @@ import AuthorItem from '../AuthorItem';
 import './AuthorsList.scss';
 
 interface AuthorsProps {
+	buttonText: string;
 	authors: Author[];
 	title: string;
 	onClick: () => any;
