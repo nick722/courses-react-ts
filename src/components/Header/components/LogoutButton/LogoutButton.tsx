@@ -9,6 +9,7 @@ import { AppDispatch } from '../../../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getBearerToken } from '../../../../helpers/getBearerToken';
 
 const LOGOUT_BUTTON_TEXT = 'Logout';
 const LogoutButton = () => {
@@ -18,7 +19,8 @@ const LogoutButton = () => {
 		if (userError) toast.error(userError);
 	}, [userError]);
 
-	const bearerToken = useSelector(selectBearerToken);
+	// const bearerToken = useSelector(selectBearerToken);
+	const bearerToken = getBearerToken();
 	const dispatch: AppDispatch = useDispatch();
 	return (
 		<>

@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { types } from 'sass';
 import Error = types.Error;
 import { getUser, login, logout } from './thunks';
-import { bearerToken } from '../../helpers/bearerToken';
+import { getBearerToken } from '../../helpers/getBearerToken';
+
+const bearerToken = getBearerToken();
 
 interface UserData {
 	isAuth: boolean;

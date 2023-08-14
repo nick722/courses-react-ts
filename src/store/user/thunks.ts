@@ -2,7 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../services';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { bearerToken } from '../../helpers/bearerToken';
+import { getBearerToken } from '../../helpers/getBearerToken';
+
+const bearerToken = getBearerToken();
 
 export const getUser = createAsyncThunk('user/getUser', async () => {
 	const url = `${BASE_URL}/users/me`;
