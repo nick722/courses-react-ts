@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../../../common/Button/Button';
-import { useDispatch } from 'react-redux';
-import { deleteCourseAction } from '../../../../../store/courses/actions';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../../../../store';
+import { deleteCourse } from '../../../../../store/courses/thunks';
+import { selectCourseDeleteError } from '../../../../../store/courses/selectors';
+import { toast, ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 interface DeleteCourseButtonProps {
 	courseId: string;
@@ -12,17 +16,30 @@ interface DeleteCourseButtonProps {
 
 const DeleteCourseButton = ({ courseId }: DeleteCourseButtonProps) => {
 	const dispatch: AppDispatch = useDispatch();
+	const deleteError = useSelector(selectCourseDeleteError);
 
-	const handleClick = (courseId) => dispatch(deleteCourseAction(courseId));
+	useEffect(() => {
+		if (deleteError) toast.error(deleteError);
+	}, [deleteError]);
+	const handleClick = (courseId) => dispatch(deleteCourse(courseId));
 
 	return (
-		<Button
-			onClick={() => handleClick(courseId)}
-			withIcon
-			className='delete-course-button'
-		>
-			<FontAwesomeIcon icon={faTrash} />
-		</Button>
+		<>
+			<Button
+				onClick={() => handleClick(courseId)}
+				withIcon
+				className='delete-course-button'
+			>
+				<FontAwesomeIcon icon={faTrash} />
+			</Button>
+			<ToastContainer
+				position='top-right'
+				autoClose={5000}
+				hideProgressBar={true}
+				closeOnClick
+				theme='colored'
+			/>
+		</>
 	);
 };
 

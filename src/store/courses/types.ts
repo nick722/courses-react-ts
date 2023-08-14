@@ -10,6 +10,7 @@ export type CourseType = {
 export enum CoursesActionTypes {
 	SAVE_COURSES = 'SAVE_COURSES',
 	DELETE_COURSE = 'DELETE_COURSE',
+	DELETE_COURSE_FAILED = 'DELETE_COURSE_FAILED',
 	ADD_COURSE = 'ADD_COURSE',
 	UPDATE_COURSE = 'UPDATE_COURSE',
 }
@@ -34,4 +35,13 @@ export interface DeleteCourse {
 	payload: string;
 }
 
-export type CourseAction = SaveCourses | AddCourse | DeleteCourse;
+export interface DeleteCourseFailed {
+	type: CoursesActionTypes.DELETE_COURSE_FAILED;
+	payload: string;
+}
+
+export type CourseAction =
+	| SaveCourses
+	| AddCourse
+	| DeleteCourse
+	| DeleteCourseFailed;

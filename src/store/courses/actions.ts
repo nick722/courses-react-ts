@@ -14,6 +14,11 @@ export const deleteCourseAction = (payload) => ({
 	payload,
 });
 
+export const deleteCourseFailed = (payload) => ({
+	type: CoursesActionTypes.DELETE_COURSE_FAILED,
+	payload,
+});
+
 export const saveCoursesAction = (payload) => ({
 	type: CoursesActionTypes.SAVE_COURSES,
 	payload,
