@@ -43,6 +43,8 @@ const userSlice = createSlice({
 			};
 		});
 		builder.addCase(login.fulfilled, (state, action) => {
+			console.log('login action.payload', action.payload);
+
 			return {
 				error: null,
 				loading: false,

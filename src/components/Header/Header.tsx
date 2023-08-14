@@ -15,7 +15,7 @@ const Header = () => {
 				<Logo />
 				<div className='header__right-block'>
 					<span className='header__user-name'>{userName}</span>
-					<LogoutButton />
+					{userName && <LogoutButton />}
 				</div>
 			</header>
 			<Outlet />
