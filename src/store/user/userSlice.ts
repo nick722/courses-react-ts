@@ -35,7 +35,7 @@ const userSlice = createSlice({
 				error: null,
 				loading: false,
 				data: {
-					isAuth: true,
+					isAuth: !!bearerToken,
 					name: action.payload?.name || '',
 					email: action.payload?.email || '',
 					token: bearerToken,
