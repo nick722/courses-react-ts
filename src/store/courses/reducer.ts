@@ -24,7 +24,7 @@ export const coursesReducer = (
 				...state,
 				error: null,
 				loading: false,
-				// data: [...state.data, action.payload],
+				data: [...state.data, action.payload],
 			};
 		case CoursesActionTypes.ADD_COURSE_REJECTED:
 			return { ...state, loading: false, error: action.payload };

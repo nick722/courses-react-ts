@@ -34,6 +34,7 @@ export interface AddCoursePending {
 
 export interface AddCourseFulfilled {
 	type: CoursesActionTypes.ADD_COURSE_FULFILLED;
+	payload: CourseType;
 }
 
 export interface AddCourseRejected {

@@ -60,7 +60,7 @@ export const addCourse = (course: Course) => async (dispatch) => {
 			course,
 			adminAuthorizationConfig
 		);
-		dispatch(addCourseFulfilled());
+		dispatch(addCourseFulfilled(course));
 	} catch (error) {
 		dispatch(addCourseRejected(error.message));
 	}

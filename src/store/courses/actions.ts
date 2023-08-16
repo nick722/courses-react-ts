@@ -10,8 +10,9 @@ export const addCoursePending = (): AddCoursePending => ({
 	type: CoursesActionTypes.ADD_COURSE_PENDING,
 });
 
-export const addCourseFulfilled = (): AddCourseFulfilled => ({
+export const addCourseFulfilled = (payload): AddCourseFulfilled => ({
 	type: CoursesActionTypes.ADD_COURSE_FULFILLED,
+	payload,
 });
 
 export const addCourseRejected = (payload) => ({
