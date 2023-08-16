@@ -41,8 +41,6 @@ export const deleteCourse = (id) => async (dispatch) => {
 		dispatch(deleteCourseFulfilled(id));
 		return response;
 	} catch (error) {
-		console.log(error);
 		dispatch(deleteCourseFailed(error.message));
-		// return error;
 	}
 };

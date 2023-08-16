@@ -16,11 +16,7 @@ interface DeleteCourseButtonProps {
 
 const DeleteCourseButton = ({ courseId }: DeleteCourseButtonProps) => {
 	const dispatch: AppDispatch = useDispatch();
-	const deleteError = useSelector(selectCourseDeleteError);
 
-	useEffect(() => {
-		if (deleteError) toast.error(deleteError);
-	}, [deleteError]);
 	const handleClick = (courseId) => {
 		dispatch(deleteCourse(courseId));
 	};

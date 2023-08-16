@@ -5,8 +5,8 @@ Module 4. Async Redux
 
 TODO: FIX
 
-1) Logout 403
 2) Delete course 400
+3) User not logged in after refresh
 
 TODO:
 [2 points] - Sent delete request to the back-end. (See /courses/{id} in the SWAGGER).
