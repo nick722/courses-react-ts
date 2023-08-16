@@ -8,13 +8,13 @@ interface AuthorsProps {
 	buttonText: string;
 	authors: Author[];
 	title: string;
-	onClick: () => any;
+	onClick: (addedAuthor: Author) => void;
 }
 
 const renderAuthorsList = (
 	authors: Author[],
 	buttonText: string,
-	onClick: () => any
+	onClick: (author: Author) => void
 ) => (
 	<ul>
 		{authors.map((author) => (

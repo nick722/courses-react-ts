@@ -8,7 +8,7 @@ import { Author } from '../../../types';
 interface AuthorItemProps {
 	author: Author;
 	buttonText: string;
-	onClick: (author: Author) => any;
+	onClick: (addedAuthor: Author) => void;
 }
 
 const AuthorItem = ({ author, buttonText, onClick }: AuthorItemProps) => {
