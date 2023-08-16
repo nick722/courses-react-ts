@@ -9,16 +9,8 @@ import {
 	addCourseRejected,
 	addCourseFulfilled,
 } from './actions';
-import { getBearerToken } from '../../helpers/getBearerToken';
 import { Course } from '../../types';
-
-const bearerToken = getBearerToken();
-
-const adminAuthorizationConfig = {
-	headers: {
-		Authorization: bearerToken,
-	},
-};
+import { getAdminAuthorizationConfig } from '../../helpers/adminAuthorizationConfig';
 
 export const getCoursesAll = () => async (dispatch) => {
 	const url = `${BASE_URL}/courses/all`;
@@ -38,7 +30,10 @@ export const deleteCourse = (id) => async (dispatch) => {
 	dispatch(deleteCoursePending());
 
 	try {
-		const response = await axios.delete(deleteUrl, adminAuthorizationConfig);
+		const response = await axios.delete(
+			deleteUrl,
+			getAdminAuthorizationConfig()
+		);
 		if (!response.data.successful) {
 			throw new Error(response.data.result);
 		}
@@ -58,7 +53,7 @@ export const addCourse = (course: Course) => async (dispatch) => {
 		const response = await axios.post(
 			addCourseUrl,
 			course,
-			adminAuthorizationConfig
+			getAdminAuthorizationConfig()
 		);
 		const addedCourse = response.data.result;
 		dispatch(addCourseFulfilled(addedCourse));
