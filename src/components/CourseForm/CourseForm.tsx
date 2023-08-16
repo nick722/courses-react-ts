@@ -14,8 +14,10 @@ import './CourseForm.scss';
 import formatCreationDate from '../../helpers/formatCreationDate';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addCourseAction } from '../../store/courses/actions';
+import { addCourseFulfilled } from '../../store/courses/actions';
 import { addAuthor } from '../../store/authors/authorsSlice';
+import { addCourse } from '../../store/courses/thunks';
+import { AppDispatch } from '../../store';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -32,7 +34,7 @@ interface CreateCourseProps {
 }
 
 const CourseForm = ({ allAuthors }: CreateCourseProps) => {
-	const dispatch = useDispatch();
+	const dispatch: AppDispatch = useDispatch();
 
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
@@ -85,7 +87,7 @@ const CourseForm = ({ allAuthors }: CreateCourseProps) => {
 	};
 
 	const addNewCourse = (course) => {
-		dispatch(addCourseAction(course));
+		dispatch(addCourse(course));
 	};
 
 	return (

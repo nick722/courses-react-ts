@@ -5,10 +5,20 @@ import {
 	deleteCourseFailed,
 	saveCoursesAction,
 	deleteCoursePending,
+	addCoursePending,
+	addCourseRejected,
+	addCourseFulfilled,
 } from './actions';
 import { getBearerToken } from '../../helpers/getBearerToken';
+import { Course } from '../../types';
 
 const bearerToken = getBearerToken();
+
+const adminAuthorizationConfig = {
+	headers: {
+		Authorization: bearerToken,
+	},
+};
 
 export const getCoursesAll = () => async (dispatch) => {
 	const url = `${BASE_URL}/courses/all`;
@@ -24,17 +34,11 @@ export const getCoursesAll = () => async (dispatch) => {
 
 export const deleteCourse = (id) => async (dispatch) => {
 	const deleteUrl = `${BASE_URL}/courses/${id}`;
-	const config = {
-		headers: {
-			Authorization: bearerToken,
-		},
-	};
 
 	dispatch(deleteCoursePending());
 
 	try {
-		const response = await axios.delete(deleteUrl, config);
-		console.log('delete response', response);
+		const response = await axios.delete(deleteUrl, adminAuthorizationConfig);
 		if (!response.data.successful) {
 			throw new Error(response.data.result);
 		}
@@ -42,5 +46,22 @@ export const deleteCourse = (id) => async (dispatch) => {
 		return response;
 	} catch (error) {
 		dispatch(deleteCourseFailed(error.message));
+	}
+};
+
+export const addCourse = (course: Course) => async (dispatch) => {
+	const addCourseUrl = `${BASE_URL}/courses/add`;
+
+	dispatch(addCoursePending());
+
+	try {
+		const response = await axios.post(
+			addCourseUrl,
+			course,
+			adminAuthorizationConfig
+		);
+		dispatch(addCourseFulfilled());
+	} catch (error) {
+		dispatch(addCourseRejected(error.message));
 	}
 };

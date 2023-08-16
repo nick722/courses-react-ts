@@ -12,7 +12,9 @@ export enum CoursesActionTypes {
 	DELETE_COURSE_PENDING = 'DELETE_COURSE_PENDING',
 	DELETE_COURSE_FULFILLED = 'DELETE_COURSE_FULFILLED',
 	DELETE_COURSE_FAILED = 'DELETE_COURSE_FAILED',
-	ADD_COURSE = 'ADD_COURSE',
+	ADD_COURSE_PENDING = 'ADD_COURSE_PENDING',
+	ADD_COURSE_FULFILLED = 'ADD_COURSE_FULFILLED',
+	ADD_COURSE_REJECTED = 'ADD_COURSE_REJECTED',
 	UPDATE_COURSE = 'UPDATE_COURSE',
 }
 
@@ -26,9 +28,17 @@ export interface SaveCourses {
 	payload: CourseType[];
 }
 
-export interface AddCourse {
-	type: CoursesActionTypes.ADD_COURSE;
-	payload: CourseType;
+export interface AddCoursePending {
+	type: CoursesActionTypes.ADD_COURSE_PENDING;
+}
+
+export interface AddCourseFulfilled {
+	type: CoursesActionTypes.ADD_COURSE_FULFILLED;
+}
+
+export interface AddCourseRejected {
+	type: CoursesActionTypes.ADD_COURSE_REJECTED;
+	payload: string;
 }
 
 export interface DeleteCoursePending {
@@ -47,7 +57,9 @@ export interface DeleteCourseFailed {
 
 export type CourseAction =
 	| SaveCourses
-	| AddCourse
+	| AddCoursePending
+	| AddCourseFulfilled
+	| AddCourseRejected
 	| DeleteCoursePending
 	| DeleteCourseFulfilled
 	| DeleteCourseFailed;
