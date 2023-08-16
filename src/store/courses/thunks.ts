@@ -23,7 +23,7 @@ export const getCoursesAll = () => async (dispatch) => {
 };
 
 export const deleteCourse = (id) => async (dispatch) => {
-	const deleteUrl = `${BASE_URL}/courses/{${id}}`;
+	const deleteUrl = `${BASE_URL}/courses/${id}`;
 	const config = {
 		headers: {
 			Authorization: bearerToken,

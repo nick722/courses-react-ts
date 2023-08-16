@@ -102,7 +102,7 @@ const CourseForm = ({ allAuthors }: CreateCourseProps) => {
 					placeholderText={TITLE_PLACEHODER}
 					onChange={handleTitleChange}
 				/>
-				<Button className='create-course__header-button' type='submit'>
+				<Button withText className='create-course__header-button' type='submit'>
 					{CREATE_COURSE}
 				</Button>
 			</div>
