@@ -9,8 +9,13 @@ export const addCourseAction = (courseData: CourseType): AddCourse => ({
 	type: CoursesActionTypes.ADD_COURSE,
 	payload: courseData,
 });
-export const deleteCourseAction = (payload) => ({
-	type: CoursesActionTypes.DELETE_COURSE,
+
+export const deleteCoursePending = () => ({
+	type: CoursesActionTypes.DELETE_COURSE_PENDING,
+});
+
+export const deleteCourseFulfilled = (payload) => ({
+	type: CoursesActionTypes.DELETE_COURSE_FULFILLED,
 	payload,
 });
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import CourseForm from '../CourseForm/CourseForm';
 import Courses from '../Courses/Courses';
-
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -17,6 +17,7 @@ import { AppRoutes } from '../../constants/routes';
 import { getUser, selectIsAuth } from '../../store/user';
 import { AppDispatch } from '../../store';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 	const isAuth = useSelector(selectIsAuth);
@@ -70,6 +71,13 @@ function App() {
 					<Route path='/' element={<Navigate to={AppRoutes.LOGIN} replace />} />
 				</Route>
 			</Routes>
+			<ToastContainer
+				position='top-right'
+				autoClose={1000}
+				hideProgressBar={true}
+				closeOnClick
+				theme='colored'
+			/>
 		</div>
 	);
 }

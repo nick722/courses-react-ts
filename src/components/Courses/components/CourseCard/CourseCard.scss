@@ -18,15 +18,12 @@
   }
 
   &__right-side {
-    display: flex;
-    flex-direction: column;
     width: 35%;
     padding: 20px;
   }
 
   &__buttons {
     & button {
-      align-self: center;
       margin-left: 10px;
     }
   }

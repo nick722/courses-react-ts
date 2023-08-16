@@ -12,17 +12,22 @@ export const coursesReducer = (
 		case CoursesActionTypes.ADD_COURSE:
 			return {
 				...state,
-				error: '',
+				error: null,
 				data: [...state.data, action.payload],
 			};
-		case CoursesActionTypes.DELETE_COURSE:
+		case CoursesActionTypes.DELETE_COURSE_PENDING:
 			return {
 				...state,
-				error: '',
+				error: null,
+			};
+		case CoursesActionTypes.DELETE_COURSE_FULFILLED:
+			return {
+				...state,
+				error: null,
 				data: state.data.filter((course) => course.id !== action.payload),
 			};
 		case CoursesActionTypes.DELETE_COURSE_FAILED:
-			console.log('delete action.payload', action.payload);
+			// console.log('delete action.payload', action.payload);
 			return {
 				...state,
 				error: action.payload,

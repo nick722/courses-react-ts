@@ -1,9 +1,10 @@
 import { BASE_URL } from '../../services';
 import axios from 'axios';
 import {
-	deleteCourseAction,
+	deleteCourseFulfilled,
 	deleteCourseFailed,
 	saveCoursesAction,
+	deleteCoursePending,
 } from './actions';
 import { getBearerToken } from '../../helpers/getBearerToken';
 
@@ -29,13 +30,15 @@ export const deleteCourse = (id) => async (dispatch) => {
 		},
 	};
 
+	dispatch(deleteCoursePending());
+
 	try {
 		const response = await axios.delete(deleteUrl, config);
 		console.log('delete response', response);
 		if (!response.data.successful) {
 			throw new Error(response.data.result);
 		}
-		// dispatch(deleteCourseAction(id));
+		dispatch(deleteCourseFulfilled(id));
 		return response;
 	} catch (error) {
 		console.log(error);

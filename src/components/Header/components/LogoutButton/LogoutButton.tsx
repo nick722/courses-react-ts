@@ -25,11 +25,9 @@ const LogoutButton = () => {
 
 	const handleClick = () => {
 		dispatch(logout(bearerToken));
-		if (userError) return toast.error(userError);
 
 		localStorage.removeItem('token');
 		if (!isAuth) {
-			console.log('logged out');
 			navigate(AppRoutes.LOGIN);
 		}
 	};
@@ -39,13 +37,13 @@ const LogoutButton = () => {
 			<Button withText onClick={handleClick}>
 				{LOGOUT_BUTTON_TEXT}
 			</Button>
-			<ToastContainer
-				position='top-right'
-				autoClose={5000}
-				hideProgressBar={true}
-				closeOnClick
-				theme='colored'
-			/>
+			{/*<ToastContainer*/}
+			{/*	position='top-right'*/}
+			{/*	autoClose={5000}*/}
+			{/*	hideProgressBar={true}*/}
+			{/*	closeOnClick*/}
+			{/*	theme='colored'*/}
+			{/*/>*/}
 		</>
 	);
 };

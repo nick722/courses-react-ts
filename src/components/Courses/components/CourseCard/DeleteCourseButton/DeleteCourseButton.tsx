@@ -21,7 +21,9 @@ const DeleteCourseButton = ({ courseId }: DeleteCourseButtonProps) => {
 	useEffect(() => {
 		if (deleteError) toast.error(deleteError);
 	}, [deleteError]);
-	const handleClick = (courseId) => dispatch(deleteCourse(courseId));
+	const handleClick = (courseId) => {
+		dispatch(deleteCourse(courseId));
+	};
 
 	return (
 		<>
@@ -32,13 +34,13 @@ const DeleteCourseButton = ({ courseId }: DeleteCourseButtonProps) => {
 			>
 				<FontAwesomeIcon icon={faTrash} />
 			</Button>
-			<ToastContainer
-				position='top-right'
-				autoClose={5000}
-				hideProgressBar={true}
-				closeOnClick
-				theme='colored'
-			/>
+			{/*<ToastContainer*/}
+			{/*	position='top-right'*/}
+			{/*	autoClose={1000}*/}
+			{/*	hideProgressBar={true}*/}
+			{/*	closeOnClick*/}
+			{/*	theme='colored'*/}
+			{/*/>*/}
 		</>
 	);
 };

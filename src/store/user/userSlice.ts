@@ -84,7 +84,7 @@ const userSlice = createSlice({
 			// toast('logout.rejected!!');
 
 			return {
-				error: action.payload,
+				error: 'action.payload',
 				loading: false,
 				data: state.data,
 			};

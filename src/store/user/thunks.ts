@@ -53,12 +53,12 @@ export const logout = createAsyncThunk(
 			},
 		};
 
-		try {
-			const response = await axios.delete(logoutUrl, config);
-			return response.data;
-		} catch (error) {
-			toast.error(error);
-			return rejectWithValue(error.message);
-		}
+		// try {
+		const response = await axios.delete(logoutUrl, config);
+		return response.data;
+		// } catch (error) {
+		// 	toast.error(error);
+		// 	return rejectWithValue(error.message);
+		// }
 	}
 );
