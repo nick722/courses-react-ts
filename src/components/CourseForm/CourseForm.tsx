@@ -48,7 +48,7 @@ const CourseForm = ({ allAuthors }: CreateCourseProps) => {
 		setCourseAuthors([...courseAuthors, addedAuthor]);
 	};
 
-	const createAuthor = (authorsName) => {
+	const createAuthor = (authorsName: string) => {
 		const author = { name: authorsName, id: uuid() };
 		setIdleAuthors([...idleAuthors, author]);
 		// dispatch(addAuthorAction(author));

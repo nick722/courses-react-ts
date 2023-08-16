@@ -11,7 +11,7 @@ const INPUT_PLACEHOLDER = 'Enter author name...';
 const BUTTON_TEXT = 'Create author';
 
 interface CreateAuthorProps {
-	createAuthor: (string) => Author;
+	createAuthor: (authorsName: string) => void;
 }
 
 const CreateAuthor = ({ createAuthor }: CreateAuthorProps) => {
