@@ -1,27 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AuthorsType } from './types';
-import { getAuthorsAll } from './thunks';
+import { getAuthorsAll, postAuthorsAdd } from './thunks';
 
-interface AuthorsState {
-	data: AuthorsType[] | null;
-	loading: boolean;
-	error: string;
-}
-
-const initialState: AuthorsState = {
+const initialState = {
 	data: null,
 	loading: false,
-	error: '',
+	error: null,
 };
 
 const authorsSlice = createSlice({
 	name: 'authors',
 	initialState,
 	reducers: {
-		save: (state, action) => {
-			// const { payload } = action;
-			// state.authors = [...state.authors, payload];
-		},
 		addAuthor: (state, action) => ({
 			...state,
 			data: [...state.data, action.payload],
@@ -32,9 +21,28 @@ const authorsSlice = createSlice({
 			...state,
 			data: action.payload,
 		}));
+		builder.addCase(postAuthorsAdd.pending, (state) => ({
+			...state,
+			error: null,
+			loading: true,
+		}));
+		builder.addCase(postAuthorsAdd.fulfilled, (state, action) => {
+			console.log('action.payload', action.payload);
+
+			return {
+				...state,
+				error: null,
+				loading: false,
+				data: [...state.data, action.payload.data.result],
+			};
+		});
+		builder.addCase(postAuthorsAdd.rejected, (state, action) => ({
+			...state,
+			error: action.payload,
+			loading: false,
+		}));
 	},
 });
 
-const { actions, reducer } = authorsSlice;
-export const { addAuthor } = actions;
+const { reducer } = authorsSlice;
 export default reducer;

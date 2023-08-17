@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../services';
 import axios from 'axios';
+import { getAdminAuthorizationConfig } from '../../helpers/adminAuthorizationConfig';
+import { Author } from '../../types';
 
 export const getAuthorsAll = createAsyncThunk(
 	'authors/getAuthorsAll',
@@ -14,5 +16,20 @@ export const getAuthorsAll = createAsyncThunk(
 		} catch (error) {
 			return error;
 		}
+	}
+);
+
+export const postAuthorsAdd = createAsyncThunk(
+	'authors/postAuthorsAdd',
+	async (author: Author) => {
+		const authorsAppUrl = `${BASE_URL}/authors/add`;
+
+		const response = await axios.post(
+			authorsAppUrl,
+			author,
+			getAdminAuthorizationConfig()
+		);
+
+		return response;
 	}
 );

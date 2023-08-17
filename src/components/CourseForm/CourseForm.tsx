@@ -14,10 +14,9 @@ import './CourseForm.scss';
 import formatCreationDate from '../../helpers/formatCreationDate';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addCourseFulfilled } from '../../store/courses/actions';
-import { addAuthor } from '../../store/authors/authorsSlice';
 import { addCourse } from '../../store/courses/thunks';
 import { AppDispatch } from '../../store';
+import { postAuthorsAdd } from '../../store/authors/thunks';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -50,11 +49,10 @@ const CourseForm = ({ allAuthors }: CreateCourseProps) => {
 		setCourseAuthors([...courseAuthors, addedAuthor]);
 	};
 
-	const createAuthor = (authorsName: string) => {
+	const createAuthor = async (authorsName: string) => {
 		const author = { name: authorsName, id: uuid() };
-		setIdleAuthors([...idleAuthors, author]);
-		// dispatch(addAuthorAction(author));
-		dispatch(addAuthor(author));
+		dispatch(postAuthorsAdd(author));
+		// setIdleAuthors([...idleAuthors, addedAuthor]);
 	};
 
 	const deleteAuthorFromCourse = (deletedAuthor) => {
