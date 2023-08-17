@@ -28,11 +28,6 @@ const DELETE_AUTHOR_TEXT = 'Delete author';
 
 const forbiddenSymbols = /[@#$%^&]/;
 
-interface CreateCourseProps {
-	allAuthors: Author[];
-	// addNewCourse(course: Course): (value: any) => void;
-}
-
 const CourseForm = () => {
 	const dispatch: AppDispatch = useDispatch();
 	const allAuthors = useSelector(selectAuthors);

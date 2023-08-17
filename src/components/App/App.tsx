@@ -90,7 +90,7 @@ function App() {
 						path={APP_ROUTES.CREATE_COURSE}
 						element={
 							<PrivateRoute>
-								<CourseForm allAuthors={authors} />
+								<CourseForm />
 							</PrivateRoute>
 						}
 					/>
