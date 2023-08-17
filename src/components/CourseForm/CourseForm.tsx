@@ -47,15 +47,10 @@ const CourseForm = () => {
 	};
 
 	const createAuthor = async (authorsName: string) => {
-		const author = { name: authorsName, id: uuid() };
+		const createdAuthor = { name: authorsName, id: uuid() };
 
-		try {
-			const response = await dispatch(postAuthorsAdd(author)).unwrap();
-			const addedAuthor = response.data.result;
-			setIdleAuthors([...idleAuthors, addedAuthor]);
-		} catch (rejectedValue) {
-			console.log('postAuthorsAdd rejectedValue', rejectedValue);
-		}
+		const addedAuthor = await dispatch(postAuthorsAdd(createdAuthor)).unwrap();
+		setIdleAuthors([...idleAuthors, addedAuthor]);
 	};
 
 	const deleteAuthorFromCourse = (deletedAuthor) => {

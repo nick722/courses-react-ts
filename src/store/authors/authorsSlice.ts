@@ -35,7 +35,7 @@ const authorsSlice = createSlice({
 				...state,
 				error: null,
 				loading: false,
-				data: [...state.data, action.payload.data.result],
+				data: [...state.data, action.payload],
 			};
 		});
 		builder.addCase(postAuthorsAdd.rejected, (state, action) => {

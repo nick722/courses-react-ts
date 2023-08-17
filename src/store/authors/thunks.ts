@@ -24,12 +24,16 @@ export const postAuthorsAdd = createAsyncThunk(
 	async (author: Author) => {
 		const authorsAppUrl = `${BASE_URL}/authors/add`;
 
-		const response = await axios.post(
-			authorsAppUrl,
-			author,
-			getAdminAuthorizationConfig()
-		);
+		try {
+			const response = await axios.post(
+				authorsAppUrl,
+				author,
+				getAdminAuthorizationConfig()
+			);
 
-		return response;
+			return response.data.result;
+		} catch (error) {
+			return error;
+		}
 	}
 );
