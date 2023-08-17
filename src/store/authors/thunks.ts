@@ -30,6 +30,6 @@ export const postAuthorsAdd = createAsyncThunk(
 			getAdminAuthorizationConfig()
 		);
 
-		return response.data.result;
+		return response;
 	}
 );

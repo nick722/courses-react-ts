@@ -3,6 +3,12 @@ export type AuthorsType = {
 	name: string;
 };
 
+export interface AuthorsState {
+	loading: boolean;
+	error: null | string;
+	data: AuthorsType[] | null;
+}
+
 export enum AuthorsActionTypes {
 	SAVE_AUTHORS = 'SAVE_AUTHORS',
 	DELETE_AUTHOR = 'DELETE_AUTHOR',

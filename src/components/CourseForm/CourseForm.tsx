@@ -13,10 +13,11 @@ import { Author, Course } from '../../types';
 import './CourseForm.scss';
 import formatCreationDate from '../../helpers/formatCreationDate';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addCourse } from '../../store/courses/thunks';
 import { AppDispatch } from '../../store';
 import { postAuthorsAdd } from '../../store/authors/thunks';
+import { selectAuthors } from '../../store/authors';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -32,8 +33,9 @@ interface CreateCourseProps {
 	// addNewCourse(course: Course): (value: any) => void;
 }
 
-const CourseForm = ({ allAuthors }: CreateCourseProps) => {
+const CourseForm = () => {
 	const dispatch: AppDispatch = useDispatch();
+	const allAuthors = useSelector(selectAuthors);
 
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
@@ -51,8 +53,14 @@ const CourseForm = ({ allAuthors }: CreateCourseProps) => {
 
 	const createAuthor = async (authorsName: string) => {
 		const author = { name: authorsName, id: uuid() };
-		dispatch(postAuthorsAdd(author));
-		// setIdleAuthors([...idleAuthors, addedAuthor]);
+
+		try {
+			const response = await dispatch(postAuthorsAdd(author)).unwrap();
+			const addedAuthor = response.data.result;
+			setIdleAuthors([...idleAuthors, addedAuthor]);
+		} catch (rejectedValue) {
+			console.log('postAuthorsAdd rejectedValue', rejectedValue);
+		}
 	};
 
 	const deleteAuthorFromCourse = (deletedAuthor) => {

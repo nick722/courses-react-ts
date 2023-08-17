@@ -1,7 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAuthorsAll, postAuthorsAdd } from './thunks';
+import { AuthorsState, AuthorsType } from './types';
+import { RootState } from '../index';
 
-const initialState = {
+const initialState: AuthorsState = {
 	data: null,
 	loading: false,
 	error: null,
@@ -33,7 +35,7 @@ const authorsSlice = createSlice({
 				...state,
 				error: null,
 				loading: false,
-				data: [...state.data, action.payload],
+				data: [...state.data, action.payload.data.result],
 			};
 		});
 		builder.addCase(postAuthorsAdd.rejected, (state, action) => {
@@ -44,8 +46,9 @@ const authorsSlice = createSlice({
 
 			return {
 				...state,
-				error: action.payload,
+				error: 'action.payload',
 				loading: false,
+				data: state.data,
 			};
 		});
 	},
