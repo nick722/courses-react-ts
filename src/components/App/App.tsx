@@ -95,7 +95,7 @@ function App() {
 						}
 					/>
 					<Route
-						path={APP_ROUTES.UPDATE_COURSE}
+						path={`${APP_ROUTES.UPDATE_COURSE}:courseId`}
 						element={
 							<PrivateRoute>
 								<CourseForm />

@@ -5,11 +5,15 @@ import Button from '../../../../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from '../../../../../constants/routes';
 
-const UpdateCourseButton = () => {
+interface UpdateCourseButtonProps {
+	id: string;
+}
+
+const UpdateCourseButton = ({ id }: UpdateCourseButtonProps) => {
 	const navigate = useNavigate();
 
 	const navigateToUpdateCourse = () => {
-		navigate(APP_ROUTES.UPDATE_COURSE);
+		navigate(`${APP_ROUTES.UPDATE_COURSE}${id}`);
 	};
 
 	return (

@@ -54,8 +54,8 @@ const CourseCard = ({
 					</Link>
 					{isRoleAdmin && (
 						<>
-							<DeleteCourseButton courseId={id} />
-							<UpdateCourseButton />
+							<DeleteCourseButton id={id} />
+							<UpdateCourseButton id={id} />
 						</>
 					)}
 				</div>

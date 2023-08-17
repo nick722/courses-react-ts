@@ -11,23 +11,19 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface DeleteCourseButtonProps {
-	courseId: string;
+	id: string;
 }
 
-const DeleteCourseButton = ({ courseId }: DeleteCourseButtonProps) => {
+const DeleteCourseButton = ({ id }: DeleteCourseButtonProps) => {
 	const dispatch: AppDispatch = useDispatch();
 
-	const handleClick = (courseId) => {
-		dispatch(deleteCourse(courseId));
+	const handleClick = () => {
+		dispatch(deleteCourse(id));
 	};
 
 	return (
 		<>
-			<Button
-				onClick={() => handleClick(courseId)}
-				withIcon
-				className='delete-course-button'
-			>
+			<Button onClick={handleClick} withIcon className='delete-course-button'>
 				<FontAwesomeIcon icon={faTrash} />
 			</Button>
 			{/*<ToastContainer*/}
