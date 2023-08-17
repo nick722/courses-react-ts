@@ -25,7 +25,7 @@ const Courses = ({ courses, allAuthors }: CoursesProps) => {
 	const navigate = useNavigate();
 
 	const navigateToCreateCourses = () => {
-		navigate('/courses/add');
+		navigate(APP_ROUTES.CREATE_COURSE);
 	};
 
 	if (!isAuth) {

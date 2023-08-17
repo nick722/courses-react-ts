@@ -95,6 +95,14 @@ function App() {
 						}
 					/>
 					<Route
+						path={APP_ROUTES.UPDATE_COURSE}
+						element={
+							<PrivateRoute>
+								<CourseForm />
+							</PrivateRoute>
+						}
+					/>
+					<Route
 						path='/'
 						element={<Navigate to={APP_ROUTES.LOGIN} replace />}
 					/>
