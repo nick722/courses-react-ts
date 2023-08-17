@@ -3,3 +3,6 @@ export const selectBearerToken = (state) => state.user.data.token;
 export const selectUserError = (state) => state.user.error;
 export const selectUserName = (state) => state.user.data.name;
 export const selectUserEmail = (state) => state.user.data.email;
+
+export const selectIsAdmin = (state) =>
+	state.user.data.email === 'admin@email.com';

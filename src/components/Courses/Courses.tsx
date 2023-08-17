@@ -11,6 +11,7 @@ import getAuthorsById from '../../helpers/getAuthorsById';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../../store/user';
 import { APP_ROUTES } from '../../constants/routes';
+import { selectIsAdmin } from '../../store/user/selectors';
 
 interface CoursesProps {
 	courses: Course[];
@@ -18,10 +19,11 @@ interface CoursesProps {
 	toggleShowCreateCourse: () => void;
 }
 
-const ADD_NEW_BUTTON_TEXT = 'Add new course';
+const ADD_NEW_COURSE = 'Add new course';
 
 const Courses = ({ courses, allAuthors }: CoursesProps) => {
 	const isAuth = useSelector(selectIsAuth);
+	const isAdmin = useSelector(selectIsAdmin);
 	const navigate = useNavigate();
 
 	const navigateToCreateCourses = () => {
@@ -54,9 +56,11 @@ const Courses = ({ courses, allAuthors }: CoursesProps) => {
 		<div className={'courses'}>
 			<div className={'courses__search-bar-panel'}>
 				<SearchBar />
-				<Button withText onClick={navigateToCreateCourses}>
-					{ADD_NEW_BUTTON_TEXT}
-				</Button>
+				{isAdmin && (
+					<Button withText onClick={navigateToCreateCourses}>
+						{ADD_NEW_COURSE}
+					</Button>
+				)}
 			</div>
 			{renderCourses(courses)}
 		</div>
