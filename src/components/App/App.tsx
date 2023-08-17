@@ -5,7 +5,7 @@ import Courses from '../Courses/Courses';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
 import CourseInfo from '../CourseInfo/CourseInfo';
@@ -16,20 +16,26 @@ import {
 } from '../../store/courses/selectors';
 import { getCoursesAll } from '../../store/courses/thunks';
 import { getAuthorsAll, selectAuthors } from '../../store/authors';
-import { AppRoutes } from '../../constants/routes';
+import { APP_ROUTES } from '../../constants/routes';
 import { getUser, selectIsAuth } from '../../store/user';
 import { AppDispatch } from '../../store';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import { toast, ToastContainer } from 'react-toastify';
+import { getBearerToken } from '../../helpers/getBearerToken';
+import { token } from '../../constants/locatStorageItems';
 
 function App() {
 	const isAuth = useSelector(selectIsAuth);
-	console.log('isAuth', isAuth);
 	const dispatch: AppDispatch = useDispatch();
 	const courses = useSelector(selectCourses);
 	const authors = useSelector(selectAuthors);
-
 	const deleteError = useSelector(selectCourseDeleteError);
+	const navigate = useNavigate();
+
+	// const bearerToken = getBearerToken();
+	// if (bearerToken) {
+	// 	dispatch(getUser());
+	// }
 
 	useEffect(() => {
 		if (deleteError) toast.error(deleteError);
@@ -43,14 +49,25 @@ function App() {
 		dispatch(getCoursesAll());
 	}, []);
 
+	useEffect(() => {
+		if (!isAuth) {
+			// show error
+			// toast.error('error');
+			// Navigate to login page
+			navigate(APP_ROUTES.LOGIN);
+			// Remove token from the localstorage
+			// localStorage.removeItem(token);
+		}
+	}, []);
+
 	return (
 		<div className='App'>
 			<Routes>
-				<Route path={AppRoutes.HOME} element={<Header />}>
-					<Route path={AppRoutes.REGISTRATION} element={<Registration />} />
-					<Route path={AppRoutes.LOGIN} element={<Login />} />
+				<Route path={APP_ROUTES.HOME} element={<Header />}>
+					<Route path={APP_ROUTES.REGISTRATION} element={<Registration />} />
+					<Route path={APP_ROUTES.LOGIN} element={<Login />} />
 					<Route
-						path={AppRoutes.COURSE_INFO}
+						path={APP_ROUTES.COURSE_INFO}
 						element={
 							<PrivateRoute>
 								<CourseInfo courses={courses} allAuthors={authors} />
@@ -58,7 +75,7 @@ function App() {
 						}
 					/>
 					<Route
-						path={AppRoutes.COURSES}
+						path={APP_ROUTES.COURSES}
 						element={
 							<Courses
 								toggleShowCreateCourse={() => {
@@ -70,14 +87,17 @@ function App() {
 						}
 					/>
 					<Route
-						path={AppRoutes.CREATE_COURSE}
+						path={APP_ROUTES.CREATE_COURSE}
 						element={
 							<PrivateRoute>
 								<CourseForm allAuthors={authors} />
 							</PrivateRoute>
 						}
 					/>
-					<Route path='/' element={<Navigate to={AppRoutes.LOGIN} replace />} />
+					<Route
+						path='/'
+						element={<Navigate to={APP_ROUTES.LOGIN} replace />}
+					/>
 				</Route>
 			</Routes>
 			<ToastContainer

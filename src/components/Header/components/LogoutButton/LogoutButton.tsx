@@ -7,7 +7,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getBearerToken } from '../../../../helpers/getBearerToken';
 import { useNavigate } from 'react-router-dom';
-import { AppRoutes } from '../../../../constants/routes';
+import { APP_ROUTES } from '../../../../constants/routes';
+import { token } from '../../../../constants/locatStorageItems';
 
 const LOGOUT_BUTTON_TEXT = 'Logout';
 const LogoutButton = () => {
@@ -26,9 +27,9 @@ const LogoutButton = () => {
 	const handleClick = () => {
 		dispatch(logout(bearerToken));
 
-		localStorage.removeItem('token');
+		localStorage.removeItem(token);
 		if (!isAuth) {
-			navigate(AppRoutes.LOGIN);
+			navigate(APP_ROUTES.LOGIN);
 		}
 	};
 

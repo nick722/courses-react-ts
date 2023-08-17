@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import './Login.scss';
 import Button from '../common/Button/Button';
-import { AppRoutes } from '../../constants/routes';
+import { APP_ROUTES } from '../../constants/routes';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, selectIsAuth, selectUserError } from '../../store/user';
 import { AppDispatch } from '../../store';
@@ -27,7 +27,7 @@ const Login = () => {
 	// const [loginError, setLoginError] = useState(null);
 
 	if (isAuth) {
-		navigate(AppRoutes.COURSES);
+		navigate(APP_ROUTES.COURSES);
 	}
 
 	const loginErrorMessage = `Login failed: ${loginError}`;

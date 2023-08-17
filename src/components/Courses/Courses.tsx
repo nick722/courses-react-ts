@@ -10,7 +10,7 @@ import { Author, Course } from '../../types';
 import getAuthorsById from '../../helpers/getAuthorsById';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../../store/user';
-import { AppRoutes } from '../../constants/routes';
+import { APP_ROUTES } from '../../constants/routes';
 
 interface CoursesProps {
 	courses: Course[];
@@ -29,7 +29,7 @@ const Courses = ({ courses, allAuthors }: CoursesProps) => {
 	};
 
 	if (!isAuth) {
-		navigate(AppRoutes.LOGIN);
+		navigate(APP_ROUTES.LOGIN);
 	}
 
 	const renderCourses = (courses: Course[]) => {

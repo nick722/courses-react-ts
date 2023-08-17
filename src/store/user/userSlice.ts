@@ -31,6 +31,8 @@ const userSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(getUser.fulfilled, (state, action) => {
+			console.log('getUser action.payload', action.payload);
+
 			return {
 				error: null,
 				loading: false,
@@ -39,6 +41,18 @@ const userSlice = createSlice({
 					name: action.payload?.name || '',
 					email: action.payload?.email || '',
 					token: bearerToken,
+				},
+			};
+		});
+		builder.addCase(getUser.rejected, (state, action) => {
+			return {
+				error: action.payload,
+				loading: false,
+				data: {
+					isAuth: false,
+					name: '',
+					email: '',
+					token: '',
 				},
 			};
 		});
