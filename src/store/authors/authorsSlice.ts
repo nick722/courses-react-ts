@@ -27,20 +27,27 @@ const authorsSlice = createSlice({
 			loading: true,
 		}));
 		builder.addCase(postAuthorsAdd.fulfilled, (state, action) => {
-			console.log('action.payload', action.payload);
+			console.log('postAuthorsAdd.fulfilled action.payload', action.payload);
 
 			return {
 				...state,
 				error: null,
 				loading: false,
-				data: [...state.data, action.payload.data.result],
+				data: [...state.data, action.payload],
 			};
 		});
-		builder.addCase(postAuthorsAdd.rejected, (state, action) => ({
-			...state,
-			error: action.payload,
-			loading: false,
-		}));
+		builder.addCase(postAuthorsAdd.rejected, (state, action) => {
+			console.log(
+				'postAuthorsAdd.rejected action.payload',
+				postAuthorsAdd.rejected
+			);
+
+			return {
+				...state,
+				error: action.payload,
+				loading: false,
+			};
+		});
 	},
 });
 
