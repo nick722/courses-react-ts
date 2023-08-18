@@ -38,12 +38,17 @@ const CourseForm = () => {
 		selectCourseById(state, courseId)
 	);
 
-	console.log('currentCourse', currentCourse);
-
-	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
-	const [idleAuthors, setIdleAuthors] = useState<Author[]>(allAuthors);
-	const [courseAuthors, setCourseAuthors] = useState<Author[]>([]);
+	const [title, setTitle] = useState(currentCourse?.title || '');
+	const [description, setDescription] = useState(
+		currentCourse?.description || ''
+	);
+	const [idleAuthors, setIdleAuthors] = useState<Author[]>(
+		allAuthors.filter((author) => !currentCourse?.authors.includes(author.id))
+	);
+	const [courseAuthors, setCourseAuthors] = useState<Author[]>(
+		allAuthors.filter((author) => currentCourse?.authors.includes(author.id)) ||
+			[]
+	);
 
 	const navigate = useNavigate();
 
