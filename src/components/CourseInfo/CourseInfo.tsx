@@ -5,15 +5,14 @@ import getAuthorsById from '../../helpers/getAuthorsById';
 
 import './CourseInfo.scss';
 import formatCourseDuration from '../../helpers/formatCourseDuration';
+import { useSelector } from 'react-redux';
+import { selectCourseById } from '../../store/courses/selectors';
+import { selectAuthors } from '../../store/authors';
 
-interface CourseInfoProps {
-	courses: Course[];
-	allAuthors: Author[];
-}
-
-const CourseInfo = ({ courses, allAuthors }: CourseInfoProps) => {
+const CourseInfo = () => {
 	const { courseId } = useParams();
-	const course = courses.find((course) => course.id === courseId);
+	const course = useSelector((state) => selectCourseById(state, courseId));
+	const allAuthors = useSelector(selectAuthors);
 
 	return (
 		<div className='course-info'>

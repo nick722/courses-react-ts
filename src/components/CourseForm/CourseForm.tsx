@@ -12,12 +12,13 @@ import { Author, Course } from '../../types';
 
 import './CourseForm.scss';
 import formatCreationDate from '../../helpers/formatCreationDate';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCourse } from '../../store/courses/thunks';
 import { AppDispatch } from '../../store';
 import { postAuthorsAdd } from '../../store/authors/thunks';
 import { selectAuthors } from '../../store/authors';
+import { selectCourseById } from '../../store/courses/selectors';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
@@ -31,6 +32,13 @@ const forbiddenSymbols = /[@#$%^&]/;
 const CourseForm = () => {
 	const dispatch: AppDispatch = useDispatch();
 	const allAuthors = useSelector(selectAuthors);
+	const params = useParams();
+	const { courseId } = params;
+	const currentCourse = useSelector((state) =>
+		selectCourseById(state, courseId)
+	);
+
+	console.log('currentCourse', currentCourse);
 
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');

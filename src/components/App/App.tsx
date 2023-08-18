@@ -70,7 +70,7 @@ function App() {
 						path={APP_ROUTES.COURSE_INFO}
 						element={
 							<PrivateRoute>
-								<CourseInfo courses={courses} allAuthors={authors} />
+								<CourseInfo />
 							</PrivateRoute>
 						}
 					/>
