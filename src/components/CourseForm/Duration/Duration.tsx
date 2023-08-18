@@ -8,8 +8,12 @@ const LABEL_TEXT = 'Duration';
 const PLACEHOLDER_TEXT = 'Enter duration in minutes...';
 const forbiddenSymbols = /[a-zA-Z@#$%^&]/;
 
-const Duration = () => {
-	const [duration, setDuration] = useState('');
+interface DurationProps {
+	initialValue: string;
+}
+
+const Duration = ({ initialValue }: DurationProps) => {
+	const [duration, setDuration] = useState(initialValue || '');
 	const [errorMessage, setErrorMessage] = useState('');
 
 	const handleChange = (value: string) => {

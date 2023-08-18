@@ -130,7 +130,7 @@ const CourseForm = () => {
 			<div className='create-course__main'>
 				<div className='create-course__left-panel'>
 					<CreateAuthor createAuthor={createAuthor} />
-					<Duration />
+					<Duration initialValue={currentCourse?.duration || null} />
 				</div>
 				<div className='create-course__right-panel'>
 					<AuthorsList
