@@ -8,6 +8,9 @@ import {
 	addCoursePending,
 	addCourseRejected,
 	addCourseFulfilled,
+	updateCoursePending,
+	updateCourseFulfilled,
+	updateCourseRejected,
 } from './actions';
 import { Course } from '../../types';
 import { getAdminAuthorizationConfig } from '../../helpers/adminAuthorizationConfig';
@@ -59,5 +62,23 @@ export const addCourse = (course: Course) => async (dispatch) => {
 		dispatch(addCourseFulfilled(addedCourse));
 	} catch (error) {
 		dispatch(addCourseRejected(error.message));
+	}
+};
+
+export const updateCourse = (course: Course) => async (dispatch) => {
+	const updateCourseUlr = `${BASE_URL}/courses/{id}`;
+
+	dispatch(updateCoursePending());
+
+	try {
+		const response = await axios.put(
+			updateCourseUlr,
+			course,
+			getAdminAuthorizationConfig()
+		);
+		const updatedCourse = response.data.result;
+		dispatch(updateCourseFulfilled(updatedCourse));
+	} catch (error) {
+		dispatch(updateCourseRejected(error.message));
 	}
 };

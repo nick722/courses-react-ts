@@ -14,15 +14,17 @@ import './CourseForm.scss';
 import formatCreationDate from '../../helpers/formatCreationDate';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCourse } from '../../store/courses/thunks';
+import { addCourse, updateCourse } from '../../store/courses/thunks';
 import { AppDispatch } from '../../store';
 import { postAuthorsAdd } from '../../store/authors/thunks';
 import { selectAuthors } from '../../store/authors';
 import { selectCourseById } from '../../store/courses/selectors';
+import { addCourseRejected } from '../../store/courses/actions';
 
 const TITLE = 'Title';
 const TITLE_PLACEHODER = 'Enter title...';
-const CREATE_COURSE = 'Create course';
+const CREATE_COURSE_BTN_TEXT = 'Create course';
+const UPDATE_COURSE_BTN_TEXT = 'Update course';
 const DESCRIPTION_PLACEHOLDER = 'Enter description';
 const ADD_AUTHOR_TEXT = 'Add author';
 const DELETE_AUTHOR_TEXT = 'Delete author';
@@ -34,20 +36,21 @@ const CourseForm = () => {
 	const allAuthors = useSelector(selectAuthors);
 	const params = useParams();
 	const { courseId } = params;
-	const currentCourse = useSelector((state) =>
+	const courseToUpdate = useSelector((state) =>
 		selectCourseById(state, courseId)
 	);
 
-	const [title, setTitle] = useState(currentCourse?.title || '');
+	const [title, setTitle] = useState(courseToUpdate?.title || '');
 	const [description, setDescription] = useState(
-		currentCourse?.description || ''
+		courseToUpdate?.description || ''
 	);
 	const [idleAuthors, setIdleAuthors] = useState<Author[]>(
-		allAuthors.filter((author) => !currentCourse?.authors.includes(author.id))
+		allAuthors.filter((author) => !courseToUpdate?.authors.includes(author.id))
 	);
 	const [courseAuthors, setCourseAuthors] = useState<Author[]>(
-		allAuthors.filter((author) => currentCourse?.authors.includes(author.id)) ||
-			[]
+		allAuthors.filter((author) =>
+			courseToUpdate?.authors.includes(author.id)
+		) || []
 	);
 
 	const navigate = useNavigate();
@@ -79,10 +82,10 @@ const CourseForm = () => {
 		}
 	};
 
-	const createNewCourse = (event): Course => {
+	const createCourseObj = (event): Course => {
 		event.preventDefault();
 
-		const newCourse = {
+		const courseObj = {
 			id: uuid(),
 			title: event.target.title?.value,
 			description: event.target.description?.value,
@@ -91,17 +94,29 @@ const CourseForm = () => {
 			authors: courseAuthors.map((author) => author.id),
 		};
 
+		console.log('courseObj', courseObj);
+
 		navigate('/courses');
-		return newCourse;
+		return courseObj;
 	};
 
-	const addNewCourse = (course) => {
-		dispatch(addCourse(course));
+	// const addNewCourse = (course: Course) => {
+	// 	dispatch(addCourse(course));
+	// };
+	//
+	// const updateCourse = (course: Course) => {
+	// 	dispatch(updateCourse(course));
+	// };
+
+	const handleSubmit = (course: Course) => {
+		courseToUpdate
+			? dispatch(updateCourse(course))
+			: dispatch(addCourse(course));
 	};
 
 	return (
 		<form
-			onSubmit={(event) => addNewCourse(createNewCourse(event))}
+			onSubmit={(event) => handleSubmit(createCourseObj(event))}
 			className='create-course'
 		>
 			<div className='create-course__header'>
@@ -114,7 +129,7 @@ const CourseForm = () => {
 					onChange={handleTitleChange}
 				/>
 				<Button withText className='create-course__header-button' type='submit'>
-					{CREATE_COURSE}
+					{courseToUpdate ? UPDATE_COURSE_BTN_TEXT : CREATE_COURSE_BTN_TEXT}
 				</Button>
 			</div>
 			<div className='create-course__description'>
@@ -130,7 +145,7 @@ const CourseForm = () => {
 			<div className='create-course__main'>
 				<div className='create-course__left-panel'>
 					<CreateAuthor createAuthor={createAuthor} />
-					<Duration initialValue={currentCourse?.duration || null} />
+					<Duration initialValue={courseToUpdate?.duration || null} />
 				</div>
 				<div className='create-course__right-panel'>
 					<AuthorsList

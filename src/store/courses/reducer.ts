@@ -34,6 +34,24 @@ export const coursesReducer = (
 				loading: true,
 				error: null,
 			};
+		case CoursesActionTypes.UPDATE_COURSE_PENDING:
+			return {
+				...state,
+				loading: true,
+				error: null,
+			};
+		case CoursesActionTypes.UPDATE_COURSE_FULFILLED:
+			return {
+				...state,
+				loading: false,
+				date: [...state.data, action.payload],
+			};
+		case CoursesActionTypes.UPDATE_COURSE_REJECTED:
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			};
 		case CoursesActionTypes.DELETE_COURSE_FULFILLED:
 			return {
 				...state,

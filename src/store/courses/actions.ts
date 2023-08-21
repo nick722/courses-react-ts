@@ -1,9 +1,12 @@
 import {
 	AddCourseFulfilled,
 	AddCoursePending,
+	AddCourseRejected,
 	CoursesActionTypes,
 	CourseType,
-	UpdateCourse,
+	UpdateCoursePending,
+	UpdateCourseFilfilled,
+	UpdateCourseRejected,
 } from './types';
 
 export const addCoursePending = (): AddCoursePending => ({
@@ -15,8 +18,22 @@ export const addCourseFulfilled = (payload): AddCourseFulfilled => ({
 	payload,
 });
 
-export const addCourseRejected = (payload) => ({
+export const addCourseRejected = (payload): AddCourseRejected => ({
 	type: CoursesActionTypes.ADD_COURSE_REJECTED,
+	payload,
+});
+
+export const updateCoursePending = () => ({
+	type: CoursesActionTypes.UPDATE_COURSE_PENDING,
+});
+
+export const updateCourseFulfilled = (payload) => ({
+	type: CoursesActionTypes.UPDATE_COURSE_FULFILLED,
+	payload,
+});
+
+export const updateCourseRejected = (payload) => ({
+	type: CoursesActionTypes.UPDATE_COURSE_REJECTED,
 	payload,
 });
 
@@ -37,9 +54,4 @@ export const deleteCourseFailed = (payload) => ({
 export const saveCoursesAction = (payload) => ({
 	type: CoursesActionTypes.SAVE_COURSES,
 	payload,
-});
-
-export const updateCourseAction = (courseData: CourseType): UpdateCourse => ({
-	type: CoursesActionTypes.UPDATE_COURSE,
-	payload: courseData,
 });
