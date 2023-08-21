@@ -76,6 +76,12 @@ export const updateCourse = (course: Course) => async (dispatch) => {
 			course,
 			getAdminAuthorizationConfig()
 		);
+		console.log('update response', response);
+
+		if (!response.data.successful) {
+			throw new Error(`Failed to update the course: ${response.data.result}`);
+		}
+
 		const updatedCourse = response.data.result;
 		dispatch(updateCourseFulfilled(updatedCourse));
 	} catch (error) {
