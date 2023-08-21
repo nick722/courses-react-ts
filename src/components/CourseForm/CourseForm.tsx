@@ -110,7 +110,7 @@ const CourseForm = () => {
 
 	const handleSubmit = (course: Course) => {
 		courseToUpdate
-			? dispatch(updateCourse(course))
+			? dispatch(updateCourse(course, courseId))
 			: dispatch(addCourse(course));
 	};
 

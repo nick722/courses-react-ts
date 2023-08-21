@@ -65,8 +65,8 @@ export const addCourse = (course: Course) => async (dispatch) => {
 	}
 };
 
-export const updateCourse = (course: Course) => async (dispatch) => {
-	const updateCourseUlr = `${BASE_URL}/courses/{id}`;
+export const updateCourse = (course: Course, id) => async (dispatch) => {
+	const updateCourseUlr = `${BASE_URL}/courses/${id}`;
 
 	dispatch(updateCoursePending());
 
