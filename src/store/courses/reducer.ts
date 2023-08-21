@@ -44,7 +44,12 @@ export const coursesReducer = (
 			return {
 				...state,
 				loading: false,
-				date: [...state.data, action.payload],
+				data: state.data.map((course) => {
+					if (course.id !== action.payload.id) {
+						return course;
+					}
+					return action.payload;
+				}),
 			};
 		case CoursesActionTypes.UPDATE_COURSE_REJECTED:
 			return {

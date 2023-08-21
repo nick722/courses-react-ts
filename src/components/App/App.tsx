@@ -27,8 +27,7 @@ import { token } from '../../constants/locatStorageItems';
 function App() {
 	const isAuth = useSelector(selectIsAuth);
 	const dispatch: AppDispatch = useDispatch();
-	const courses = useSelector(selectCourses);
-	const authors = useSelector(selectAuthors);
+
 	const deleteError = useSelector(selectCourseDeleteError);
 	const navigate = useNavigate();
 
@@ -51,12 +50,7 @@ function App() {
 
 	useEffect(() => {
 		if (!isAuth) {
-			// show error
-			// toast.error('error');
-			// Navigate to login page
 			navigate(APP_ROUTES.LOGIN);
-			// Remove token from the localstorage
-			// localStorage.removeItem(token);
 		}
 	}, []);
 
@@ -81,8 +75,6 @@ function App() {
 								toggleShowCreateCourse={() => {
 									setShowCreateCourse(!showCreateCourse);
 								}}
-								courses={courses}
-								allAuthors={authors}
 							/>
 						}
 					/>

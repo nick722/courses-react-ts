@@ -12,16 +12,18 @@ import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../../store/user';
 import { APP_ROUTES } from '../../constants/routes';
 import { selectIsAdmin } from '../../store/user/selectors';
+import { selectCourses } from '../../store/courses/selectors';
+import { selectAuthors } from '../../store/authors';
 
 interface CoursesProps {
-	courses: Course[];
-	allAuthors: Author[];
 	toggleShowCreateCourse: () => void;
 }
 
 const ADD_NEW_COURSE = 'Add new course';
 
-const Courses = ({ courses, allAuthors }: CoursesProps) => {
+const Courses = ({ toggleShowCreateCourse }: CoursesProps) => {
+	const courses = useSelector(selectCourses);
+	const allAuthors = useSelector(selectAuthors);
 	const isAuth = useSelector(selectIsAuth);
 	const isAdmin = useSelector(selectIsAdmin);
 	const navigate = useNavigate();
