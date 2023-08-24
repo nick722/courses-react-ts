@@ -1,17 +1,25 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from '../../store/rootReducer';
+import {  MemoryRouter } from 'react-router-dom';
 
-// test('renders learn react link', () => {
-// 	render(<App />);
-// 	// const linkElement = screen.getByText(/learn react/i);
-// 	// expect(linkElement).toBeInTheDocument();
-// });
+const store = configureStore({ reducer: rootReducer });
+const Wrapper = ({ children }) => (
+	<Provider store={store}>
+		<MemoryRouter>{children} </MemoryRouter>
+	</Provider>
+);
 
 describe('App', () => {
-	it('should display course title', async () => {
-		render(<App />);
+	it('has h1 Header with the text "Login"', async () => {
+		render(<App />, { wrapper: Wrapper });
 
-		screen.debug();
+		const header = screen.getByRole('heading', { level: 1 });
+
+		screen.debug(header);
+		expect(header).toHaveTextContent('Login');
 	});
 });
