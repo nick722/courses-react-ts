@@ -91,5 +91,6 @@
       "^.+\\.(ts|tsx)?$": "ts-jest",
       "^.+\\.(js|jsx)$": "babel-jest"
     }
-  }
+  },
+  "prepublish": "npm run eslint:fix && npm run test:nowatch"
 }
