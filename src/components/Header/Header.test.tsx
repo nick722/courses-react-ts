@@ -1,6 +1,6 @@
 import Header from './Header';
 import { getByAltText, screen } from '@testing-library/react';
-import { renderWithState } from '../test-utils/renderWithState';
+import { wrapRender } from '../test-utils/wrapRender';
 import React from 'react';
 
 const USER_NAME = 'Nick';
@@ -10,7 +10,7 @@ const initialState = {
 
 describe('Header', () => {
 	beforeEach(() => {
-		renderWithState(<Header />, { initialState });
+		wrapRender(<Header />, { initialState });
 		screen.debug();
 	});
 

@@ -23,7 +23,7 @@ const ADD_NEW_COURSE = 'Add new course';
 
 const Courses = ({ toggleShowCreateCourse }: CoursesProps) => {
 	const courses = useSelector(selectCourses);
-	const allAuthors = useSelector(selectAuthors);
+
 	const isAuth = useSelector(selectIsAuth);
 	const isAdmin = useSelector(selectIsAdmin);
 	const navigate = useNavigate();
@@ -38,15 +38,13 @@ const Courses = ({ toggleShowCreateCourse }: CoursesProps) => {
 
 	const renderCourses = (courses: Course[]) => {
 		return courses.map((course) => {
-			const authorsById = getAuthorsById(course.authors, allAuthors);
-
 			return (
 				<CourseCard
 					id={course.id}
 					key={course.id}
 					title={course.title}
 					description={course.description}
-					authorsNames={getAuthorsById(course.authors, allAuthors)}
+					authorsIds={course.authors}
 					duration={course.duration}
 					creationDate={course.creationDate}
 				/>

@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 import React from 'react';
 import { RootState } from '../../store';
+import { MemoryRouter } from 'react-router-dom';
 
-export const renderWithState = (
+export const wrapRender = (
 	ui,
 	{ initialState, ...renderOptions } = { initialState: {} }
 ) => {
@@ -14,7 +15,9 @@ export const renderWithState = (
 		preloadedState: initialState,
 	});
 	const Wrapper = ({ children }) => (
-		<Provider store={store}>{children}</Provider>
+		<Provider store={store}>
+			<MemoryRouter>{children}</MemoryRouter>
+		</Provider>
 	);
 
 	return render(ui, { wrapper: Wrapper, ...renderOptions });
