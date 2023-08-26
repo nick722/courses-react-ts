@@ -1,0 +1,113 @@
+[
+  {
+    "title": "React2",
+    "description": "Fundamentals27",
+    "duration": 1,
+    "authors": [
+      "40b21bd5-cbae-4f33-b154-0252b1ae03a9"
+    ],
+    "creationDate": "13/03/2023",
+    "id": "da9dd045-333d-42a8-90fe-6bbb60347eff"
+  },
+  {
+    "title": "t",
+    "description": "d",
+    "duration": 345,
+    "authors": [
+      "9b87e8b8-6ba5-40fc-a439-c4e30a373d36"
+    ],
+    "creationDate": "16/08/2023",
+    "id": "a8f1d722-3f27-4bca-b01e-8fa5831a8219"
+  },
+  {
+    "title": "test",
+    "description": "asdf",
+    "duration": 234,
+    "authors": [
+      "1c972c52-3198-4098-b6f7-799b45903199"
+    ],
+    "creationDate": "16/08/2023",
+    "id": "fc6e1d6c-b8ea-4d40-b188-3b48d1463a49"
+  },
+  {
+    "title": "asdf",
+    "description": "asdf",
+    "duration": 234,
+    "authors": [
+      "072fe3fc-e751-4745-9af5-aa9eed0ea9ed"
+    ],
+    "creationDate": "16/08/2023",
+    "id": "ea1f95ee-b9d9-447d-9c72-757ff0d0b0a9"
+  },
+  {
+    "title": "Added Course",
+    "description": "sdff",
+    "duration": 235,
+    "authors": [
+      "40b21bd5-cbae-4f33-b154-0252b1ae03a9"
+    ],
+    "creationDate": "16/08/2023",
+    "id": "107afb98-4705-4ffa-ad70-e394dc3e446e"
+  },
+  {
+    "title": "Get admin auth config",
+    "description": "sdfadf",
+    "duration": 235,
+    "authors": [
+      "40b21bd5-cbae-4f33-b154-0252b1ae03a9"
+    ],
+    "creationDate": "16/08/2023",
+    "id": "66441514-f447-4788-a363-53d94673e552"
+  },
+  {
+    "title": "test17",
+    "description": "dd",
+    "duration": 23,
+    "authors": [
+      "89af749c-e331-42bb-9b7a-1a19226fb4e0"
+    ],
+    "creationDate": "17/08/2023",
+    "id": "25ae02ef-0935-4bbb-8656-42dd0548e24c"
+  },
+  {
+    "title": "230821",
+    "description": "1750",
+    "duration": 3423,
+    "authors": [
+      "5e0b0f18-32c9-4933-b142-50459b47f09e"
+    ],
+    "creationDate": "21/08/2023",
+    "id": "11dd0021-695f-4b47-8818-ff5739a1d99f"
+  },
+  {
+    "title": "1751",
+    "description": "sdf",
+    "duration": 235,
+    "authors": [
+      "9987de6a-b475-484a-b885-622b8fb88bda"
+    ],
+    "creationDate": "21/08/2023",
+    "id": "cb3a1c68-ac8c-42cf-8247-73f5e6a3cc4e"
+  },
+  {
+    "title": "1223",
+    "description": "230825",
+    "duration": 234,
+    "authors": [
+      "9b87e8b8-6ba5-40fc-a439-c4e30a373d36"
+    ],
+    "creationDate": "25/08/2023",
+    "id": "cf609237-07dd-4e81-8d65-f63c99f5f6b5"
+  },
+  {
+    "title": "Course with 2 authors",
+    "description": "sdf",
+    "duration": 234,
+    "authors": [
+      "9b87e8b8-6ba5-40fc-a439-d230313t1141",
+      "1c972c52-3198-4098-b6f7-799b45903199"
+    ],
+    "creationDate": "25/08/2023",
+    "id": "410821a5-1e79-497e-b4c4-5a19652dfca8"
+  }
+]

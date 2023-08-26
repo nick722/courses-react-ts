@@ -34,7 +34,7 @@ const CourseCard = ({
 	const isRoleAdmin = checkIfAdmin(userEmail);
 
 	return (
-		<div className='course-card'>
+		<div data-testid='CourseCard' className='course-card'>
 			<div className='course-card__left-side'>
 				<h3>{title}</h3>
 				<p>{description}</p>

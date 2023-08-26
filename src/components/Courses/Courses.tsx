@@ -13,15 +13,10 @@ import { selectIsAuth } from '../../store/user';
 import { APP_ROUTES } from '../../constants/routes';
 import { selectIsAdmin } from '../../store/user/selectors';
 import { selectCourses } from '../../store/courses/selectors';
-import { selectAuthors } from '../../store/authors';
-
-interface CoursesProps {
-	toggleShowCreateCourse: () => void;
-}
 
 const ADD_NEW_COURSE = 'Add new course';
 
-const Courses = ({ toggleShowCreateCourse }: CoursesProps) => {
+const Courses = () => {
 	const courses = useSelector(selectCourses);
 
 	const isAuth = useSelector(selectIsAuth);

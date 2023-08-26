@@ -94,19 +94,9 @@ const CourseForm = () => {
 			authors: courseAuthors.map((author) => author.id),
 		};
 
-		console.log('courseObj', courseObj);
-
 		navigate('/courses');
 		return courseObj;
 	};
-
-	// const addNewCourse = (course: Course) => {
-	// 	dispatch(addCourse(course));
-	// };
-	//
-	// const updateCourse = (course: Course) => {
-	// 	dispatch(updateCourse(course));
-	// };
 
 	const handleSubmit = (course: Course) => {
 		courseToUpdate
@@ -118,6 +108,8 @@ const CourseForm = () => {
 		<form
 			onSubmit={(event) => handleSubmit(createCourseObj(event))}
 			className='create-course'
+			title='CourseForm'
+			name='CourseForm'
 		>
 			<div className='create-course__header'>
 				<Input
