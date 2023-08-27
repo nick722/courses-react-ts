@@ -42,11 +42,6 @@
     "pre-commit": "npm run eslint:fix && npm run test:nowatch",
     "precommit": "npm run eslint:fix && npm run test:nowatch"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run eslint:fix && npm run test:nowatch"
-    }
-  },
   "eslintConfig": {
     "extends": [
       "react-app",

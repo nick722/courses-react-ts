@@ -45,6 +45,6 @@ describe('Courses', () => {
 
 		userEvent.click(addNewCourseButton);
 
-		expect(mockedUseNavigate).not.toBeCalledWith(APP_ROUTES.CREATE_COURSE);
+		expect(mockedUseNavigate).toBeCalledWith(APP_ROUTES.CREATE_COURSE);
 	});
 });
