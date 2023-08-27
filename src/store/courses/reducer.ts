@@ -12,7 +12,7 @@ export const coursesReducer = (
 ) => {
 	switch (action.type) {
 		case CoursesActionTypes.SAVE_COURSES:
-			return { ...state, error: '', data: action.payload };
+			return { ...state, error: '', data: [...state.data, action.payload] };
 		case CoursesActionTypes.ADD_COURSE_PENDING:
 			return {
 				...state,
