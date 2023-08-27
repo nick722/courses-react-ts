@@ -98,5 +98,8 @@
     "transformIgnorePatterns": [
       "node_modules/(?!axios)/"
     ]
+  },
+  "husky": {
+    "pre-commit": "npm run eslint:fix && npm run test:nowatch"
   }
 }
