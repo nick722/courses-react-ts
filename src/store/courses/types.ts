@@ -2,7 +2,7 @@ export type CourseType = {
 	id: string;
 	title: string;
 	description: string;
-	creationData: string;
+	creationDate: string;
 	duration: number;
 	authors: string[];
 };

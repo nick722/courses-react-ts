@@ -16,7 +16,6 @@ jest.mock('react-router-dom', () => ({
 }));
 
 const initialState = {
-	// courses: { data: mockedCoursesData },
 	courses: { data: mockedCoursesData },
 	authors: { data: mockedAuthorsData },
 	user: {
