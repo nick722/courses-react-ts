@@ -39,6 +39,7 @@
     "test:nowatch": "react-scripts test --watchAll=false",
     "prepare": "husky install",
     "prepublish": "npm run eslint:fix && npm run test:nowatch",
+    "pre-commit": "npm run eslint:fix && npm run test:nowatch",
     "precommit": "npm run eslint:fix && npm run test:nowatch"
   },
   "eslintConfig": {
