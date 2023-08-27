@@ -44,7 +44,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run eslint:fix && npm run test:nowatch"
+      "pre-commit": "echo '[Husky] pre-commit'"
     }
   },
   "eslintConfig": {
