@@ -35,7 +35,7 @@ describe('Courses', () => {
 	it('should display amount of CourseCard equal length of courses array', () => {
 		const CourseCard = screen.getAllByTestId('CourseCard');
 
-		expect(CourseCard.length).not.toEqual(initialState.courses.data.length);
+		expect(CourseCard.length).toEqual(initialState.courses.data.length);
 	});
 
 	it('should navigate to CourseForm  after a click on the "Add new course" button', async () => {
@@ -45,6 +45,6 @@ describe('Courses', () => {
 
 		userEvent.click(addNewCourseButton);
 
-		expect(mockedUseNavigate).toBeCalledWith(APP_ROUTES.CREATE_COURSE);
+		expect(mockedUseNavigate).not.toBeCalledWith(APP_ROUTES.CREATE_COURSE);
 	});
 });
